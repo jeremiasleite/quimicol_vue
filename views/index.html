@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Index</title>
+
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+		media="screen,projection" />
+	<!--Let browser know website is optimized for mobile-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<link rel="stylesheet" href="stylesheets/style.css">
+
+
+	<script type="text/javascript" src="https://unpkg.com/blueimp-gallery@2.27.0/js/blueimp-helper.js"></script>
+	<script type="text/javascript" src="https://unpkg.com/blueimp-gallery@2.27.0/js/blueimp-gallery.js"></script>
+	<script type="text/javascript"
+		src="https://unpkg.com/blueimp-gallery@2.27.0/js/blueimp-gallery-fullscreen.js"></script>
+	<script type="text/javascript" src="https://unpkg.com/vue-gallery@2.0.1/dist/js/vue-gallery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://unpkg.com/blueimp-gallery@2.27.0/css/blueimp-gallery.min.css">
+
+</head>
+
+<body>
+	<div id="app">
+
+		<header>
+			<!--Navbar-->
+			<nav class="light-blue lighten-1" role="navigation" v-if="estado >= 1">
+				<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Quimicol
+						<small>Bem vindo <strong>{{nome}}! {{estado}}</strong></small></a>
+					<ul class="right hide-on-med-and-down">
+						<li><a href="#">Chat</a></li>
+					</ul>
+
+				</div>
+			</nav>
+		</header>
+
+		<main>
+			<!--mostrar tela entrar nome-->
+			<div v-if="estado == 0" class="container">
+				<br><br>
+				<h1 class="header center orange-text">Bem vindo ao Quimicol</h1>
+				<div class="row center">
+					<h5 class="header col s12 light">Entre com seu nome para iniciar!</h5>
+				</div>
+				<div class="row">
+					<div class="col s4 offset-s4">
+						<div class="input-field">
+							<input placeholder="Entre com seu nome" id="first_name" type="text" class="validate"
+								v-model='nome'>
+						</div>
+					</div>
+					<div class="input-field col s2">
+						<a class="waves-effect orange btn" v-on:click="entrar">Entrar</a>
+					</div>
+				</div>
+			</div>
+			<!--Fim tela entrar nome-->
+
+			<div class="container">
+				<!--Estado 1-->
+				<div class="row" v-if="estado == 1">
+					<div class="row">
+						<h3 class="header left orange-text">Introdução <small>ÁLCOOIS</small></h3>
+					</div>
+					<div class="row">
+						<div>
+							<gallery :images="images" :index="index" @close="index = null"></gallery>
+							<div class="image" v-for="image, imageIndex in images" @click="index = imageIndex"
+								:style="{ backgroundImage: 'url(' + image + ')', width: '200px', height: '100px' }">
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<!--Fim do estado 1-->
+
+				<!--Estado 2-->
+				<div class="row" v-else-if="estado == 2">
+					<div class="row">
+						<div class="row">
+							<h3 class="header left orange-text">Introdução <small>Alimentos</small></h3>
+						</div>
+
+						<div class="col s4 image2" v-for="img2, img2Index in imgP2">
+							<div class="card-panel z-depth-1">
+								<div class="row valign-wrapper">
+									<div class="col s6">
+										<img v-bind:src="img2.img" alt="" class="responsive-img" style="height: 100px;">
+										<!-- notice the "circle" class -->
+									</div>
+									<div class="col s6">
+										<span class="black-text">
+											{{img2.texto}}
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--Fim do estado 2-->
+
+				<!--Estado 3-->
+				<div class="row" v-else-if="estado == 3">
+					<div class="row">
+						<div class="row">
+							<h3 class="header left orange-text">Introdução <small>Alimentos</small></h3>
+						</div>
+
+						<div class="col s8 offset-s2">
+							<img src="images/tela3.png" class="responsive-img">
+						</div>
+					</div>
+				</div>
+				<!--Fim do estado 3-->
+
+			</div>
+
+			<div class="row" v-show="estado > 0">
+				<div class="col s6">
+					<a class="waves-effect waves-light btn blue lighten-4" v-on:click="voltar">Voltar</a>
+				</div>
+				<div class="col s6">
+					<a class="waves-effect waves-light btn blue" v-on:click="seguir">Seguir</a>
+				</div>
+			</div>
+
+		</main>
+		
+		<!--Rodape-->
+		<footer class="page-footer orange">
+			<div class="footer-copyright">
+				<div class="container">
+					Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Next-Develops</a>
+				</div>
+			</div>
+		</footer>
+
+	</div>
+	
+	<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script type="text/javascript">
+		M.AutoInit();
+	</script>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+<script type="text/javascript">
+
+	var app = new Vue({
+		el: '#app',
+		data: {
+			drawer: null,
+			valid: false,
+			estado: 0,
+			nome: 'jeremias',
+			mostrar_entrar_nome: true,
+			chatAtivado: false,
+			jogador: 0,
+			chatmsg: "oi",
+			chatlogs: [{ jogador: true, nome: "jeremias", msg: "oi isso é um teste" },
+			{ jogador: false, nome: "jeremias", msg: "oi isso é um teste" },
+			{ jogador: true, nome: "jeremias", msg: "oi isso é um teste" },
+			{ jogador: false, nome: "jeremias", msg: "oi isso é um teste" },
+			{ jogador: false, nome: "jeremias", msg: "oi isso é um teste" },
+			],
+			images: [
+				'images/boa/1.jpg',
+				'images/boa/2.jpg',
+				'images/boa/3.jpg',
+				'images/boa/4.jpg',
+				'images/boa/5.jpg',
+				'images/boa/6.jpg',
+				'images/boa/7.jpg',
+				'images/boa/8.jpg',
+				'images/boa/9.jpg',
+				'images/boa/10.jpg',
+				'images/boa/11.jpg',
+				'images/boa/12.jpg',
+				'images/boa/13.jpg'
+			],
+			imgP2: [
+				{ img: "images/compostos/3-sulfanilhexanol.png", texto: "Metional é um composto encontrado nos vinhos." },
+				{ img: "images/compostos/3-sulfanilpropionato_de_etila.png", texto: "Metional é um composto encontrado nos vinhos." },
+				{ img: "images/compostos/4-tiapentan-1-ol.png", texto: "Metional é um composto encontrado nos vinhos." },
+				{ img: "images/compostos/acido_tartarico.png", texto: "Metional é um composto encontrado nos vinhos." },
+				{ img: "images/compostos/colesterol.png", texto: "Metional é um composto encontrado nos vinhos." },
+				{ img: "images/compostos/mentol.png", texto: "Metional é um composto encontrado nos vinhos." },
+				{ img: "images/compostos/metional.png", texto: "Metional é um composto encontrado nos vinhos." },
+				{ img: "images/compostos/resveratrol.png", texto: "Metional é um composto encontrado nos vinhos." },
+				{ img: "images/compostos/sorbitol.png", texto: "Metional é um composto encontrado nos vinhos." },
+				{ img: "images/compostos/timol.png", texto: "Metional é um composto encontrado nos vinhos." },
+			],
+			index: null
+		},
+		methods: {
+			entrar: function () {
+				if (this.nome != "") {
+					this.estado = 3
+				}
+			},
+			ativarChat: function () {
+				this.chatAtivado = !this.chatAtivado
+			},
+			charmsg_enviar: function () {
+				this.chatlogs.push({ jogador: 0, nome: this.nome, msg: this.chatmsg })
+				this.scrollToEnd();
+			},
+			scrollToEnd: function () {
+				var chatlogs = this.$el.querySelector("#chatlogs");
+				container.scrollTop = chatlogs.scrollHeight;
+			},
+			seguir: function () {
+				this.estado = this.estado + 1
+			},
+			voltar: function () {
+				if (this.estado > 1) {
+					this.estado = this.estado - 1
+				}
+			}
+		},
+		components: {
+			'gallery': VueGallery
+		}
+	})
+</script>
+
+</html>
