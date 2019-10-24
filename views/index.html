@@ -43,7 +43,7 @@
 
 		<main>
 			<!--mostrar tela entrar nome-->
-			<div v-if="estado == 0" class="container">
+			<div v-if="estado == 0" class="" id="tela_nome">
 				<br><br>
 				<h1 class="header center orange-text">Bem vindo ao Quimicol</h1>
 				<div class="row center">
@@ -63,9 +63,9 @@
 			</div>
 			<!--Fim tela entrar nome-->
 
-			<div class="container">
+			<div class="row">
 				<!--Estado 1-->
-				<div class="row" v-if="estado == 1">
+				<div class="col s10 offset-s1" v-if="estado == 1">
 					<div class="row">
 						<h3 class="header left orange-text">Introdução <small>ÁLCOOIS</small></h3>
 					</div>
@@ -82,18 +82,18 @@
 				<!--Fim do estado 1-->
 
 				<!--Estado 2-->
-				<div class="row" v-else-if="estado == 2">
+				<div class="col s10 offset-s1" v-else-if="estado == 2">
 					<div class="row">
 						<div class="row">
 							<h3 class="header left orange-text">Introdução <small>Alimentos</small></h3>
 						</div>
-
-						<div class="col s4 image2" v-for="img2, img2Index in imgP2">
+						<!--
+							<div class="col s4 image2" v-for="img2, img2Index in imgP2">
 							<div class="card-panel z-depth-1">
 								<div class="row valign-wrapper">
 									<div class="col s6">
 										<img v-bind:src="img2.img" alt="" class="responsive-img" style="height: 100px;">
-										<!-- notice the "circle" class -->
+										
 									</div>
 									<div class="col s6">
 										<span class="black-text">
@@ -102,7 +102,17 @@
 									</div>
 								</div>
 							</div>
+						</div>-->
+						<div style="display: flex; flex-wrap: wrap; overflow-y: scroll; height: 450px;">
+							<div class="polaroid" v-for="img2, img2Index in imgP2">
+								<img v-bind:src="img2.img" alt="5 Terre" style="width:200px; height: 100px;">
+								<div class="container2">
+									<p>{{img2.texto}}</p>
+								</div>
+							</div>
 						</div>
+
+
 					</div>
 				</div>
 				<!--Fim do estado 2-->
@@ -113,7 +123,6 @@
 						<div class="row">
 							<h3 class="header left orange-text">Introdução <small>Alimentos</small></h3>
 						</div>
-
 						<div class="col s8 offset-s2">
 							<img src="images/tela3.png" class="responsive-img">
 						</div>
@@ -121,32 +130,57 @@
 				</div>
 				<!--Fim do estado 3-->
 
+				<!--Estado 4-->
+				<div class="row" v-else-if="estado == 4">
+					<div class="row">
+						<h3 class="header left orange-text">Introdução <small>Alimentos</small></h3>
+						
+					</div>
+					<div class="row">
+							<h4>Selecione os compostos que são ÁLCOOIS</h4>
+					</div>
+					<div class="row">
+						<div class="col s10 offset-s1">
+							<div class="img-select" v-bind:class="{imgSelectTrue : estaAlimentoAtivo}"
+								v-on:click="selecionarAlimento">
+								<img class="img-composto" src="images/compostos/3-sulfanilhexanol.png">
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--Fim do estado 4-->
+
+				<div class="col s10 offset-s1" v-show="estado > 0">
+					<div class="col s6">
+						<a class="waves-effect waves-light btn blue lighten-4" v-on:click="voltar">Voltar</a>
+					</div>
+					<div class="col s6">
+						<a class="waves-effect waves-light btn blue" v-on:click="seguir">Seguir</a>
+					</div>
+				</div>
+
 			</div>
 
-			<div class="row" v-show="estado > 0">
-				<div class="col s6">
-					<a class="waves-effect waves-light btn blue lighten-4" v-on:click="voltar">Voltar</a>
-				</div>
-				<div class="col s6">
-					<a class="waves-effect waves-light btn blue" v-on:click="seguir">Seguir</a>
-				</div>
-			</div>
+
 
 		</main>
-		
+
 		<!--Rodape-->
-		<footer class="page-footer orange">
-			<div class="footer-copyright">
-				<div class="container">
-					Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Next-Develops</a>
+		<div class="j-footer">
+			<div class="page-footer orange">
+				<div class="footer-copyright">
+					<div class="container">
+						Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Next-Develops</a>
+					</div>
 				</div>
 			</div>
-		</footer>
+		</div>
+
 
 	</div>
-	
+
 	<script type="text/javascript"
-	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<script type="text/javascript">
 		M.AutoInit();
 	</script>
@@ -191,8 +225,8 @@
 				'images/boa/13.jpg'
 			],
 			imgP2: [
-				{ img: "images/compostos/3-sulfanilhexanol.png", texto: "Metional é um composto encontrado nos vinhos." },
-				{ img: "images/compostos/3-sulfanilpropionato_de_etila.png", texto: "Metional é um composto encontrado nos vinhos." },
+				{ img: "images/compostos/3-sulfanilhexanol.png", texto: "Metional" },
+				{ img: "images/compostos/3-sulfanilpropionato_de_etila.png", texto: "Metional." },
 				{ img: "images/compostos/4-tiapentan-1-ol.png", texto: "Metional é um composto encontrado nos vinhos." },
 				{ img: "images/compostos/acido_tartarico.png", texto: "Metional é um composto encontrado nos vinhos." },
 				{ img: "images/compostos/colesterol.png", texto: "Metional é um composto encontrado nos vinhos." },
@@ -202,12 +236,13 @@
 				{ img: "images/compostos/sorbitol.png", texto: "Metional é um composto encontrado nos vinhos." },
 				{ img: "images/compostos/timol.png", texto: "Metional é um composto encontrado nos vinhos." },
 			],
+			estaAlimentoAtivo: false,
 			index: null
 		},
 		methods: {
 			entrar: function () {
 				if (this.nome != "") {
-					this.estado = 3
+					this.estado = 4
 				}
 			},
 			ativarChat: function () {
@@ -228,7 +263,10 @@
 				if (this.estado > 1) {
 					this.estado = this.estado - 1
 				}
-			}
+			},
+			selecionarAlimento: function () {
+				this.estaAlimentoAtivo = !this.estaAlimentoAtivo
+			},
 		},
 		components: {
 			'gallery': VueGallery
