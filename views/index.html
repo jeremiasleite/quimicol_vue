@@ -14,6 +14,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 	<link rel="stylesheet" href="stylesheets/style.css">
+	<link rel="stylesheet" href="stylesheets/modal.css">
 
 
 	<script type="text/javascript" src="https://unpkg.com/blueimp-gallery@2.27.0/js/blueimp-helper.js"></script>
@@ -134,20 +135,28 @@
 						<h3 class="header left orange-text">Introdução <small>Alimentos</small></h3>
 					</div>
 					<div class="row">
-						<h6>Selecione os compostos que são ÁLCOOIS</h6>						
+						<h6>Selecione os compostos que são ÁLCOOIS</h6>
 					</div>
-					<div class="row">
-						<div class="col s10 offset-s1" v-for="comp, index in compostosAlimento">
-							<div class="img-select" v-bind:class="{imgSelectTrue : comp.resp, imgAcertou: comp.verificado }"
+					<div class="row" style="display: flex; flex-wrap: wrap;">
+						<div class="" v-for="comp, index in compostosAlimento" style="margin: 10px;">
+							<div class="img-select"
+								v-bind:class="{imgSelectTrue : comp.resp, imgAcertou: comp.verificado }"
 								v-on:click="selecionarAlimento(index)">
 								<img class="img-composto" v-bind:src="comp.img">
-								<p>{{comp.texto}}-{{comp.isAlcool}}- {{comp.resp}}</p>
+
 							</div>
 						</div>
 					</div>
 					<div class="row">
-						<button v-on:click='verificar'>Verificar</button>
+						<button class="btn waves-effect waves-light light-green accent-4"
+							v-on:click='verificar'>Verificar</button>
+						<button class="btn waves-effect waves-light red"
+							v-on:click="abrirModalAjuda1">Ajuda</button>
+						<button class="btn waves-effect waves-light red" v-on:click="abrirModalAjuda2">Prioridade</button>
+						
 					</div>
+
+
 				</div>
 				<!--Fim do estado 4-->
 
@@ -177,6 +186,39 @@
 			</div>
 		</div>-->
 
+		<!-- The Modal -->
+		<div id="myModal" class="modal" v-bind:style="{display: estadoModal1}">
+
+			<!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="close" v-on:click="fecharModalAjuda1">&times;</span>
+					<h5>Procedimento para se identificar um álcool</h5>
+				</div>
+				<div class="modal-body">
+					<ul class="collection center-align">
+						<li class="collection-item">PRESENÇA DE PELO MENOS UM GRUPO HIDROXILA - OH</li>						
+						<li class="collection-item">O GRUPO DEVE ESTA LIGADO A UM CARBONO SATURADO</li>
+						<li class="collection-item">SER O GRUPO FUNCIONAL PRIORITÁRIO DA MOLECULA</li>						
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<!-- The Modal Grupos Funcionais-Prioridade -->
+		<div id="myModal2" class="modal" v-bind:style="{display: estadoModal2}">
+
+				<!-- Modal content -->
+				<div class="modal-content">
+					<div class="modal-header">
+						<span class="close" v-on:click="fecharModalAjuda2">&times;</span>
+						<h5>COMO IDENTIFICAR UM ÁLCOOl <small>Grupos Funcionais-Prioridade</small></h5>
+					</div>
+					<div class="modal-body">
+						<img class="responsive-img" src="/images/prioridade.jpg">
+					</div>
+				</div>
+			</div>
 
 	</div>
 
@@ -184,6 +226,11 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<script type="text/javascript">
 		M.AutoInit();
+
+		document.addEventListener('DOMContentLoaded', function () {
+			var elems = document.querySelectorAll('.modal');
+			var instances = M.Modal.init(elems);
+		});
 	</script>
 
 </body>
@@ -227,23 +274,25 @@
 				'images/boa/13.jpg'
 			],
 			compostosAlimento: [
-				{ img: "images/compostos/3-sulfanilhexanol.png", texto: "3-sulfanilhexanol", isAlcool: true, resp: false, verificado: false},
-				{ img: "images/compostos/3-sulfanilpropionato_de_etila.png", texto: "3-sulfanilpropionato de etila", isAlcool: false, resp: false, verificado: false},
-				{ img: "images/compostos/4-tiapentan-1-ol.png", texto: "4-tiapentan-1-ol", isAlcool:true, resp: false, verificado: false},
-				{ img: "images/compostos/acido_tartarico.png", texto: "Ácido tartarico", isAlcool: false, resp: false, verificado: false},
-				{ img: "images/compostos/colesterol.png", texto: "Colesterol", isAlcool: true, resp: false, verificado: false},
-				{ img: "images/compostos/mentol.png", texto: "Mentol", isAlcool:true, resp: false, verificado: false},
-				{ img: "images/compostos/metional.png", texto: "Metional", isAlcool: false, resp: false, verificado: false},
-				{ img: "images/compostos/resveratrol.png", texto: "Resveratrol", isAlcool: false, resp: false, verificado: false},
-				{ img: "images/compostos/sorbitol.png", texto: "Sorbitol", isAlcool: true , resp: false, verificado: false},
-				{ img: "images/compostos/timol.png", texto: "Timol", isAlcool: false, resp: false, verificado: false},
-			],			
-			index: null
+				{ img: "images/compostos/3-sulfanilhexanol.png", texto: "3-sulfanilhexanol", isAlcool: true, resp: false, verificado: false },
+				{ img: "images/compostos/3-sulfanilpropionato_de_etila.png", texto: "3-sulfanilpropionato de etila", isAlcool: false, resp: false, verificado: false },
+				{ img: "images/compostos/4-tiapentan-1-ol.png", texto: "4-tiapentan-1-ol", isAlcool: true, resp: false, verificado: false },
+				{ img: "images/compostos/acido_tartarico.png", texto: "Ácido tartarico", isAlcool: false, resp: false, verificado: false },
+				{ img: "images/compostos/colesterol.png", texto: "Colesterol", isAlcool: true, resp: false, verificado: false },
+				{ img: "images/compostos/mentol.png", texto: "Mentol", isAlcool: true, resp: false, verificado: false },
+				{ img: "images/compostos/metional.png", texto: "Metional", isAlcool: false, resp: false, verificado: false },
+				{ img: "images/compostos/resveratrol.png", texto: "Resveratrol", isAlcool: false, resp: false, verificado: false },
+				{ img: "images/compostos/sorbitol.png", texto: "Sorbitol", isAlcool: true, resp: false, verificado: false },
+				{ img: "images/compostos/timol.png", texto: "Timol", isAlcool: false, resp: false, verificado: false },
+			],
+			index: null,
+			estadoModal1: "none",
+			estadoModal2: "none"
 		},
 		methods: {
 			entrar: function () {
 				if (this.nome != "") {
-					this.estado = 4
+					this.estado = 1
 				}
 			},
 			ativarChat: function () {
@@ -268,12 +317,24 @@
 			selecionarAlimento: function (index) {
 				this.compostosAlimento[index].resp = !this.compostosAlimento[index].resp
 			},
-			verificar: function (){
+			verificar: function () {
 				for (i = 0; i < this.compostosAlimento.length; i++) {
-					if(this.compostosAlimento[i].resp == this.compostosAlimento[i].isAlcool){
+					if (this.compostosAlimento[i].resp == true && this.compostosAlimento[i].isAlcool == true) {
 						this.compostosAlimento[i].verificado = true
 					}
-				}				
+				}
+			},
+			abrirModalAjuda1: function () {
+				this.estadoModal1 = "block"
+			},
+			fecharModalAjuda1: function () {
+				this.estadoModal1 = "none"
+			},
+			abrirModalAjuda2: function () {
+				this.estadoModal2 = "block"
+			},
+			fecharModalAjuda2: function () {
+				this.estadoModal2 = "none"
 			}
 		},
 		components: {
