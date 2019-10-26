@@ -15,7 +15,7 @@
 
 	<link rel="stylesheet" href="stylesheets/style.css">
 	<link rel="stylesheet" href="stylesheets/modal.css">
-
+	<link rel="stylesheet" href="stylesheets/chat.css">
 
 	<script type="text/javascript" src="https://unpkg.com/blueimp-gallery@2.27.0/js/blueimp-helper.js"></script>
 	<script type="text/javascript" src="https://unpkg.com/blueimp-gallery@2.27.0/js/blueimp-gallery.js"></script>
@@ -33,7 +33,7 @@
 			<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Quimicol
 					<small>Bem vindo <strong>{{nome}}! {{estado}}</strong></small></a>
 				<ul class="right hide-on-med-and-down">
-					<li><a href="#">Chat</a></li>
+					<li v-show="estado>=4"><a v-on:click="abrirChat">Chat</a></li>
 				</ul>
 
 			</div>
@@ -150,10 +150,10 @@
 					<div class="row">
 						<button class="btn waves-effect waves-light light-green accent-4"
 							v-on:click='verificar'>Verificar</button>
+						<button class="btn waves-effect waves-light red" v-on:click="abrirModalAjuda1">Ajuda</button>
 						<button class="btn waves-effect waves-light red"
-							v-on:click="abrirModalAjuda1">Ajuda</button>
-						<button class="btn waves-effect waves-light red" v-on:click="abrirModalAjuda2">Prioridade</button>
-						
+							v-on:click="abrirModalAjuda2">Prioridade</button>
+
 					</div>
 
 
@@ -197,9 +197,9 @@
 				</div>
 				<div class="modal-body">
 					<ul class="collection center-align">
-						<li class="collection-item">PRESENÇA DE PELO MENOS UM GRUPO HIDROXILA - OH</li>						
+						<li class="collection-item">PRESENÇA DE PELO MENOS UM GRUPO HIDROXILA - OH</li>
 						<li class="collection-item">O GRUPO DEVE ESTA LIGADO A UM CARBONO SATURADO</li>
-						<li class="collection-item">SER O GRUPO FUNCIONAL PRIORITÁRIO DA MOLECULA</li>						
+						<li class="collection-item">SER O GRUPO FUNCIONAL PRIORITÁRIO DA MOLECULA</li>
 					</ul>
 				</div>
 			</div>
@@ -208,17 +208,43 @@
 		<!-- The Modal Grupos Funcionais-Prioridade -->
 		<div id="myModal2" class="modal" v-bind:style="{display: estadoModal2}">
 
-				<!-- Modal content -->
-				<div class="modal-content">
-					<div class="modal-header">
-						<span class="close" v-on:click="fecharModalAjuda2">&times;</span>
-						<h5>COMO IDENTIFICAR UM ÁLCOOl <small>Grupos Funcionais-Prioridade</small></h5>
-					</div>
-					<div class="modal-body">
-						<img class="responsive-img" src="/images/prioridade.jpg">
-					</div>
+			<!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="close" v-on:click="fecharModalAjuda2">&times;</span>
+					<h5>COMO IDENTIFICAR UM ÁLCOOl <small>Grupos Funcionais-Prioridade</small></h5>
+				</div>
+				<div class="modal-body">
+					<img class="responsive-img" src="/images/prioridade.jpg">
 				</div>
 			</div>
+		</div>
+
+		<!--Chat-->
+		<div class="chat-popup" id="chat" v-bind:style="{display: ativoChat}">
+			<form class="form-container">
+				<h1>Chat</h1>
+
+				<label for="msg"><b>Message</b></label>
+				<div>
+					<div class="c-container">
+
+						<p>Hello. How are you today?hhhhhhhhhhhhhhhh</p>
+						<span class="time-right">11:00</span>
+					</div>
+					<div class="c-container darker">
+						<p>Hey! I'm fine. Thanks for asking!</p>
+						<span class="time-left">11:01</span>
+					</div>
+				</div>
+
+				<label for="msg"><b>Message</b></label>
+				<textarea placeholder="Type message.." name="msg" required></textarea>
+
+				<button type="submit" class="btn">Enviar</button>
+				<button type="button" class="btn cancel" v-on:click="fecharChat">Fechar</button>
+			</form>
+		</div>
 
 	</div>
 
@@ -249,7 +275,6 @@
 			estado: 0,
 			nome: 'jeremias',
 			mostrar_entrar_nome: true,
-			chatAtivado: false,
 			jogador: 0,
 			chatmsg: "oi",
 			chatlogs: [{ jogador: true, nome: "jeremias", msg: "oi isso é um teste" },
@@ -287,7 +312,8 @@
 			],
 			index: null,
 			estadoModal1: "none",
-			estadoModal2: "none"
+			estadoModal2: "none",
+			ativoChat: "none",
 		},
 		methods: {
 			entrar: function () {
@@ -295,8 +321,11 @@
 					this.estado = 1
 				}
 			},
-			ativarChat: function () {
-				this.chatAtivado = !this.chatAtivado
+			abrirChat: function () {
+				this.ativoChat = "block"
+			},
+			fecharChat: function () {
+				this.ativoChat = "none"
 			},
 			charmsg_enviar: function () {
 				this.chatlogs.push({ jogador: 0, nome: this.nome, msg: this.chatmsg })
