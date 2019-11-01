@@ -24,6 +24,8 @@
 	<script type="text/javascript" src="https://unpkg.com/vue-gallery@2.0.1/dist/js/vue-gallery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="https://unpkg.com/blueimp-gallery@2.27.0/css/blueimp-gallery.min.css">
 
+	<script type="text/javascript" src="/javascripts/socket.io.js"></script>
+
 </head>
 
 <body>
@@ -33,7 +35,7 @@
 			<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Quimicol
 					<small>Bem vindo <strong>{{nome}}! {{estado}}</strong></small></a>
 				<ul class="right hide-on-med-and-down">
-					<li v-show="estado>=4"><a v-on:click="abrirChat">Chat</a></li>
+					<li v-show="estado>=1" v-on:click="abrirChat"><a>Chat</a></li>
 				</ul>
 
 			</div>
@@ -222,28 +224,23 @@
 
 		<!--Chat-->
 		<div class="chat-popup" id="chat" v-bind:style="{display: ativoChat}">
-			<form class="form-container">
-				<h1>Chat</h1>
-
-				<label for="msg"><b>Message</b></label>
-				<div>
-					<div class="c-container">
-
-						<p>Hello. How are you today?hhhhhhhhhhhhhhhh</p>
-						<span class="time-right">11:00</span>
-					</div>
-					<div class="c-container darker">
-						<p>Hey! I'm fine. Thanks for asking!</p>
-						<span class="time-left">11:01</span>
+			<div class="form-container">
+				<h3>Chat</h3>
+				<label for="msg"><b>Messagens</b></label>
+				<div class="c-container2" id="containerChat">
+					<div class="c-container darker" v-for="msg in chatlogs">
+						<p><Strong>{{nome}}</Strong></p>
+						<div>{{msg.msg}}</div>
+						<span class="time-right">{{msg.hora}}</span>
 					</div>
 				</div>
 
 				<label for="msg"><b>Message</b></label>
-				<textarea placeholder="Type message.." name="msg" required></textarea>
+				<textarea placeholder="Type message.." name="msg" required v-model="chatmsg"></textarea>
 
-				<button type="submit" class="btn">Enviar</button>
+				<button class="btn" v-on:click="enviar">Enviar</button>
 				<button type="button" class="btn cancel" v-on:click="fecharChat">Fechar</button>
-			</form>
+			</div>
 		</div>
 
 	</div>
@@ -266,22 +263,23 @@
 
 
 <script type="text/javascript">
-
+	var socket = io();	
+	socket.on('connect', () => {
+		console.log("Estou conectado meu id é: " + socket.id); // an alphanumeric id...
+	});
 	var app = new Vue({
 		el: '#app',
 		data: {
 			drawer: null,
-			valid: false,
 			estado: 0,
 			nome: 'jeremias',
-			mostrar_entrar_nome: true,
 			jogador: 0,
-			chatmsg: "oi",
-			chatlogs: [{ jogador: true, nome: "jeremias", msg: "oi isso é um teste" },
-			{ jogador: false, nome: "jeremias", msg: "oi isso é um teste" },
-			{ jogador: true, nome: "jeremias", msg: "oi isso é um teste" },
-			{ jogador: false, nome: "jeremias", msg: "oi isso é um teste" },
-			{ jogador: false, nome: "jeremias", msg: "oi isso é um teste" },
+			chatmsg: "",
+			chatlogs: [{ jogador: 0, nome: "jeremias", msg: "oi isso é um teste", hora: "12:00:00" },
+			{ jogador: 0, nome: "jeremias", msg: "oi isso é um teste", hora: "12:00:00" },
+			{ jogador: 1, nome: "jonathas", msg: "oi isso é um teste", hora: "12:00:00" },
+			{ jogador: 0, nome: "jeremias", msg: "oi isso é um teste", hora: "12:00:00" },
+			{ jogador: 1, nome: "jonathas", msg: "oi isso é um teste", hora: "12:00:00" },
 			],
 			images: [
 				'images/boa/1.jpg',
@@ -314,6 +312,47 @@
 			estadoModal1: "none",
 			estadoModal2: "none",
 			ativoChat: "none",
+
+		},
+		created() {
+			window.onbeforeunload = () => {
+				socket.emit('leave', this.username);
+			}
+
+			socket.on('chat-message', (data) => {
+				this.messages.push({
+					message: data.message,
+					type: 1,
+					user: data.user,
+				});
+			});
+			socket.on('typing', (data) => {
+				this.typing = data;
+			});
+			socket.on('stopTyping', () => {
+				this.typing = false;
+			});
+			socket.on('joined', (data) => {
+				this.info.push({
+					username: data,
+					type: 'joined'
+				});
+				setTimeout(() => {
+					this.info = [];
+				}, 5000);
+			});
+			socket.on('leave', (data) => {
+				this.info.push({
+					username: data,
+					type: 'left'
+				});
+				setTimeout(() => {
+					this.info = [];
+				}, 5000);
+			});
+			socket.on('connections', (data) => {
+				this.connections = data;
+			});
 		},
 		methods: {
 			entrar: function () {
@@ -322,18 +361,16 @@
 				}
 			},
 			abrirChat: function () {
-				this.ativoChat = "block"
+				this.autoScrollBottomChat()
+				if (this.ativoChat == "none") {
+					this.ativoChat = "block"
+				} else {
+					this.ativoChat = "none"
+				}
+
 			},
 			fecharChat: function () {
 				this.ativoChat = "none"
-			},
-			charmsg_enviar: function () {
-				this.chatlogs.push({ jogador: 0, nome: this.nome, msg: this.chatmsg })
-				this.scrollToEnd();
-			},
-			scrollToEnd: function () {
-				var chatlogs = this.$el.querySelector("#chatlogs");
-				container.scrollTop = chatlogs.scrollHeight;
 			},
 			seguir: function () {
 				this.estado = this.estado + 1
@@ -364,7 +401,17 @@
 			},
 			fecharModalAjuda2: function () {
 				this.estadoModal2 = "none"
+			},
+			autoScrollBottomChat: function () {
+				var container = this.$el.querySelector("#containerChat");
+				container.scrollTop = container.scrollHeight;
+
+			},
+			enviar: function () {
+				this.chatlogs.push({ jogador: this.jogador, nome: this.nome, msg: this.chatmsg, hora: "13:00:00" })
+				this.autoScrollBottomChat();
 			}
+
 		},
 		components: {
 			'gallery': VueGallery,
