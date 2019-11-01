@@ -33,7 +33,7 @@
 		<!--Navbar-->
 		<nav class="light-blue lighten-1" role="navigation" v-show="estado >= 1">
 			<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Quimicol
-					<small>Bem vindo <strong>{{nome}}! {{estado}}</strong></small></a>
+					<small>Bem vindo <strong>{{usuario}}! {{estado}}</strong></small></a>
 				<ul class="right hide-on-med-and-down">
 					<li v-show="estado>=1" v-on:click="abrirChat"><a>Chat</a></li>
 				</ul>
@@ -44,17 +44,16 @@
 		<!--conteudo-->
 		<div>
 			<!--mostrar tela entrar nome-->
-			<div v-if="estado == 0" class="row j-container" id="tela_nome">
+			<div v-if="estado == 0" class="row" id="tela_nome">
 				<br><br>
 				<h1 class="header center orange-text">Bem vindo ao Quimicol</h1>
 				<div class="row center">
 					<h5 class="header col s12 light">Entre com seu nome para iniciar!</h5>
 				</div>
-				<div class="row">
+				<div class="form">
 					<div class="col s4 offset-s4">
 						<div class="input-field">
-							<input placeholder="Entre com seu nome" id="first_name" type="text" class="validate"
-								v-model='nome'>
+							<input placeholder="Entre com seu nome" type="text" v-model='usuario' autofocus>
 						</div>
 					</div>
 					<div class="input-field col s2">
@@ -229,14 +228,14 @@
 				<label for="msg"><b>Messagens</b></label>
 				<div class="c-container2" id="containerChat">
 					<div class="c-container darker" v-for="msg in chatlogs">
-						<p><Strong>{{nome}}</Strong></p>
+						<p><Strong>{{msg.usuario}}</Strong></p>
 						<div>{{msg.msg}}</div>
 						<span class="time-right">{{msg.hora}}</span>
 					</div>
 				</div>
 
 				<label for="msg"><b>Message</b></label>
-				<textarea placeholder="Type message.." name="msg" required v-model="chatmsg"></textarea>
+				<textarea placeholder="Type message.." name="msg" required v-model="novaMsg"></textarea>
 
 				<button class="btn" v-on:click="enviar">Enviar</button>
 				<button type="button" class="btn cancel" v-on:click="fecharChat">Fechar</button>
@@ -272,14 +271,11 @@
 		data: {
 			drawer: null,
 			estado: 0,
-			nome: 'jeremias',
-			jogador: 0,
-			chatmsg: "",
-			chatlogs: [{ jogador: 0, nome: "jeremias", msg: "oi isso é um teste", hora: "12:00:00" },
-			{ jogador: 0, nome: "jeremias", msg: "oi isso é um teste", hora: "12:00:00" },
-			{ jogador: 1, nome: "jonathas", msg: "oi isso é um teste", hora: "12:00:00" },
-			{ jogador: 0, nome: "jeremias", msg: "oi isso é um teste", hora: "12:00:00" },
-			{ jogador: 1, nome: "jonathas", msg: "oi isso é um teste", hora: "12:00:00" },
+			usuario: '',
+			idUsuario: 0,
+			novaMsg: "",
+			chatlogs: [{ idUsuario: 0, usuario: "jeremias", msg: "oi isso é um teste", hora: "12:00:00" },
+			{ idUsuario: 1, usuario: "jeremias", msg: "oi isso é um teste", hora: "12:00:00" },
 			],
 			images: [
 				'images/boa/1.jpg',
@@ -315,48 +311,15 @@
 
 		},
 		created() {
-			window.onbeforeunload = () => {
-				socket.emit('leave', this.username);
-			}
-
 			socket.on('chat-message', (data) => {
-				this.messages.push({
-					message: data.message,
-					type: 1,
-					user: data.user,
-				});
+				this.chatlogs.push(data)
+				this.autoScrollBottomChat();
 			});
-			socket.on('typing', (data) => {
-				this.typing = data;
-			});
-			socket.on('stopTyping', () => {
-				this.typing = false;
-			});
-			socket.on('joined', (data) => {
-				this.info.push({
-					username: data,
-					type: 'joined'
-				});
-				setTimeout(() => {
-					this.info = [];
-				}, 5000);
-			});
-			socket.on('leave', (data) => {
-				this.info.push({
-					username: data,
-					type: 'left'
-				});
-				setTimeout(() => {
-					this.info = [];
-				}, 5000);
-			});
-			socket.on('connections', (data) => {
-				this.connections = data;
-			});
+			
 		},
 		methods: {
 			entrar: function () {
-				if (this.nome != "") {
+				if (this.usuario != "") {
 					this.estado = 1
 				}
 			},
@@ -405,12 +368,18 @@
 			autoScrollBottomChat: function () {
 				var container = this.$el.querySelector("#containerChat");
 				container.scrollTop = container.scrollHeight;
-
 			},
 			enviar: function () {
-				this.chatlogs.push({ jogador: this.jogador, nome: this.nome, msg: this.chatmsg, hora: "13:00:00" })
+				socket.emit('chat-message', {
+                    msg: this.novaMsg,
+					usuario: this.usuario,
+					idUsuario: this.idUsuario,
+					hora: "12:00:00"
+				});
+				this.novaMsg=""
+				//this.chatlogs.push({ idUsuario: this.idUsuario, usuario: this.usuario, msg: this.novaMsg, hora: "13:00:00" })
 				this.autoScrollBottomChat();
-			}
+			},			
 
 		},
 		components: {
@@ -420,7 +389,5 @@
 
 
 </script>
-
-
 
 </html>

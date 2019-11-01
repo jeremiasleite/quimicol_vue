@@ -34,6 +34,16 @@ app.get('/', function(req, res){
 
 io.on('connection', function (socket) {
   console.log('a user connected: '+ socket.id);
+
+  socket.on('chat-message', function(msg){
+    mensagens.push(msg)
+    io.emit('chat-message', msg)
+    //console.log(msg);
+  });
+
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
   /*contUser++;
   socket.on('sendUser', function(data){
       var user = { username: data, id: socket.id}
