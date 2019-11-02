@@ -35,7 +35,7 @@
 			<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Quimicol
 					<small>Bem vindo <strong>{{usuario}}! {{estado}}</strong></small></a>
 				<ul class="right hide-on-med-and-down">
-					<li v-show="estado>=1" v-on:click="abrirChat"><a>Chat</a></li>
+					<li v-show="estado>=1" v-on:click="alternarChat"><a>Chat</a></li>
 				</ul>
 
 			</div>
@@ -228,7 +228,7 @@
 				<label for="msg"><b>Messagens</b></label>
 				<div class="c-container2" id="containerChat">
 					<div class="c-container darker" v-for="msg in chatlogs">
-						<p><Strong>{{msg.usuario}}</Strong></p>
+						<p><Strong>{{msg.usuario == usuario? "Eu": msg.usuario}}</Strong></p>
 						<div>{{msg.msg}}</div>
 						<span class="time-right">{{msg.hora}}</span>
 					</div>
@@ -313,6 +313,7 @@
 		created() {
 			socket.on('chat-message', (data) => {
 				this.chatlogs.push(data)
+				this.abrirChat();
 				this.autoScrollBottomChat();
 			});
 			
@@ -323,14 +324,16 @@
 					this.estado = 1
 				}
 			},
-			abrirChat: function () {
+			alternarChat: function () {
 				this.autoScrollBottomChat()
 				if (this.ativoChat == "none") {
 					this.ativoChat = "block"
 				} else {
 					this.ativoChat = "none"
 				}
-
+			},
+			abrirChat: function () {
+				this.ativoChat = "block"
 			},
 			fecharChat: function () {
 				this.ativoChat = "none"
