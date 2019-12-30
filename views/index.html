@@ -63,31 +63,41 @@
 			</div>
 			<!--Fim tela entrar nome-->
 
-			<div class="row j-container">
-				<!--Estado 1-->
-				<div class="col s10 offset-s1" v-if="estado == 1">
-					<div class="row">
-						<h3 class="header left orange-text">Introdução <small>ÁLCOOIS</small></h3>
-					</div>
-					<div class="row">
-						<div>
+			<div class="row">
+				<div class="col s9">
+					<!--Estado 1-->
+					<div class="col s10 offset-s1" v-if="estado == 1">
+						<div class="row">
+							<h3 class="header left orange-text">Introdução <small>ÁLCOOIS</small></h3>
+						</div>
+						<div class="row">
+
+							<!--<div>
 							<gallery :images="images" :index="index" @close="index = null"></gallery>
 							<div class="image" v-for="image, imageIndex in images" @click="index = imageIndex"
 								:style="{ backgroundImage: 'url(' + image + ')', width: '200px', height: '100px' }">
 							</div>
+						</div>-->
+							<h4>Para vocês o que é um <strong>álcool</strong> e como identificá-lo? Discutam entre si no
+								chat.</h4>
 						</div>
+
 					</div>
+					<!--Fim do estado 1-->
 
-				</div>
-				<!--Fim do estado 1-->
-
-				<!--Estado 2-->
-				<div class="col s10 offset-s1" v-else-if="estado == 2">
-					<div class="row">
+					<!--Estado 2-->
+					<div class="col s10 offset-s1" v-else-if="estado == 2">
 						<div class="row">
-							<h3 class="header left orange-text">Introdução <small>Alimentos</small></h3>
-						</div>
-						<!--
+							<div class="row">
+								<h4 class="">Agora assistam ao vídeo sobre álcoois e discutam sobre ele no chat a respeito das informações apresentadas.</h4>
+							</div>
+							<div class="row">
+								<iframe width="700" height="450" src="https://www.youtube.com/embed/e2ThDia1fVs"
+									frameborder="0"
+									allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+									allowfullscreen></iframe>
+							</div>
+							<!--
 							<div class="col s4 image2" v-for="img2, img2Index in compostosAlimento">
 							<div class="card-panel z-depth-1">
 								<div class="row valign-wrapper">
@@ -102,81 +112,249 @@
 									</div>
 								</div>
 							</div>
-						</div>-->
-						<div style="display: flex; flex-wrap: wrap; overflow-y: scroll; height: 450px; width: 100%;">
-							<div class="polaroid" v-for="img2, img2Index in compostosAlimento">
-								<img v-bind:src="img2.img" alt="5 Terre" style="width:200px; height: 100px;">
-								<div class="container2">
-									<p>{{img2.texto}}</p>
+						</div>
+							<div
+								style="display: flex; flex-wrap: wrap; overflow-y: scroll; height: 450px; width: 100%;">
+								<div class="polaroid" v-for="img2, img2Index in compostosAlimento">
+									<img v-bind:src="img2.img" alt="5 Terre" style="width:200px; height: 100px;">
+									<div class="container2">
+										<p>{{img2.texto}}</p>
+									</div>
 								</div>
+							</div>-->
+						</div>
+						</div>
+						<!--Fim do estado 2-->
+
+						<!--Estado 3-->
+						<div class="col s12" v-else-if="estado == 3">
+							<div class="row">
+								<div class="row">
+									<!--h3 class="header left orange-text">Introdução <small>Alimentos</small></!--h3>-->
+								</div>
+								<div class="col s6" style="border-style: solid; border-width: 2px; height: 300px; padding: 2px;">
+									<div style="border-bottom-style: solid; border-width: 2px; height: 40px; text-align: center;">
+										<p>ÁLCOOIS</p>
+									</div>
+									<div>										
+										<img v-bind:src="estruturasAlcoois[etp3_imagensSelecionadas[0]].url" alt="5 Terre">
+										<img v-bind:src="estruturasAlcoois[etp3_imagensSelecionadas[1]].url" alt="5 Terre">
+										<img v-bind:src="estruturasAlcoois[etp3_imagensSelecionadas[2]].url" alt="5 Terre">
+										<img v-bind:src="estruturasAlcoois[etp3_imagensSelecionadas[3]].url" alt="5 Terre">
+									</div>
+								</div>
+								<div class="col s6" style="border-style: solid; border-width: 2px; height: 300px; padding: 2px; ">
+									<div style="border-bottom-style: solid; border-width: 2px; height: 40px; text-align: center;">
+										<p>NÃO ÁLCOOIS</p>
+									</div>
+									<div>										
+										<img v-bind:src="estruturasNaoAlcoois[etp3_imagensSelecionadas[0]].url" alt="5 Terre">
+										<img v-bind:src="estruturasNaoAlcoois[etp3_imagensSelecionadas[1]].url" alt="5 Terre">
+										<img v-bind:src="estruturasNaoAlcoois[etp3_imagensSelecionadas[2]].url" alt="5 Terre">
+										<img v-bind:src="estruturasNaoAlcoois[etp3_imagensSelecionadas[3]].url" alt="5 Terre">
+									</div>
+								</div>								
+							</div>
+							<div class="row" style="border-style: solid;">
+								<form action="#">
+									<div class="col s5">
+										<p>1
+											<label>
+											  <input type="checkbox" v-model=etp3_checkboxes[0] />
+											  <span>Possui HIDROXILA</span>
+											</label>
+										</p>
+										<p>2
+											<label>
+											  <input type="checkbox" v-model=etp3_checkboxes[1] />
+											  <span>Possui CARBOXILA</span>
+											</label>
+										</p>
+										<p>3
+											<label>
+											  <input type="checkbox" v-model=etp3_checkboxes[2] />
+											  <span>Ligada ao carbono saturado</span>
+											</label>
+										</p>
+									</div>
+									<div class="col s5">
+										<p>4
+											<label>
+											  <input type="checkbox" v-model=etp3_checkboxes[3] />
+											  <span>Ligada ao carbono insaturado</span>
+											</label>
+										</p>
+										<p>5
+											<label>
+											  <input id="indeterminate-checkbox" type="checkbox"  v-model=etp3_checkboxes[4] />
+											  <span>É grupo funcional principal</span>
+											</label>
+										</p>
+										<p>6
+											<label>
+											  <input type="checkbox" v-model=etp3_checkboxes[5] />
+											  <span>É grupo funcional Minoritário</span>
+											</label>
+										</p>
+									</div>
+									
+									<div class="col s2">
+										<p>
+											<a class="waves-effect waves-light btn" v-on:click="etp3_verificar" >Verificar</a>
+										</p>
+										
+									</div>										
+									
+								</form>
+								
+							</div>
+							<div class="row" v-if="etp3_foiVerificado">
+								<div class="alert warning">											  
+									<strong>Respostas!</strong> {{etp3_texto}}
+								  </div>
 							</div>
 						</div>
+						<!--Fim do estado 3-->
+
+						<!--Estado 4-->
+						<div class="col s10 offset-s1" v-if="estado == 4">
+							<div class="row">
+								<h3 class="header left orange-text">Introdução <small>Alimentos</small></h3>
+							</div>
+							<div class="row">
+								<h6>Selecione os compostos que são ÁLCOOIS</h6>
+							</div>
+							<div class="row" style="display: flex; flex-wrap: wrap;">
+								<div class="" v-for="comp, index in etp4_imagensSelecionadas" style="margin: 10px;">
+									<div class="img-select"
+										v-bind:class="{imgSelectTrue : comp.resp, imgAcertou: comp.verificado }"
+										v-on:click="etp4_selecionarEstrutura(index)">
+										<img class="img-composto" v-bind:src="comp.url">
+									</div>
+								</div>
+								
+							</div>
+							<div class="row">
+								<button class="btn waves-effect waves-light light-green accent-4"
+									v-on:click='etp4_verificar'>Verificar</button>
+								<button class="btn waves-effect waves-light red"
+									v-on:click="abrirModalAjuda1">Ajuda</button>
+								<button class="btn waves-effect waves-light red"
+									v-on:click="abrirModalAjuda2">Prioridade</button>
+
+							</div>
+						</div>
+						<!--Fim do estado 4-->
+
+						<!--Estado 5-->
+						<div class="col s10 offset-s1" v-if="estado == 5">
+							<div class="row">
+								<h3 class="header left orange-text">Introdução <small>Alimentos</small></h3>
+							</div>
+							<div class="row">
+								<h6>Selecione os compostos que são ÁLCOOIS</h6>
+							</div>
+							<div class="row" style="display: flex; flex-wrap: wrap;">
+								<div class="" v-for="comp, index in etp5_imagensSelecionadas" style="margin: 10px;">
+									<div class="img-select"
+										v-bind:class="{imgSelectTrue : comp.resp, imgAcertou: comp.verificado }"
+										v-on:click="etp5_selecionarEstrutura(index)">
+										<img class="img-composto" v-bind:src="comp.url">
+									</div>
+								</div>
+								
+							</div>
+							<div class="row">
+								<button class="btn waves-effect waves-light light-green accent-4"
+									v-on:click='etp5_verificar'>Verificar</button>
+								<button class="btn waves-effect waves-light red"
+									v-on:click="abrirModalAjuda1">Ajuda</button>
+								<button class="btn waves-effect waves-light red"
+									v-on:click="abrirModalAjuda2">Prioridade</button>
+							</div>
+						</div>
+						<!--Fim do estado 5-->
+
+						<!--Estado 6-->
+						<div class="col s10 offset-s1" v-if="estado == 6">
+							<div class="row">
+								<h3 class="header left orange-text">Introdução <small>Alimentos</small></h3>
+							</div>
+							<div class="row">
+								<h6>Selecione os compostos que são ÁLCOOIS</h6>
+							</div>
+							<div class="row" style="display: flex; flex-wrap: wrap;">
+								<div class="" v-for="comp, index in etp6_imagensSelecionadas" style="margin: 10px;">
+									<div class="img-select"
+										v-bind:class="{imgSelectTrue : comp.resp, imgAcertou: comp.verificado }"
+										v-on:click="etp6_selecionarEstrutura(index)">
+										<img class="img-composto" v-bind:src="comp.url">
+									</div>
+								</div>
+								
+							</div>
+							<div class="row">
+								<button class="btn waves-effect waves-light light-green accent-4"
+									v-on:click='etp6_verificar'>Verificar</button>
+								<button class="btn waves-effect waves-light red"
+									v-on:click="abrirModalAjuda1">Ajuda</button>
+								<button class="btn waves-effect waves-light red"
+									v-on:click="abrirModalAjuda2">Prioridade</button>
+							</div>
+						</div>						
+						<!--Fim do estado 6-->
+
+						<!--Estado 7-->
+						<div class="col s10 offset-s1" v-if="estado == 7">
+							<div class="row">
+								<h3 class="header left orange-text">Introdução <small>Alimentos</small></h3>
+							</div>
+							<div class="row">
+								<h6>Selecione os compostos que são ÁLCOOIS</h6>
+							</div>
+							<div class="row" style="display: flex; flex-wrap: wrap;">
+								<div class="" v-for="comp, index in etp7_imagensSelecionadas" style="margin: 10px;">
+									<div class="img-select"
+										v-bind:class="{imgSelectTrue : comp.resp, imgAcertou: comp.verificado }"
+										v-on:click="etp7_selecionarEstrutura(index)">
+										<img class="img-composto" v-bind:src="comp.url">
+									</div>
+								</div>
+								
+							</div>
+							<div class="row">
+								<button class="btn waves-effect waves-light light-green accent-4"
+									v-on:click='etp7_verificar'>Verificar</button>
+								<button class="btn waves-effect waves-light red"
+									v-on:click="abrirModalAjuda1">Ajuda</button>
+								<button class="btn waves-effect waves-light red"
+									v-on:click="abrirModalAjuda2">Prioridade</button>
+							</div>
+						</div>						
+						<!--Fim do estado 7-->
 
 
 					</div>
-				</div>
-				<!--Fim do estado 2-->
 
-				<!--Estado 3-->
-				<div class="col s10 offset-s1" v-else-if="estado == 3">
+				</div>
+				<div class="j-footer " v-show="estado > 0">
 					<div class="row">
 						<div class="row">
-							<h3 class="header left orange-text">Introdução <small>Alimentos</small></h3>
-						</div>
-						<div class="col s10 offset-s1">
-							<img src="images/tela3.png" class="responsive-img">
-						</div>
-					</div>
-				</div>
-				<!--Fim do estado 3-->
-
-				<!--Estado 4-->
-				<div class="col s10 offset-s1" v-if="estado == 4">
-					<div class="row">
-						<h3 class="header left orange-text">Introdução <small>Alimentos</small></h3>
-					</div>
-					<div class="row">
-						<h6>Selecione os compostos que são ÁLCOOIS</h6>
-					</div>
-					<div class="row" style="display: flex; flex-wrap: wrap;">
-						<div class="" v-for="comp, index in compostosAlimento" style="margin: 10px;">
-							<div class="img-select"
-								v-bind:class="{imgSelectTrue : comp.resp, imgAcertou: comp.verificado }"
-								v-on:click="selecionarAlimento(index)">
-								<img class="img-composto" v-bind:src="comp.img">
-
+							<div class="col s1">
+								<a class="waves-effect waves-light btn blue lighten-4" v-on:click="voltar">Voltar</a>
+							</div>
+							<div class="col s1 offset-s10">
+								<a class="waves-effect waves-light btn blue" v-on:click="seguir">Seguir</a>
 							</div>
 						</div>
-					</div>
-					<div class="row">
-						<button class="btn waves-effect waves-light light-green accent-4"
-							v-on:click='verificar'>Verificar</button>
-						<button class="btn waves-effect waves-light red" v-on:click="abrirModalAjuda1">Ajuda</button>
-						<button class="btn waves-effect waves-light red"
-							v-on:click="abrirModalAjuda2">Prioridade</button>
 
 					</div>
 
-
-				</div>
-				<!--Fim do estado 4-->
-
-				<div class="row" v-show="estado > 0" style="position: fixed; bottom: 60px; right: 0;">
-					<div class="col s6">
-						<a class="waves-effect waves-light btn blue lighten-4" v-on:click="voltar">Voltar</a>
-					</div>
-					<div class="col s6">
-						<a class="waves-effect waves-light btn blue" v-on:click="seguir">Seguir</a>
-					</div>
 				</div>
 
 			</div>
 
-
-
-		</div>
-
-		<!--Rodape
+			<!--Rodape
 		<div class="j-footer">
 			<div class="page-footer orange">
 				<div class="footer-copyright">
@@ -187,73 +365,73 @@
 			</div>
 		</div>-->
 
-		<!-- The Modal -->
-		<div id="myModal" class="modal" v-bind:style="{display: estadoModal1}">
+			<!-- The Modal -->
+			<div id="myModal" class="modal" v-bind:style="{display: estadoModal1}">
 
-			<!-- Modal content -->
-			<div class="modal-content">
-				<div class="modal-header">
-					<span class="close" v-on:click="fecharModalAjuda1">&times;</span>
-					<h5>Procedimento para se identificar um álcool</h5>
-				</div>
-				<div class="modal-body">
-					<ul class="collection center-align">
-						<li class="collection-item">PRESENÇA DE PELO MENOS UM GRUPO HIDROXILA - OH</li>
-						<li class="collection-item">O GRUPO DEVE ESTA LIGADO A UM CARBONO SATURADO</li>
-						<li class="collection-item">SER O GRUPO FUNCIONAL PRIORITÁRIO DA MOLECULA</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-
-		<!-- The Modal Grupos Funcionais-Prioridade -->
-		<div id="myModal2" class="modal" v-bind:style="{display: estadoModal2}">
-
-			<!-- Modal content -->
-			<div class="modal-content">
-				<div class="modal-header">
-					<span class="close" v-on:click="fecharModalAjuda2">&times;</span>
-					<h5>COMO IDENTIFICAR UM ÁLCOOl <small>Grupos Funcionais-Prioridade</small></h5>
-				</div>
-				<div class="modal-body">
-					<img class="responsive-img" src="/images/prioridade.jpg">
-				</div>
-			</div>
-		</div>
-
-		<!--Chat-->
-		<div class="chat-popup" id="chat" v-bind:style="{display: ativoChat}">
-			<div class="form-container">
-				<h3>Chat</h3>
-				<label for="msg"><b>Messagens</b></label>
-				<div class="c-container2" id="containerChat">
-					<div class="c-container darker" v-for="msg in chatlogs">
-						<p><Strong>{{msg.usuario == usuario? "Eu": msg.usuario}}</Strong></p>
-						<div>{{msg.msg}}</div>
-						<span class="time-right">{{msg.hora}}</span>
+				<!-- Modal content -->
+				<div class="modal-content">
+					<div class="modal-header">
+						<span class="close" v-on:click="fecharModalAjuda1">&times;</span>
+						<h5>Procedimento para se identificar um álcool</h5>
+					</div>
+					<div class="modal-body">
+						<ul class="collection center-align">
+							<li class="collection-item">PRESENÇA DE PELO MENOS UM GRUPO HIDROXILA - OH</li>
+							<li class="collection-item">O GRUPO DEVE ESTA LIGADO A UM CARBONO SATURADO</li>
+							<li class="collection-item">SER O GRUPO FUNCIONAL PRIORITÁRIO DA MOLECULA</li>
+						</ul>
 					</div>
 				</div>
-
-				<label for="msg"><b>Message</b></label>
-				<textarea placeholder="Type message.." name="msg" required v-model="novaMsg"></textarea>
-
-				<button class="btn" v-on:click="enviar">Enviar</button>
-				<button type="button" class="btn cancel" v-on:click="fecharChat">Fechar</button>
 			</div>
+
+			<!-- The Modal Grupos Funcionais-Prioridade -->
+			<div id="myModal2" class="modal" v-bind:style="{display: estadoModal2}">
+
+				<!-- Modal content -->
+				<div class="modal-content">
+					<div class="modal-header">
+						<span class="close" v-on:click="fecharModalAjuda2">&times;</span>
+						<h5>COMO IDENTIFICAR UM ÁLCOOl <small>Grupos Funcionais-Prioridade</small></h5>
+					</div>
+					<div class="modal-body">
+						<img class="responsive-img" src="/images/prioridade.jpg">
+					</div>
+				</div>
+			</div>
+
+			<!--Chat-->
+			<div class="chat-popup" id="chat" v-bind:style="{display: ativoChat}">
+				<div class="form-container">
+					<h3>Chat</h3>
+					<label for="msg"><b>Messagens</b></label>
+					<div class="c-container2" id="containerChat">
+						<div class="c-container darker" v-for="msg in chatlogs">
+							<p><Strong>{{msg.usuario == usuario? "Eu": msg.usuario}}</Strong></p>
+							<div>{{msg.msg}}</div>
+							<span class="time-right">{{msg.hora}}</span>
+						</div>
+					</div>
+
+					<label for="msg"><b>Message</b></label>
+					<textarea placeholder="Type message.." name="msg" required v-model="novaMsg"></textarea>
+
+					<button class="btn" v-on:click="enviar">Enviar</button>
+					<button type="button" class="btn cancel" v-on:click="fecharChat">Fechar</button>
+				</div>
+			</div>
+
 		</div>
 
-	</div>
+		<script type="text/javascript"
+			src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+		<script type="text/javascript">
+			M.AutoInit();
 
-	<script type="text/javascript"
-		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-	<script type="text/javascript">
-		M.AutoInit();
-
-		document.addEventListener('DOMContentLoaded', function () {
-			var elems = document.querySelectorAll('.modal');
-			var instances = M.Modal.init(elems);
-		});
-	</script>
+			document.addEventListener('DOMContentLoaded', function () {
+				var elems = document.querySelectorAll('.modal');
+				var instances = M.Modal.init(elems);
+			});
+		</script>
 
 </body>
 
@@ -262,7 +440,7 @@
 
 
 <script type="text/javascript">
-	var socket = io();	
+	var socket = io();
 	socket.on('connect', () => {
 		console.log("Estou conectado meu id é: " + socket.id); // an alphanumeric id...
 	});
@@ -270,8 +448,8 @@
 		el: '#app',
 		data: {
 			drawer: null,
-			estado: 0,
-			usuario: '',
+			estado: 3,
+			usuario: 'j',
 			idUsuario: 0,
 			novaMsg: "",
 			chatlogs: [{ idUsuario: 0, usuario: "jeremias", msg: "oi isso é um teste", hora: "12:00:00" },
@@ -291,37 +469,111 @@
 				'images/boa/11.jpg',
 				'images/boa/12.jpg',
 				'images/boa/13.jpg'
+			],			
+			estruturasAlcoois: [
+				{id: 1, nome: "Glicerina", descricao: "Constituinte de sabonetes, sabões, detergentes líquidos, loções para a pele.", url: "images/estruturas/alcool/1.png"},
+				{id: 2, nome: "Esfingosina", descricao: "Presente em shampoos de ceramida", url: "images/estruturas/alcool/2.png"},
+				{id: 3, nome: "Guaifenesina", descricao: "Expectorante, no combate à tosse.", url: "images/estruturas/alcool/3.png"},
+				{id: 4, nome: "Trietanolamina", descricao: "Utilizada em preparações cosméticas e de higiene.", url: "images/estruturas/alcool/4.png"},
+				{id: 5, nome: "Diadinoxantina", descricao: "Carotenoide (pigmento) típico de algas pardas da classe Phaeophyceae.", url: "images/estruturas/alcool/5.png"},
+				{id: 6, nome: "3-nitrobenzenometanol", descricao: "Reagente para síntese de fármacos.", url: "images/estruturas/alcool/6.png"},
+				{id: 7, nome: "4-(2-bromoetinil)-1,2,5-trimetillpiperidin-4-ol", descricao: "Reagente para síntese de fármacos.", url: "images/estruturas/alcool/7.png"},
+				{id: 8, nome: "(3-metoxi-4-nitrofenil)metanol", descricao: "Reagente para síntese de fármacos.", url: "images/estruturas/alcool/8.png"},
+				{id: 9, nome: "(3-metoxi-4-trifluorometil fenil) metanol", descricao: "Reagente para síntese de fármacos.", url: "images/estruturas/alcool/9.png"},
+				{id: 10, nome: "Mentol", descricao: "Cremes dentrifícios, enxaguantes bucais, gomas de mascar, balas (bombons).", url: "images/estruturas/alcool/10.png"},
+				{id: 11, nome: "2-furancarbinol", descricao: "Monômero para síntese de resinas usadas em cimentos e adesivos", url: "images/estruturas/alcool/11.png"},
+				{id: 12, nome: "Retinol", descricao: "Cremes e géis “anti-idade”.", url: "images/estruturas/alcool/12.png"},
+				{id: 13, nome: "Propanolol", descricao: "Tratamento da hipertensão arterial.", url: "images/estruturas/alcool/13.png"},
+				{id: 14, nome: "Citronelol", descricao: "Óleo de citronela, repelente de insetos.", url: "images/estruturas/alcool/14.png"},
+				{id: 15, nome: "Sorbitol", descricao: "Alimentos dietéticos; chicletes “sem açúcar”; cremes dentrifícios; pomadas, cremes e loções para a pele.", url: "images/estruturas/alcool/15.png"},
+				{id: 16, nome: "4-tiapentan-1-ol", descricao: "Produzido na fermentação do vinho.", url: "images/estruturas/alcool/16.png"},
+				{id: 17, nome: "3-sulfanilhexanol", descricao: "Produzido na fermentação do vinho.", url: "images/estruturas/alcool/17.png"},
 			],
-			compostosAlimento: [
-				{ img: "images/compostos/3-sulfanilhexanol.png", texto: "3-sulfanilhexanol", isAlcool: true, resp: false, verificado: false },
-				{ img: "images/compostos/3-sulfanilpropionato_de_etila.png", texto: "3-sulfanilpropionato de etila", isAlcool: false, resp: false, verificado: false },
-				{ img: "images/compostos/4-tiapentan-1-ol.png", texto: "4-tiapentan-1-ol", isAlcool: true, resp: false, verificado: false },
-				{ img: "images/compostos/acido_tartarico.png", texto: "Ácido tartarico", isAlcool: false, resp: false, verificado: false },
-				{ img: "images/compostos/colesterol.png", texto: "Colesterol", isAlcool: true, resp: false, verificado: false },
-				{ img: "images/compostos/mentol.png", texto: "Mentol", isAlcool: true, resp: false, verificado: false },
-				{ img: "images/compostos/metional.png", texto: "Metional", isAlcool: false, resp: false, verificado: false },
-				{ img: "images/compostos/resveratrol.png", texto: "Resveratrol", isAlcool: false, resp: false, verificado: false },
-				{ img: "images/compostos/sorbitol.png", texto: "Sorbitol", isAlcool: true, resp: false, verificado: false },
-				{ img: "images/compostos/timol.png", texto: "Timol", isAlcool: false, resp: false, verificado: false },
+			estruturasNaoAlcoois: [
+				{id: 1, nome: "Vanilina", descricao: "Essência de baunilha.", url: "images/estruturas/nao_alcool/1.png"},
+				{id: 2, nome: "Treonina", descricao: "Constituinte de alguns suplementos nutricionais para humanos e animais.", url: "images/estruturas/nao_alcool/2.png"},
+				{id: 3, nome: "Gabapentina", descricao: "Fármaco usado no tratamento da epilepsia.", url: "images/estruturas/nao_alcool/3.png"},
+				{id: 4, nome: "Cafeína", descricao: "Estimulante.", url: "images/estruturas/nao_alcool/4.png"},
+				{id: 5, nome: "Fucoxantina", descricao: "Carotenoide (pigmento) típico de algas pardas da classe Phaeophyceae.", url: "images/estruturas/nao_alcool/5.png"},
+				{id: 6, nome: "4-bromo-2-nitrobenzaldeído", descricao: "Reagente para síntese de fármacos.", url: "images/estruturas/nao_alcool/6.png"},
+				{id: 7, nome: "(5-cloro-2-hidroxi-3-nitrobenzil)etanona", descricao: "Reagente para síntese de fármacos.", url: "images/estruturas/nao_alcool/7.png"},
+				{id: 8, nome: "4-etoxi-3-(hidroximetil)benzaldeído", descricao: "Reagente para síntese de fármacos.", url: "images/estruturas/nao_alcool/8.png"},
+				{id: 9, nome: "2-cloro-3-trifluorometil-benzaldeído", descricao: "Reagente para síntese de fármacos.", url: "images/estruturas/nao_alcool/9.png"},
+				{id: 10, nome: "Timol", descricao: "Cremes dentrifícios, enxaguantes bucais, gomas de mascar, balas (bombons).", url: "images/estruturas/nao_alcool/10.png"},
+				{id: 11, nome: "Furaneol", descricao: "Aroma de morango usado em iogurtes e biscoitos.", url: "images/estruturas/nao_alcool/11.png"},
+				{id: 12, nome: "Resveratrol", descricao: "Antioxidante presente na uva.", url: "images/estruturas/nao_alcool/12.png"},
+				{id: 13, nome: "Atenolol", descricao: "Tratamento da hipertensão arterial", url: "images/estruturas/nao_alcool/13.png"},
+				{id: 14, nome: "Eugenol", descricao: "Cravo-da-India.", url: "images/estruturas/nao_alcool/14.png"},
+				{id: 15, nome: "Neral", descricao: "Balas e refrigerantes com aromas de limão.", url: "images/estruturas/nao_alcool/15.png"},
+				{id: 16, nome: "3-sulfanilpropionato de etila", descricao: "Produzido na fermentação do vinho.", url: "images/estruturas/nao_alcool/16.png"},
+				{id: 17, nome: "Metional", descricao: "Produzido na fermentação do vinho.", url: "images/estruturas/nao_alcool/17.png"},
 			],
 			index: null,
 			estadoModal1: "none",
 			estadoModal2: "none",
 			ativoChat: "none",
+			etp3_imagensSelecionadas: [],
+			etp3_checkboxes: ["", "", "", "","",""],
+			etp3_respostas_corretas: [true, false, true, false, true, false],
+			etp3_texto: "",
+			etp3_foiVerificado: false,
+			etp4_imagensSelecionadas: [
+				{url: "images/estruturas/alcool/13.png", isAlcool: true, resp: false, verificado: false },
+				{url: "images/estruturas/nao_alcool/14.png", isAlcool: false, resp: false, verificado: false },
+				{ url: "images/estruturas/nao_alcool/13.png", isAlcool: false, resp: false, verificado: false },
+				{ url: "images/estruturas/nao_alcool/15.png", isAlcool: false, resp: false, verificado: false },
+				{ url: "images/estruturas/alcool/15.png", isAlcool: true, resp: false, verificado: false },
+				{url: "images/estruturas/alcool/14.png", isAlcool: true, resp: false, verificado: false },
+				{ url: "images/estruturas/nao_alcool/16.png", isAlcool: false, resp: false, verificado: false },
+				{url: "images/estruturas/alcool/16.png", isAlcool: true, resp: false, verificado: false },
+			],
+
+			etp5_imagensSelecionadas: [
+				{url: "images/estruturas/nao_alcool/1.png", isAlcool: false, resp: false, verificado: false },
+				{url: "images/estruturas/nao_alcool/2.png", isAlcool: false, resp: false, verificado: false },
+				{ url: "images/estruturas/alcool/1.png", isAlcool: true, resp: false, verificado: false },
+				{ url: "images/estruturas/alcool/2.png", isAlcool: true, resp: false, verificado: false },
+				{ url: "images/estruturas/alcool/3.png", isAlcool: true, resp: false, verificado: false },
+				{url: "images/estruturas/nao_alcool/3.png", isAlcool: false, resp: false, verificado: false },
+				{ url: "images/estruturas/alcool/4.png", isAlcool: true, resp: false, verificado: false },
+				{url: "images/estruturas/nao_alcool/4.png", isAlcool: false, resp: false, verificado: false },
+			],
+			etp6_imagensSelecionadas: [
+				{url: "images/estruturas/nao_alcool/5.png", isAlcool: false, resp: false, verificado: false },
+				{url: "images/estruturas/alcool/5.png", isAlcool: true, resp: false, verificado: false },
+				{ url: "images/estruturas/alcool/6.png", isAlcool: true, resp: false, verificado: false },
+				{ url: "images/estruturas/alcool/7.png", isAlcool: true, resp: false, verificado: false },
+				{ url: "images/estruturas/nao_alcool/8.png", isAlcool: false, resp: false, verificado: false },
+				{url: "images/estruturas/alcool/8.png", isAlcool: true, resp: false, verificado: false },
+				{ url: "images/estruturas/nao_alcool/7.png", isAlcool: false, resp: false, verificado: false },
+				{url: "images/estruturas/nao_alcool/6.png", isAlcool: false, resp: false, verificado: false },
+			],
+			etp7_imagensSelecionadas: [
+				{url: "images/estruturas/alcool/9.png", isAlcool: true, resp: false, verificado: false },
+				{url: "images/estruturas/alcool/9.png", isAlcool: true, resp: false, verificado: false },
+				{ url: "images/estruturas/nao_alcool/10.png", isAlcool: false, resp: false, verificado: false },
+				{ url: "images/estruturas/alcool/12.png", isAlcool: true, resp: false, verificado: false },
+				{ url: "images/estruturas/nao_alcool/12.png", isAlcool: false, resp: false, verificado: false },
+				{url: "images/estruturas/alcool/11.png", isAlcool: true, resp: false, verificado: false },
+				{ url: "images/estruturas/nao_alcool/11.png", isAlcool: false, resp: false, verificado: false },
+				{url: "images/estruturas/alcool/10.png", isAlcool: true, resp: false, verificado: false },
+			],
 
 		},
 		created() {
+			this.etp3_selecionarImagens()
 			socket.on('chat-message', (data) => {
 				this.chatlogs.push(data)
 				this.abrirChat();
 				this.autoScrollBottomChat();
 			});
-			
+
 		},
 		methods: {
 			entrar: function () {
 				if (this.usuario != "") {
 					this.estado = 1
+					this.abrirChat();
 				}
 			},
 			alternarChat: function () {
@@ -345,17 +597,7 @@
 				if (this.estado > 1) {
 					this.estado = this.estado - 1
 				}
-			},
-			selecionarAlimento: function (index) {
-				this.compostosAlimento[index].resp = !this.compostosAlimento[index].resp
-			},
-			verificar: function () {
-				for (i = 0; i < this.compostosAlimento.length; i++) {
-					if (this.compostosAlimento[i].resp == true && this.compostosAlimento[i].isAlcool == true) {
-						this.compostosAlimento[i].verificado = true
-					}
-				}
-			},
+			},			
 			abrirModalAjuda1: function () {
 				this.estadoModal1 = "block"
 			},
@@ -374,15 +616,87 @@
 			},
 			enviar: function () {
 				socket.emit('chat-message', {
-                    msg: this.novaMsg,
+					msg: this.novaMsg,
 					usuario: this.usuario,
 					idUsuario: this.idUsuario,
 					hora: "12:00:00"
 				});
-				this.novaMsg=""
+				this.novaMsg = ""
 				//this.chatlogs.push({ idUsuario: this.idUsuario, usuario: this.usuario, msg: this.novaMsg, hora: "13:00:00" })
 				this.autoScrollBottomChat();
-			},			
+			},
+			etp3_selecionarImagens: function (){
+				var array = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]
+				var indice_atual = array.length, valor_temporario, indice_aleatorio;
+				while (0 !== indice_atual) { 
+					indice_aleatorio = Math.floor(Math.random() * indice_atual);
+					indice_atual -= 1;
+					valor_temporario = array[indice_atual];
+					array[indice_atual] = array[indice_aleatorio];
+					array[indice_aleatorio] = valor_temporario;
+				}
+				this.etp3_imagensSelecionadas.push(array[0], array[1], array[2], array[3]);
+			},
+			etp3_verificar: function(){
+				var corretas = ["checked", "", "checked", "", "checked", ""]
+				if(!this.etp3_foiVerificado){
+					var text = "";
+					var i;
+					for (i = 0; i < corretas.length; i++) {
+						if(this.etp3_checkboxes[i] == corretas[i]){
+							text += (i+1) + "- Acertou, ";
+						}else{
+							text += (i+1) + "- Errou, ";
+						}
+						this.etp3_texto = text;
+					}
+					this.etp3_checkboxes = corretas;
+					this.etp3_foiVerificado = true;
+				}				
+
+			},
+			etp4_selecionarEstrutura: function (index) {
+				this.etp4_imagensSelecionadas[index].resp = !this.etp4_imagensSelecionadas[index].resp
+			},
+			etp4_verificar: function () {
+				for (i = 0; i < this.etp4_imagensSelecionadas.length; i++) {
+					if (this.etp4_imagensSelecionadas[i].resp == true && this.etp4_imagensSelecionadas[i].isAlcool == true) {
+						this.etp4_imagensSelecionadas[i].verificado = true
+					}
+				}
+			},
+			etp5_selecionarEstrutura: function (index) {
+				this.etp5_imagensSelecionadas[index].resp = !this.etp5_imagensSelecionadas[index].resp
+			},
+			etp5_verificar: function () {
+				for (i = 0; i < this.etp5_imagensSelecionadas.length; i++) {
+					if (this.etp5_imagensSelecionadas[i].resp == true && this.etp5_imagensSelecionadas[i].isAlcool == true) {
+						this.etp5_imagensSelecionadas[i].verificado = true
+					}
+				}
+			},
+			etp6_selecionarEstrutura: function (index) {
+				this.etp6_imagensSelecionadas[index].resp = !this.etp6_imagensSelecionadas[index].resp
+			},
+			etp6_verificar: function () {
+				for (i = 0; i < this.etp6_imagensSelecionadas.length; i++) {
+					if (this.etp6_imagensSelecionadas[i].resp == true && this.etp6_imagensSelecionadas[i].isAlcool == true) {
+						this.etp6_imagensSelecionadas[i].verificado = true
+					}
+				}
+			},
+
+			etp7_selecionarEstrutura: function (index) {
+				this.etp7_imagensSelecionadas[index].resp = !this.etp7_imagensSelecionadas[index].resp
+			},
+			etp7_verificar: function () {
+				for (i = 0; i < this.etp6_imagensSelecionadas.length; i++) {
+					if (this.etp7_imagensSelecionadas[i].resp == true && this.etp7_imagensSelecionadas[i].isAlcool == true) {
+						this.etp7_imagensSelecionadas[i].verificado = true
+					}
+				}
+			},
+
 
 		},
 		components: {
