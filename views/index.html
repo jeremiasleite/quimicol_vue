@@ -86,7 +86,7 @@
 					<!--Fim do estado 1-->
 
 					<!--Estado 2-->
-					<div class="col s10 offset-s1" v-else-if="estado == 2">
+					<div class="col s10 offset-s1" v-if="estado == 2">
 						<div class="row">
 							<div class="row">
 								<h4 class="">Agora assistam ao vídeo sobre álcoois e discutam sobre ele no chat a respeito das informações apresentadas.</h4>
@@ -127,7 +127,7 @@
 						<!--Fim do estado 2-->
 
 						<!--Estado 3-->
-						<div class="col s12" v-else-if="estado == 3">
+						<div class="col s10 offset-s1" v-if="estado == 3">
 							<div class="row">
 								<div class="row">
 									<!--h3 class="header left orange-text">Introdução <small>Alimentos</small></!--h3>-->
@@ -155,6 +155,84 @@
 									</div>
 								</div>								
 							</div>
+							
+						</div>
+						<!--Fim do estado 3-->
+
+						<!--Estado 4-->
+						<div class="col s10 offset-s1" v-if="estado == 4">
+							
+							<div class="row">
+								<h6>Selecione os compostos que são ÁLCOOIS</h6>
+							</div>
+							<div class="row" style="display: flex; flex-wrap: wrap;">
+								<div class="" v-for="comp, index in etp4_imagensSelecionadas" style="margin: 10px;">
+									<div class="img-select"
+										v-bind:class="{imgSelectTrue : comp.resp, imgAcertou: comp.verificado }"
+										v-on:click="etp4_selecionarEstrutura(index)">
+										<img class="img-composto" v-bind:src="comp.url">
+									</div>
+								</div>
+								
+							</div>
+
+							<!--<div class="row">
+								<button class="btn waves-effect waves-light light-green accent-4"
+									v-on:click='etp4_verificar'>Verificar</button>
+								<button class="btn waves-effect waves-light red"
+									v-on:click="abrirModalAjuda1">Ajuda</button>
+								<button class="btn waves-effect waves-light red"
+									v-on:click="abrirModalAjuda2">Prioridade</button>
+							</div>-->
+							
+						</div>
+						<!--Fim do estado 4-->
+
+						<!--Estado 5-->
+						<div class="col s10 offset-s1" v-if="estado == 5">
+							
+							<div class="row">
+								<h6>Selecione os compostos que são ÁLCOOIS</h6>
+							</div>
+							<div class="row" style="display: flex; flex-wrap: wrap;">
+								<div class="" v-for="comp, index in etp5_imagensSelecionadas" style="margin: 10px;">
+									<div class="img-select"
+										v-bind:class="{imgSelectTrue : comp.resp, imgAcertou: comp.verificado }"
+										v-on:click="etp5_selecionarEstrutura(index)">
+										<img class="img-composto" v-bind:src="comp.url">
+									</div>
+								</div>
+								
+							</div>
+							
+						</div>
+						<!--Fim do estado 5-->
+
+						<!--Estado 6-->
+						<div class="col s10 offset-s1" v-if="estado == 6">
+							
+							<div class="row">
+								<h4>Responda a questão abaixo</h4>
+								<h6>A lista de reagentes para síntese de fármacos apresentada abaixo foi enviada para o almoxarifado de uma loja. O conferente verificou que os álcoois listados estavam em falta. Indique-os.</h6>
+							</div>
+							<div class="row" style="display: flex; flex-wrap: wrap;">
+								<div class="" v-for="comp, index in etp6_imagens" style="margin: 10px;">
+									<div class="img-select"
+										v-bind:class="{imgSelectTrue : comp.resp, imgAcertou: comp.isAlcool && etp6_respostaEnviada}"
+										v-on:click="etp6_selecionarEstrutura(index)">
+										<img class="img-composto" v-bind:src="comp.url">
+									</div>
+								</div>
+								
+							</div>
+							<div class="row">
+								<button class="btn waves-effect waves-light blue" v-on:click="etp6_enviarResposta">Enviar Respostas</button>
+							</div>
+							
+						</div>
+						<!--Fim do estado 6-->
+
+						<div class="col s10 offset-s1" v-if="estado > 2 && estado <6">
 							<div class="row" style="border-style: solid;">
 								<form action="#">
 									<div class="col s5">
@@ -201,8 +279,7 @@
 									<div class="col s2">
 										<p>
 											<a class="waves-effect waves-light btn" v-on:click="etp3_verificar" >Verificar</a>
-										</p>
-										
+										</p>										
 									</div>										
 									
 								</form>
@@ -214,130 +291,21 @@
 								  </div>
 							</div>
 						</div>
-						<!--Fim do estado 3-->
 
-						<!--Estado 4-->
-						<div class="col s10 offset-s1" v-if="estado == 4">
-							<div class="row">
-								<h3 class="header left orange-text">Introdução <small>Alimentos</small></h3>
+						<div class="col s10 offset-s1" v-show="estado > 0">							
+							<div class="col s1">
+								<a class="waves-effect waves-light btn blue lighten-4" v-on:click="voltar">Voltar</a>
 							</div>
-							<div class="row">
-								<h6>Selecione os compostos que são ÁLCOOIS</h6>
-							</div>
-							<div class="row" style="display: flex; flex-wrap: wrap;">
-								<div class="" v-for="comp, index in etp4_imagensSelecionadas" style="margin: 10px;">
-									<div class="img-select"
-										v-bind:class="{imgSelectTrue : comp.resp, imgAcertou: comp.verificado }"
-										v-on:click="etp4_selecionarEstrutura(index)">
-										<img class="img-composto" v-bind:src="comp.url">
-									</div>
-								</div>
-								
-							</div>
-							<div class="row">
-								<button class="btn waves-effect waves-light light-green accent-4"
-									v-on:click='etp4_verificar'>Verificar</button>
-								<button class="btn waves-effect waves-light red"
-									v-on:click="abrirModalAjuda1">Ajuda</button>
-								<button class="btn waves-effect waves-light red"
-									v-on:click="abrirModalAjuda2">Prioridade</button>
-
-							</div>
+							<div class="col s1 offset-s10">
+								<a class="waves-effect waves-light btn blue" v-on:click="seguir">Seguir</a>
+							</div>	
 						</div>
-						<!--Fim do estado 4-->
-
-						<!--Estado 5-->
-						<div class="col s10 offset-s1" v-if="estado == 5">
-							<div class="row">
-								<h3 class="header left orange-text">Introdução <small>Alimentos</small></h3>
-							</div>
-							<div class="row">
-								<h6>Selecione os compostos que são ÁLCOOIS</h6>
-							</div>
-							<div class="row" style="display: flex; flex-wrap: wrap;">
-								<div class="" v-for="comp, index in etp5_imagensSelecionadas" style="margin: 10px;">
-									<div class="img-select"
-										v-bind:class="{imgSelectTrue : comp.resp, imgAcertou: comp.verificado }"
-										v-on:click="etp5_selecionarEstrutura(index)">
-										<img class="img-composto" v-bind:src="comp.url">
-									</div>
-								</div>
-								
-							</div>
-							<div class="row">
-								<button class="btn waves-effect waves-light light-green accent-4"
-									v-on:click='etp5_verificar'>Verificar</button>
-								<button class="btn waves-effect waves-light red"
-									v-on:click="abrirModalAjuda1">Ajuda</button>
-								<button class="btn waves-effect waves-light red"
-									v-on:click="abrirModalAjuda2">Prioridade</button>
-							</div>
-						</div>
-						<!--Fim do estado 5-->
-
-						<!--Estado 6-->
-						<div class="col s10 offset-s1" v-if="estado == 6">
-							<div class="row">
-								<h3 class="header left orange-text">Introdução <small>Alimentos</small></h3>
-							</div>
-							<div class="row">
-								<h6>Selecione os compostos que são ÁLCOOIS</h6>
-							</div>
-							<div class="row" style="display: flex; flex-wrap: wrap;">
-								<div class="" v-for="comp, index in etp6_imagensSelecionadas" style="margin: 10px;">
-									<div class="img-select"
-										v-bind:class="{imgSelectTrue : comp.resp, imgAcertou: comp.verificado }"
-										v-on:click="etp6_selecionarEstrutura(index)">
-										<img class="img-composto" v-bind:src="comp.url">
-									</div>
-								</div>
-								
-							</div>
-							<div class="row">
-								<button class="btn waves-effect waves-light light-green accent-4"
-									v-on:click='etp6_verificar'>Verificar</button>
-								<button class="btn waves-effect waves-light red"
-									v-on:click="abrirModalAjuda1">Ajuda</button>
-								<button class="btn waves-effect waves-light red"
-									v-on:click="abrirModalAjuda2">Prioridade</button>
-							</div>
-						</div>						
-						<!--Fim do estado 6-->
-
-						<!--Estado 7-->
-						<div class="col s10 offset-s1" v-if="estado == 7">
-							<div class="row">
-								<h3 class="header left orange-text">Introdução <small>Alimentos</small></h3>
-							</div>
-							<div class="row">
-								<h6>Selecione os compostos que são ÁLCOOIS</h6>
-							</div>
-							<div class="row" style="display: flex; flex-wrap: wrap;">
-								<div class="" v-for="comp, index in etp7_imagensSelecionadas" style="margin: 10px;">
-									<div class="img-select"
-										v-bind:class="{imgSelectTrue : comp.resp, imgAcertou: comp.verificado }"
-										v-on:click="etp7_selecionarEstrutura(index)">
-										<img class="img-composto" v-bind:src="comp.url">
-									</div>
-								</div>
-								
-							</div>
-							<div class="row">
-								<button class="btn waves-effect waves-light light-green accent-4"
-									v-on:click='etp7_verificar'>Verificar</button>
-								<button class="btn waves-effect waves-light red"
-									v-on:click="abrirModalAjuda1">Ajuda</button>
-								<button class="btn waves-effect waves-light red"
-									v-on:click="abrirModalAjuda2">Prioridade</button>
-							</div>
-						</div>						
-						<!--Fim do estado 7-->
-
-
+						
 					</div>
-
+					
 				</div>
-				<div class="j-footer " v-show="estado > 0">
+
+				<!--<div class="j-footer " v-show="estado > 0">
 					<div class="row">
 						<div class="row">
 							<div class="col s1">
@@ -350,7 +318,7 @@
 
 					</div>
 
-				</div>
+				</div>-->
 
 			</div>
 
@@ -448,7 +416,7 @@
 		el: '#app',
 		data: {
 			drawer: null,
-			estado: 0,
+			estado: 6,
 			usuario: 'j',
 			idUsuario: 0,
 			novaMsg: "",
@@ -558,6 +526,17 @@
 				{ url: "images/estruturas/nao_alcool/11.png", isAlcool: false, resp: false, verificado: false },
 				{url: "images/estruturas/alcool/10.png", isAlcool: true, resp: false, verificado: false },
 			],
+			etp6_imagens: [
+				{url: "images/estruturas/alcool/6.png", isAlcool: true, resp: false, verificado: false },
+				{url: "images/estruturas/alcool/7.png", isAlcool: true, resp: false, verificado: false },
+				{ url: "images/estruturas/nao_alcool/6.png", isAlcool: false, resp: false, verificado: false },
+				{ url: "images/estruturas/nao_alcool/7.png", isAlcool: false, resp: false, verificado: false },
+				{url: "images/estruturas/alcool/8.png", isAlcool: true, resp: false, verificado: false },
+				{url: "images/estruturas/alcool/9.png", isAlcool: true, resp: false, verificado: false },
+				{ url: "images/estruturas/nao_alcool/8.png", isAlcool: false, resp: false, verificado: false },
+				{ url: "images/estruturas/nao_alcool/9.png", isAlcool: false, resp: false, verificado: false },			
+			],
+			etp6_respostaEnviada: false,
 
 		},
 		created() {
@@ -592,12 +571,16 @@
 			},
 			seguir: function () {
 				this.estado = this.estado + 1
+				this.mudouEstado();
 			},
 			voltar: function () {
 				if (this.estado > 1) {
 					this.estado = this.estado - 1
 				}
-			},			
+			},
+			mudouEstado: function (){
+				this.etp3a5_resetarCheckboxes();
+			},		
 			abrirModalAjuda1: function () {
 				this.estadoModal1 = "block"
 			},
@@ -626,7 +609,7 @@
 				this.autoScrollBottomChat();
 			},
 			etp3_selecionarImagens: function (){
-				var array = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]
+				var array = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
 				var indice_atual = array.length, valor_temporario, indice_aleatorio;
 				while (0 !== indice_atual) { 
 					indice_aleatorio = Math.floor(Math.random() * indice_atual);
@@ -635,6 +618,7 @@
 					array[indice_atual] = array[indice_aleatorio];
 					array[indice_aleatorio] = valor_temporario;
 				}
+				console.log(array)
 				this.etp3_imagensSelecionadas.push(array[0], array[1], array[2], array[3]);
 			},
 			etp3_verificar: function(){
@@ -652,8 +636,11 @@
 					}
 					this.etp3_checkboxes = corretas;
 					this.etp3_foiVerificado = true;
-				}				
-
+				}	
+			},
+			etp3a5_resetarCheckboxes: function (){
+				this.etp3_checkboxes = ["", "", "", "", "", ""];
+				this.etp3_foiVerificado = false;
 			},
 			etp4_selecionarEstrutura: function (index) {
 				this.etp4_imagensSelecionadas[index].resp = !this.etp4_imagensSelecionadas[index].resp
@@ -676,27 +663,14 @@
 				}
 			},
 			etp6_selecionarEstrutura: function (index) {
-				this.etp6_imagensSelecionadas[index].resp = !this.etp6_imagensSelecionadas[index].resp
-			},
-			etp6_verificar: function () {
-				for (i = 0; i < this.etp6_imagensSelecionadas.length; i++) {
-					if (this.etp6_imagensSelecionadas[i].resp == true && this.etp6_imagensSelecionadas[i].isAlcool == true) {
-						this.etp6_imagensSelecionadas[i].verificado = true
-					}
+				if(this.etp6_respostaEnviada == false){
+					this.etp6_imagens[index].resp = !this.etp6_imagens[index].resp
 				}
+				
 			},
-
-			etp7_selecionarEstrutura: function (index) {
-				this.etp7_imagensSelecionadas[index].resp = !this.etp7_imagensSelecionadas[index].resp
-			},
-			etp7_verificar: function () {
-				for (i = 0; i < this.etp6_imagensSelecionadas.length; i++) {
-					if (this.etp7_imagensSelecionadas[i].resp == true && this.etp7_imagensSelecionadas[i].isAlcool == true) {
-						this.etp7_imagensSelecionadas[i].verificado = true
-					}
-				}
-			},
-
+			etp6_enviarResposta: function (){
+				this.etp6_respostaEnviada = true;
+			}
 
 		},
 		components: {
