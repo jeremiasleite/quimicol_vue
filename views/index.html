@@ -35,7 +35,7 @@
 			<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Quimicol
 					<small>Bem vindo <strong>{{usuario}}! {{estado}}</strong></small></a>
 				<ul class="right hide-on-med-and-down">
-					<li v-show="estado>=1" v-on:click="alternarChat"><a>Chat</a></li>
+					<li v-show="estado >=1 " v-on:click="alternarChat"><a>Chat</a></li>
 				</ul>
 
 			</div>
@@ -227,10 +227,62 @@
 							</div>
 							<div class="row">
 								<button class="btn waves-effect waves-light blue" v-on:click="etp6_enviarResposta">Enviar Respostas</button>
-							</div>
-							
+							</div>							
 						</div>
 						<!--Fim do estado 6-->
+
+						<!--Estado 7-->
+						<div class="col s10 offset-s1" v-if="estado == 7">
+							
+							<div class="row">
+								<h4>Responda a questão abaixo</h4>
+								<h6>O quadro abaixo mostra estruturas de feromônios de alguns insetos que afetam determinadas culturas agrícolas.</h6>
+							</div>
+							<div class="row">
+								<img width="500" src="images/questoes/q2.png">
+								<p>Se esses álcoois forem utilizados em armadilhas para capturas de insetos, em quais culturas eles seriam empregados?</p>
+							</div>
+							<div class="row" v-show="!etp7_foiRespondida">
+								<div class="row">
+									<form action="#">
+										<p>
+											<label>
+											  <input name="questao2" value="milho" type="checkbox" v-model="etp7_resposta" />
+											  <span>MILHO</span>
+											</label>
+	
+											<label>
+												<input name="questao2" value="cana-açucar" type="checkbox" v-model="etp7_resposta"/>
+												<span>CANA-DE-AÇUCAR</span>
+											</label>
+											<label>
+												<input name="questao2" value="morango" type="checkbox" v-model="etp7_resposta"/>
+												<span>MORANGO</span>
+											</label>
+											<label>
+												<input name="questao2" value="frutas" type="checkbox" v-model="etp7_resposta"/>
+												<span>FRUTAS</span>
+											</label>
+	
+											<label>
+												<input name="questao2" value="tomate" type="checkbox" v-model="etp7_resposta"/>
+												<span>TOMATE</span>
+											</label>
+										</p>
+										
+									</form>
+								</div>
+								
+								<div class="row">
+									<button class="btn waves-effect waves-light blue" v-on:click="etp7_enviarResposta">Enviar Respostas</button>
+								</div>
+							</div>
+							<div class="alert warning" v-show="etp7_foiRespondida">
+								<p>Sua resposta foi {{etp7_resposta}} a resposta correta é <strong>{{etp7_respostaCorreta}}</strong></p>
+							</div>
+														
+						</div>
+						<!--Fim do estado 7-->
 
 						<div class="col s10 offset-s1" v-if="estado > 2 && estado <6">
 							<div class="row" style="border-style: solid;">
@@ -416,7 +468,7 @@
 		el: '#app',
 		data: {
 			drawer: null,
-			estado: 6,
+			estado: 7,
 			usuario: 'j',
 			idUsuario: 0,
 			novaMsg: "",
@@ -537,6 +589,9 @@
 				{ url: "images/estruturas/nao_alcool/9.png", isAlcool: false, resp: false, verificado: false },			
 			],
 			etp6_respostaEnviada: false,
+			etp7_resposta: [],
+			etp7_respostaCorreta: ["Milho", "Morango", "Frutas"],
+			etp7_foiRespondida: false,
 
 		},
 		created() {
@@ -670,6 +725,9 @@
 			},
 			etp6_enviarResposta: function (){
 				this.etp6_respostaEnviada = true;
+			},
+			etp7_enviarResposta: function (){
+				this.etp7_foiRespondida = true;
 			}
 
 		},
