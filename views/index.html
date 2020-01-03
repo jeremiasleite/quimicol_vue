@@ -209,8 +209,7 @@
 						<!--Fim do estado 5-->
 
 						<!--Estado 6-->
-						<div class="col s10 offset-s1" v-if="estado == 6">
-							
+						<div class="col s10 offset-s1" v-if="estado == 6">							
 							<div class="row">
 								<h4>Responda a questão abaixo</h4>
 								<h6>A lista de reagentes para síntese de fármacos apresentada abaixo foi enviada para o almoxarifado de uma loja. O conferente verificou que os álcoois listados estavam em falta. Indique-os.</h6>
@@ -277,7 +276,7 @@
 									<button class="btn waves-effect waves-light blue" v-on:click="etp7_enviarResposta">Enviar Respostas</button>
 								</div>
 							</div>
-							<div class="alert warning" v-show="etp7_foiRespondida">
+							<div class="row" v-show="etp7_foiRespondida" style="border-style: solid; border-radius: 5px; border-color: burlywood;">
 								<p>Sua resposta foi {{etp7_resposta}} a resposta correta é <strong>{{etp7_respostaCorreta}}</strong></p>
 							</div>
 														
@@ -468,7 +467,7 @@
 		el: '#app',
 		data: {
 			drawer: null,
-			estado: 7,
+			estado: 0,
 			usuario: 'j',
 			idUsuario: 0,
 			novaMsg: "",
