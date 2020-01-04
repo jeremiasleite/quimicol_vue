@@ -175,7 +175,11 @@
 								</div>
 								
 							</div>
-
+							
+							<div class="row">
+								<button class="btn waves-effect waves-light light-green accent-4"
+									v-on:click='etp4_verificar'>Verificar</button>
+							</div>
 							<!--<div class="row">
 								<button class="btn waves-effect waves-light light-green accent-4"
 									v-on:click='etp4_verificar'>Verificar</button>
@@ -204,7 +208,10 @@
 								</div>
 								
 							</div>
-							
+							<div class="row">
+								<button class="btn waves-effect waves-light light-green accent-4"
+									v-on:click='etp5_verificar'>Verificar</button>
+							</div>
 						</div>
 						<!--Fim do estado 5-->
 
@@ -283,25 +290,230 @@
 						</div>
 						<!--Fim do estado 7-->
 
+						<!--Estado 8-->
+						<div class="col s10 offset-s1" v-if="estado == 8">							
+							<div class="row">
+								<h4>Responda a questão abaixo</h4>
+								<h6>A produção de cachaça no Brasil é de aproximadamente 1,4 bilhões de litros e contribui com cerca de US$ 500 milhões para o nosso PIB. A sua fabricação envolve a fermentação alcoólica, a partir do sumo da cana-de-açúcar, processo utilizado desde o período colonial. Nesse tipo de produção são formados dois produtos principais - etanol e dióxido de carbono - no entanto, normalmente há a geração de pequenas quantidades de outros componentes, inclusive alguns bastante tóxicos.</h6>
+								<p><small>Adaptado de: SOUZA, Leandro Marelli de et al . Teores de compostos orgânicos em cachaças produzidas na região norte fluminense - Rio de Janeiro. Química Nova, v. 32, n. 9, p. 2304-2309, 2009.</small></p>
+								<h6>Abaixo, estão representadas as estruturas químicas de algumas substâncias, pertencentes a diferentes funções orgânicas, que são encontradas em cachaças. Identifique os álcoois.</h6>
+							</div>
+							<div class="row">
+								<img width="500" src="images/questoes/q3.png">
+								<p>Avalie aspectos positivos e negativos em torno da fabricação da cachaça para a sociedade brasileira e discuta alguns dos efeitos causados pela presença de álcoois em suas composições no <strong>Chat com o colega</strong>.</p>
+							</div>
+							<div class="row" v-show="!etp8_foiRespondida">
+								<div class="row">
+									<form action="#">
+										<p>
+											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											  <input name="questao3" value="A" type="checkbox" v-model="etp8_resposta" />
+											  <span>A</span>
+											</label>
+	
+											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+												<input name="questao3" value="B" type="checkbox" v-model="etp8_resposta"/>
+												<span>B</span>
+											</label>
+											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+												<input name="questao3" value="C" type="checkbox" v-model="etp8_resposta"/>
+												<span>C</span>
+											</label>
+											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+												<input name="questao3" value="D" type="checkbox" v-model="etp8_resposta"/>
+												<span>D</span>
+											</label>
+	
+											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+												<input name="questao3" value="E" type="checkbox" v-model="etp8_resposta"/>
+												<span>E</span>
+											</label>
+										
+											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											  <input name="questao3" value="F" type="checkbox" v-model="etp8_resposta" />
+											  <span>F</span>
+											</label>
+	
+											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+												<input name="questao3" value="G" type="checkbox" v-model="etp8_resposta"/>
+												<span>G</span>
+											</label>
+											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+												<input name="questao3" value="H" type="checkbox" v-model="etp8_resposta"/>
+												<span>H</span>
+											</label>
+											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;" style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+												<input name="questao3" value="I" type="checkbox" v-model="etp8_resposta"/>
+												<span>I</span>
+											</label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+	
+											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+												<input name="questao3" value="J" type="checkbox" v-model="etp8_resposta"/>
+												<span>J</span>
+											</label>
+										</p>
+										
+									</form>
+								</div>
+								
+								<div class="row">
+									<button class="btn waves-effect waves-light blue" v-on:click="etp8_enviarResposta">Enviar Respostas</button>
+								</div>
+							</div>
+							<div class="row" v-show="etp8_foiRespondida" style="border-style: solid; border-radius: 5px; border-color: burlywood;">
+								<p>Sua resposta foi {{etp8_resposta}} a resposta correta é <strong>{{etp8_respostaCorreta}}</strong></p>
+							</div>														
+						</div>
+						<!--Fim do estado 8-->
+
+						<!--Estado 9-->
+						<div class="col s10 offset-s1" v-if="estado == 9">							
+							<div class="row">
+								<h4>Responda a questão abaixo</h4>
+								<h6>Um vídeo disponibilizado na internet que determinado volume de uma substância líquida, contendo fórmula molecular C<sub>4</sub>H<sub>10</sub>O, foi transferido para um balão de destilação e, em seguida, resfriado em um banho de gelo. Passados alguns minutos, a substância ficou sólida, com a aparência de cristais. Essa substância é citada na tabela abaixo, identifique-a.</h6>
+							</div>
+							<div class="row">
+								<img width="500" src="images/questoes/q4.png">								
+							</div>
+							<div class="row" v-show="!etp9_foiRespondida">
+								<div class="row">
+									<form action="#">
+										<p>
+											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											  <input name="questao4" value="A" type="checkbox" v-model="etp9_resposta" />
+											  <span>A</span>
+											</label>
+	
+											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+												<input name="questao4" value="B" type="checkbox" v-model="etp9_resposta"/>
+												<span>B</span>
+											</label>
+											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+												<input name="questao4" value="C" type="checkbox" v-model="etp9_resposta"/>
+												<span>C</span>
+											</label>
+											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+												<input name="questao4" value="D" type="checkbox" v-model="etp9_resposta"/>
+												<span>D</span>
+											</label>
+	
+											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+												<input name="questao4" value="E" type="checkbox" v-model="etp9_resposta"/>
+												<span>E</span>
+											</label>
+										
+											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											  <input name="questao4" value="F" type="checkbox" v-model="etp9_resposta" />
+											  <span>F</span>
+											</label>											
+										</p>
+										
+									</form>
+								</div>
+								
+								<div class="row">
+									<button class="btn waves-effect waves-light blue" v-on:click="etp9_enviarResposta">Enviar Respostas</button>
+								</div>
+							</div>
+							<div class="row" v-show="etp9_foiRespondida" style="border-style: solid; border-radius: 5px; border-color: burlywood;">
+								<p>Sua resposta foi {{etp9_resposta}} a resposta correta é <strong>{{etp9_respostaCorreta}}</strong></p>
+							</div>														
+						</div>
+						<!--Fim do estado 9-->
+
+						<!--Estado 10-->
+						<div class="col s10 offset-s1" v-if="estado == 10">							
+							<div class="row">
+								<h4>Responda a questão abaixo</h4>
+								<h6>Uma indústria alimentícia resolveu acrescentar uma nova opção de sabor à sua linha de biscoitos e bolachas. Para tanto, decidiu utilizar um aromatizante que é um álcool.
+									Com base nas opções abaixo, identifique o novo sabor para o produto.
+								</h6>
+							</div>
+							<div class="row">
+								<img width="500" src="images/questoes/q5.png">								
+							</div>
+							<div class="row" v-show="!etp10_foiRespondida">
+								<div class="row">
+									<form action="#">
+										<p>
+											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											  <input name="questao5" value="Uva" type="checkbox" v-model="etp10_resposta" />
+											  <span>Uva</span>
+											</label>
+	
+											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+												<input name="questao5" value="Morango" type="checkbox" v-model="etp10_resposta"/>
+												<span>Morango</span>
+											</label>
+											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+												<input name="questao5" value="Hortelã" type="checkbox" v-model="etp10_resposta"/>
+												<span>Hortelã</span>
+											</label>
+											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+												<input name="questao5" value="Tomate" type="checkbox" v-model="etp10_resposta"/>
+												<span>Tomate</span>
+											</label>
+	
+											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+												<input name="questao5" value="Calena" type="checkbox" v-model="etp10_resposta"/>
+												<span>Canela</span>
+											</label>
+										
+											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											  <input name="questao5" value="Anis" type="checkbox" v-model="etp10_resposta" />
+											  <span>Anis</span>
+											</label>
+											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+												<input name="questao5" value="Manteiga" type="checkbox" v-model="etp10_resposta" />
+												<span>Manteiga</span>
+											</label>
+											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+												<input name="questao5" value="Cereja" type="checkbox" v-model="etp10_resposta" />
+												<span>Cereja</span>
+											  </label>	
+											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+												<input name="questao5" value="Melão" type="checkbox" v-model="etp10_resposta" />
+												<span>Melão</span>
+											</label>
+											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+												<input name="questao5" value="Framboesa" type="checkbox" v-model="etp10_resposta" />
+												<span>Framboesa</span>
+											</label>										
+										</p>
+										
+									</form>
+								</div>
+								
+								<div class="row">
+									<button class="btn waves-effect waves-light blue" v-on:click="etp10_enviarResposta">Enviar Respostas</button>
+								</div>
+							</div>
+							<div class="row" v-show="etp10_foiRespondida" style="border-style: solid; border-radius: 5px; border-color: burlywood;">
+								<p>Sua resposta foi {{etp10_resposta}} a resposta correta é <strong>{{etp10_respostaCorreta}}</strong></p>
+							</div>														
+						</div>
+						<!--Fim do estado 10-->
+
 						<div class="col s10 offset-s1" v-if="estado > 2 && estado <6">
 							<div class="row" style="border-style: solid;">
 								<form action="#">
 									<div class="col s5">
+										<p>Quais condições são observadas nessa classificação?</p>
 										<p>1
 											<label>
-											  <input type="checkbox" v-model=etp3_checkboxes[0] />
+											  <input name="etp3" id="etp3_1" type="checkbox" v-model=etp3_checkboxes[0]  value="1"/>
 											  <span>Possui HIDROXILA</span>
 											</label>
 										</p>
 										<p>2
 											<label>
-											  <input type="checkbox" v-model=etp3_checkboxes[1] />
+											  <input name="etp3" id="etp3_2" type="checkbox" v-model=etp3_checkboxes[1] value="2"/>
 											  <span>Possui CARBOXILA</span>
 											</label>
 										</p>
 										<p>3
 											<label>
-											  <input type="checkbox" v-model=etp3_checkboxes[2] />
+											  <input name="etp3" id="etp3_3" type="checkbox" v-model=etp3_checkboxes[2] value="3"/>
 											  <span>Ligada ao carbono saturado</span>
 											</label>
 										</p>
@@ -309,19 +521,19 @@
 									<div class="col s5">
 										<p>4
 											<label>
-											  <input type="checkbox" v-model=etp3_checkboxes[3] />
+											  <input name="etp3" id="etp3_4" type="checkbox" v-model=etp3_checkboxes[3] value="4"/>
 											  <span>Ligada ao carbono insaturado</span>
 											</label>
 										</p>
 										<p>5
 											<label>
-											  <input id="indeterminate-checkbox" type="checkbox"  v-model=etp3_checkboxes[4] />
+											  <input name="etp3" id="etp3_5" type="checkbox"  v-model=etp3_checkboxes[4] value="5"/>
 											  <span>É grupo funcional principal</span>
 											</label>
 										</p>
 										<p>6
 											<label>
-											  <input type="checkbox" v-model=etp3_checkboxes[5] />
+											  <input name="etp3" id="etp3_6" type="checkbox" v-model=etp3_checkboxes[5] value="6"/>
 											  <span>É grupo funcional Minoritário</span>
 											</label>
 										</p>
@@ -338,7 +550,7 @@
 							</div>
 							<div class="row" v-if="etp3_foiVerificado">
 								<div class="alert warning">											  
-									<strong>Respostas!</strong> {{etp3_texto}}
+									<strong>{{etp3_texto}}!</strong> Você marcou {{etp3_resp}} !
 								  </div>
 							</div>
 						</div>
@@ -467,8 +679,8 @@
 		el: '#app',
 		data: {
 			drawer: null,
-			estado: 0,
-			usuario: 'j',
+			estado: 10,
+			usuario: 'jere',
 			idUsuario: 0,
 			novaMsg: "",
 			chatlogs: [{ idUsuario: 0, usuario: "jeremias", msg: "oi isso é um teste", hora: "12:00:00" },
@@ -532,8 +744,8 @@
 			estadoModal2: "none",
 			ativoChat: "none",
 			etp3_imagensSelecionadas: [],
-			etp3_checkboxes: ["", "", "", "","",""],
-			etp3_respostas_corretas: [true, false, true, false, true, false],
+			etp3_checkboxes: [false, false, false, false, false, false],
+			etp3_resp: [],
 			etp3_texto: "",
 			etp3_foiVerificado: false,
 			etp4_imagensSelecionadas: [
@@ -591,7 +803,15 @@
 			etp7_resposta: [],
 			etp7_respostaCorreta: ["Milho", "Morango", "Frutas"],
 			etp7_foiRespondida: false,
-
+			etp8_resposta: [],
+			etp8_respostaCorreta: ["C", "D", "G","H","J"],
+			etp8_foiRespondida: false,
+			etp9_resposta: [],
+			etp9_respostaCorreta: ["F"],
+			etp9_foiRespondida: false,
+			etp10_resposta: [],
+			etp10_respostaCorreta: ["Morango"],
+			etp10_foiRespondida: false,
 		},
 		created() {
 			this.etp3_selecionarImagens()
@@ -676,18 +896,28 @@
 				this.etp3_imagensSelecionadas.push(array[0], array[1], array[2], array[3]);
 			},
 			etp3_verificar: function(){
-				var corretas = ["checked", "", "checked", "", "checked", ""]
+				var corretas = [true, false, true, false, true, false]
 				if(!this.etp3_foiVerificado){
 					var text = "";
-					var i;
-					for (i = 0; i < corretas.length; i++) {
-						if(this.etp3_checkboxes[i] == corretas[i]){
-							text += (i+1) + "- Acertou, ";
-						}else{
-							text += (i+1) + "- Errou, ";
+					var marcadas = []
+					var i;					
+					for (i = 0; i < this.etp3_checkboxes.length; i++) {
+						if(this.etp3_checkboxes[i] == true){
+							marcadas.push((i+1))
 						}
-						this.etp3_texto = text;
 					}
+
+					if (marcadas.length != 3){
+						text= "Errou"
+					}else{
+						if(marcadas[0]==1 && marcadas[1]==3 && marcadas[2]==5){
+							text= "Acertou"
+						}else{
+							text= "Errou"
+						}
+					}
+					this.etp3_texto = text;
+					this.etp3_resp = marcadas;
 					this.etp3_checkboxes = corretas;
 					this.etp3_foiVerificado = true;
 				}	
@@ -695,6 +925,7 @@
 			etp3a5_resetarCheckboxes: function (){
 				this.etp3_checkboxes = ["", "", "", "", "", ""];
 				this.etp3_foiVerificado = false;
+				this.etp3_texto = "";
 			},
 			etp4_selecionarEstrutura: function (index) {
 				this.etp4_imagensSelecionadas[index].resp = !this.etp4_imagensSelecionadas[index].resp
@@ -727,6 +958,15 @@
 			},
 			etp7_enviarResposta: function (){
 				this.etp7_foiRespondida = true;
+			},
+			etp8_enviarResposta: function (){
+				this.etp8_foiRespondida = true;
+			},
+			etp9_enviarResposta: function (){
+				this.etp9_foiRespondida = true;
+			},
+			etp10_enviarResposta: function (){
+				this.etp10_foiRespondida = true;
 			}
 
 		},
