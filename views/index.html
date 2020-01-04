@@ -132,26 +132,59 @@
 								<div class="row">
 									<!--h3 class="header left orange-text">Introdução <small>Alimentos</small></!--h3>-->
 								</div>
-								<div class="col s6" style="border-style: solid; border-width: 2px; height: 350px; padding: 2px;">
+								<div class="col s6" style="border-style: solid; border-width: 2px; padding: 2px;">
 									<div style="border-bottom-style: solid; border-width: 2px; height: 40px; text-align: center;">
 										<p>ÁLCOOIS</p>
 									</div>
-									<div>										
-										<img v-bind:src="estruturasAlcoois[etp3_imagensSelecionadas[0]].url" alt="5 Terre">
-										<img v-bind:src="estruturasAlcoois[etp3_imagensSelecionadas[1]].url" alt="5 Terre">
-										<img v-bind:src="estruturasAlcoois[etp3_imagensSelecionadas[2]].url" alt="5 Terre">
-										<img v-bind:src="estruturasAlcoois[etp3_imagensSelecionadas[3]].url" alt="5 Terre">
+									<div style="display: flex; flex-wrap: wrap;">
+										<div class="image-etp3">
+											<img v-bind:src="estruturasAlcoois[etp3_imagensSelecionadas[0]].url" alt="5 Terre" style="padding: 1px; max-width: 100%;">
+											<p style="font-size: 10px; text-align: center;"><strong>{{estruturasAlcoois[etp3_imagensSelecionadas[0]].nome}}</strong></p>
+											<p style="font-size: 10px; text-align: center;">{{estruturasAlcoois[etp3_imagensSelecionadas[0]].descricao}}</p>
+										</div>										
+										
+										<div class="image-etp3">
+											<img v-bind:src="estruturasAlcoois[etp3_imagensSelecionadas[1]].url" alt="5 Terre" style="padding: 1px; max-width: 100%;">
+											<p style="font-size: 10px; text-align: center;"><strong>{{estruturasAlcoois[etp3_imagensSelecionadas[1]].nome}}</strong></p>
+											<p style="font-size: 10px; text-align: center;">{{estruturasAlcoois[etp3_imagensSelecionadas[1]].descricao}}</p>
+										</div>
+										<div class="image-etp3">
+											<img v-bind:src="estruturasAlcoois[etp3_imagensSelecionadas[2]].url" alt="5 Terre" style="padding: 1px; max-width: 100%;" >
+											<p style="font-size: 10px; text-align: center;"><strong>{{estruturasAlcoois[etp3_imagensSelecionadas[2]].nome}}</strong></p>
+											<p style="font-size: 10px; text-align: center;">{{estruturasAlcoois[etp3_imagensSelecionadas[2]].descricao}}</p>
+										</div>
+										<div class="image-etp3">
+											<img v-bind:src="estruturasAlcoois[etp3_imagensSelecionadas[3]].url" alt="5 Terre" style="padding: 1px; max-width: 100%;">
+											<p style="font-size: 10px; text-align: center;"><strong>{{estruturasAlcoois[etp3_imagensSelecionadas[3]].nome}}</strong></p>
+											<p style="font-size: 10px; text-align: center;">{{estruturasAlcoois[etp3_imagensSelecionadas[3]].descricao}}</p>
+										</div>
 									</div>
 								</div>
-								<div class="col s6" style="border-style: solid; border-width: 2px; height: 350px; padding: 2px; ">
+								<div class="col s6" style="border-style: solid; border-width: 2px; padding: 2px; ">
 									<div style="border-bottom-style: solid; border-width: 2px; height: 40px; text-align: center;">
 										<p>NÃO ÁLCOOIS</p>
 									</div>
-									<div>										
-										<img v-bind:src="estruturasNaoAlcoois[etp3_imagensSelecionadas[0]].url" alt="5 Terre">
-										<img v-bind:src="estruturasNaoAlcoois[etp3_imagensSelecionadas[1]].url" alt="5 Terre">
-										<img v-bind:src="estruturasNaoAlcoois[etp3_imagensSelecionadas[2]].url" alt="5 Terre">
-										<img v-bind:src="estruturasNaoAlcoois[etp3_imagensSelecionadas[3]].url" alt="5 Terre">
+									<div style="display: flex; flex-wrap: wrap;">
+										<div class="image-etp3">
+											<img v-bind:src="estruturasNaoAlcoois[etp3_imagensSelecionadas[0]].url" alt="5 Terre" style="padding: 1px; max-width: 100%;">
+											<p style="font-size: 10px; text-align: center;"><strong>{{estruturasNaoAlcoois[etp3_imagensSelecionadas[0]].nome}}</strong></p>
+											<p style="font-size: 10px; text-align: center;">{{estruturasNaoAlcoois[etp3_imagensSelecionadas[0]].descricao}}</p>
+										</div>									
+										<div class="image-etp3">
+											<img v-bind:src="estruturasNaoAlcoois[etp3_imagensSelecionadas[1]].url" alt="5 Terre" style="padding: 1px; max-width: 100%;">
+											<p style="font-size: 10px; text-align: center;"><strong>{{estruturasNaoAlcoois[etp3_imagensSelecionadas[1]].nome}}</strong></p>
+											<p style="font-size: 10px; text-align: center;">{{estruturasNaoAlcoois[etp3_imagensSelecionadas[1]].descricao}}</p>
+										</div>
+										<div class="image-etp3">
+											<img v-bind:src="estruturasNaoAlcoois[etp3_imagensSelecionadas[2]].url" alt="5 Terre" style="padding: 1px; max-width: 100%;">
+											<p style="font-size: 10px; text-align: center;"><strong>{{estruturasNaoAlcoois[etp3_imagensSelecionadas[2]].nome}}</strong></p>
+											<p style="font-size: 10px; text-align: center;">{{estruturasNaoAlcoois[etp3_imagensSelecionadas[2]].descricao}}</p>
+										</div>
+										<div class="image-etp3">
+											<img v-bind:src="estruturasNaoAlcoois[etp3_imagensSelecionadas[3]].url" alt="5 Terre" style="padding: 1px; max-width: 100%;">
+											<p style="font-size: 10px; text-align: center;"><strong>{{estruturasNaoAlcoois[etp3_imagensSelecionadas[3]].nome}}</strong></p>
+											<p style="font-size: 10px; text-align: center;">{{estruturasNaoAlcoois[etp3_imagensSelecionadas[3]].descricao}}</p>
+										</div>	
 									</div>
 								</div>								
 							</div>
@@ -170,7 +203,12 @@
 									<div class="img-select"
 										v-bind:class="{imgSelectTrue : comp.resp, imgAcertou: comp.verificado }"
 										v-on:click="etp4_selecionarEstrutura(index)">
-										<img class="img-composto" v-bind:src="comp.url">
+										<div>
+											<img class="img-composto" v-bind:src="comp.url" style="max-width: 100%;">
+											<p style="font-size: 10px; text-align: center;"><strong>{{comp.nome}}</strong></p>
+											<p style="font-size: 10px; text-align: center;">{{comp.descricao}}</p>
+										</div>
+										
 									</div>
 								</div>
 								
@@ -777,7 +815,7 @@
 		el: '#app',
 		data: {
 			drawer: null,
-			estado: 0,
+			estado: 4,
 			usuario: 'jere',
 			idUsuario: 0,
 			novaMsg: "",
@@ -847,14 +885,14 @@
 			etp3_texto: "",
 			etp3_foiVerificado: false,
 			etp4_imagensSelecionadas: [
-				{url: "images/estruturas/alcool/13.png", isAlcool: true, resp: false, verificado: false },
-				{url: "images/estruturas/nao_alcool/14.png", isAlcool: false, resp: false, verificado: false },
-				{ url: "images/estruturas/nao_alcool/13.png", isAlcool: false, resp: false, verificado: false },
-				{ url: "images/estruturas/nao_alcool/15.png", isAlcool: false, resp: false, verificado: false },
-				{ url: "images/estruturas/alcool/15.png", isAlcool: true, resp: false, verificado: false },
-				{url: "images/estruturas/alcool/14.png", isAlcool: true, resp: false, verificado: false },
-				{ url: "images/estruturas/nao_alcool/16.png", isAlcool: false, resp: false, verificado: false },
-				{url: "images/estruturas/alcool/16.png", isAlcool: true, resp: false, verificado: false },
+				{url: "images/estruturas/alcool/13.png", nome: "Propanolol", descricao: "Tratamento da hipertensão arterial.", isAlcool: true, resp: false, verificado: false },
+				{url: "images/estruturas/nao_alcool/14.png", nome: "Eugenol", descricao: "Cravo-da-India.", isAlcool: false, resp: false, verificado: false },
+				{ url: "images/estruturas/nao_alcool/13.png", nome: "Atenolol", descricao: "Tratamento da hipertensão arterial", isAlcool: false, resp: false, verificado: false },
+				{ url: "images/estruturas/nao_alcool/15.png", nome: "Neral", descricao: "Balas e refrigerantes com aromas de limão.", isAlcool: false, resp: false, verificado: false },
+				{ url: "images/estruturas/alcool/15.png", nome: "Sorbitol", descricao: "Alimentos dietéticos; chicletes “sem açúcar”; cremes dentrifícios; pomadas, cremes e loções para a pele.", isAlcool: true, resp: false, verificado: false },
+				{url: "images/estruturas/alcool/14.png", nome: "Citronelol", descricao: "Óleo de citronela, repelente de insetos.", isAlcool: true, resp: false, verificado: false },
+				{ url: "images/estruturas/nao_alcool/16.png",nome: "3-sulfanilpropionato de etila", descricao: "Produzido na fermentação do vinho.", isAlcool: false, resp: false, verificado: false },
+				{url: "images/estruturas/alcool/16.png", nome: "4-tiapentan-1-ol", descricao: "Produzido na fermentação do vinho.", isAlcool: true, resp: false, verificado: false },
 			],
 
 			etp5_imagensSelecionadas: [

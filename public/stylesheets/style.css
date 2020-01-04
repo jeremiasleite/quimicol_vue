@@ -7,6 +7,13 @@
   border: 1px solid #ebebeb;
   margin: 5px;
 }
+.image-etp3 {
+  border-style: solid; 
+  border-width: 2px; 
+  border-color: darkblue; 
+  width: 220px; 
+  margin: 2px;
+}
 
 .image2 {
   float: left;
@@ -61,7 +68,7 @@ div.container2 {
 
 .img-select{
   width: 150px;
-  height: 100px;
+ 
   border-style: solid;  
   border-width: 4px;
   border-color: gray;
