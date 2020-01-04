@@ -35,7 +35,7 @@
 			<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Quimicol
 					<small>Bem vindo <strong>{{usuario}}! {{estado}}</strong></small></a>
 				<ul class="right hide-on-med-and-down">
-					<li v-show="estado >=1 " v-on:click="alternarChat"><a>Chat</a></li>
+					<li v-show="estado >=1 && estado < 12" v-on:click="alternarChat"><a>Chat</a></li>
 				</ul>
 
 			</div>
@@ -494,6 +494,104 @@
 						</div>
 						<!--Fim do estado 10-->
 
+						<!--Estado 11-->
+						<div class="col s10 offset-s1" v-if="estado == 11">							
+							<div class="row">
+								<h4>Responda a questão abaixo</h4>
+								<h6>Uma substância apolar oxigenada e contendo halogênios, isolada de um animal, apresentou uma forte atividade antitumoral. O resultado dessa pesquisa foi noticiado por um jornal que trazia a seguinte manchete: Álcool isolado de animal pode combater o câncer.
+									Avalie se existe a possibilidade deque essa substância seja um álcool.									
+								</h6>
+							</div>
+
+							<div class="row" v-show="!etp11_foiRespondida">
+								<span>Escreva aqui a sua resposta:</span>
+								
+								<textarea v-model="etp11_resposta" placeholder="Escreva algo"></textarea>
+								<button class="btn waves-effect waves-light blue" v-on:click="etp11_enviarResposta">Enviar Respostas</button>
+							</div>
+							
+							<div class="row" v-show="etp11_foiRespondida" style="border-style: solid; border-radius: 5px; border-color: burlywood;">
+								<p>Sua resposta foi Enviada!</strong></p>
+							</div>														
+						</div>
+						<!--Fim do estado 11-->
+
+						<!--Estado 12-->
+						<div class="col s10 offset-s1" v-if="estado == 12">							
+							<div class="row">
+								<h4>Responda a questão abaixo</h4>
+								<h6>Grande quantidade de uma substância foi apreendida em um container, recém-chegado a um porto. Identificada como um álcool cíclico, insaturado e nitrogenado, a substância é de uso controlado e sua comercialização é proibida. As empresas envolvidas na negociação foram multadas e processadas por causa do delito. Os advogados das mesmas resolveram entrar com um recurso, exigindo a anulação da sentença. Em seus argumentos, eles indicaram que substâncias com essas características não podem ser um álcool.
+									<br><strong>Avalie se os argumentos dos advogados têm sustentação científica, capaz de ajudá-los na anulação da sentença.</strong>																		
+								</h6>
+							</div>
+
+							<div class="row" v-show="!etp12_foiRespondida">
+								<span>Escreva aqui a sua resposta:</span>
+								
+								<textarea v-model="etp12_resposta" placeholder="Escreva algo"></textarea>
+								<button class="btn waves-effect waves-light blue" v-on:click="etp12_enviarResposta">Enviar Respostas</button>
+							</div>
+							
+							<div class="row" v-show="etp12_foiRespondida" style="border-style: solid; border-radius: 5px; border-color: burlywood;">
+								<p>Sua resposta foi Enviada!</strong></p>
+							</div>														
+						</div>
+						<!--Fim do estado 12-->
+
+						<!--Estado 13-->
+						<div class="col s10 offset-s1" v-if="estado == 13">							
+							<div class="row">
+								<h4>Responda a questão abaixo</h4>
+								<h6>O termo poliol abrange uma grande variedade os compostos contendo grupos hidroxilas. Eles são importantes matérias-primas para as indústrias de espumas e de tintas, pois reagem com outras substâncias para formar polímeros.
+									<br><strong>É adequado afirmar que os polióis são álcoois com importantes aplicações industriais?</strong>																		
+								</h6>
+							</div>
+
+							<div class="row" v-show="!etp13_foiRespondida">
+								<span>Escreva aqui a sua resposta:</span>
+								
+								<textarea v-model="etp13_resposta" placeholder="Escreva algo"></textarea>
+								<button class="btn waves-effect waves-light blue" v-on:click="etp13_enviarResposta">Enviar Respostas</button>
+							</div>
+							
+							<div class="row" v-show="etp13_foiRespondida" style="border-style: solid; border-radius: 5px; border-color: burlywood;">
+								<p>Sua resposta foi Enviada!</strong></p>
+							</div>														
+						</div>
+						<!--Fim do estado 13-->
+
+						<!--Estado 14-->
+						<div class="col s10 offset-s1" v-if="estado == 14">							
+							<div class="row">
+								<h4>Responda a questão abaixo</h4>
+								<h6>Determinada substância, naturalmente abundante em algumas espécies vegetais, é muito utilizada, na forma de solução, como aromatizante pelas indústrias de alimentos, cosméticos e de produtos de higiene bucal. Em uma atividade experimental realizada em sala de aula, uma pequena quantidade de cristais dessa substância foi transferida para um béquer contendo 250mL de água destilada. A solução foi agitada por 1h. Depois, verificou-se que não houve nenhuma dissolução dos cristais.
+									<br><strong>Avalie se essa substância pode ser um álcool.</strong>																		
+								</h6>
+							</div>
+
+							<div class="row" v-show="!etp14_foiRespondida">
+								<span>Escreva aqui a sua resposta:</span>
+								
+								<textarea v-model="etp14_resposta" placeholder="Escreva algo"></textarea>
+								<button class="btn waves-effect waves-light blue" v-on:click="etp14_enviarResposta">Enviar Respostas</button>
+							</div>
+							
+							<div class="row" v-show="etp14_foiRespondida" style="border-style: solid; border-radius: 5px; border-color: burlywood;">
+								<p>Sua resposta foi Enviada!</strong></p>
+							</div>														
+						</div>
+						<!--Fim do estado 14-->
+
+						<!--Estado 15-->
+						<div class="col s10 offset-s1" v-if="estado == 15">
+							<br>						
+							<div class="row alert success">
+								<h2>Parabéns você concluiu todas as etapas!</h2>								
+							</div>
+																					
+						</div>
+						<!--Fim do estado 15-->
+
 						<div class="col s10 offset-s1" v-if="estado > 2 && estado <6">
 							<div class="row" style="border-style: solid;">
 								<form action="#">
@@ -555,7 +653,7 @@
 							</div>
 						</div>
 
-						<div class="col s10 offset-s1" v-show="estado > 0">							
+						<div class="col s10 offset-s1" v-show="estado > 0 && estado<15">							
 							<div class="col s1">
 								<a class="waves-effect waves-light btn blue lighten-4" v-on:click="voltar">Voltar</a>
 							</div>
@@ -812,6 +910,14 @@
 			etp10_resposta: [],
 			etp10_respostaCorreta: ["Morango"],
 			etp10_foiRespondida: false,
+			etp11_resposta: "",			
+			etp11_foiRespondida: false,
+			etp12_resposta: "",			
+			etp12_foiRespondida: false,
+			etp13_resposta: "",			
+			etp13_foiRespondida: false,
+			etp14_resposta: "",			
+			etp14_foiRespondida: false,
 		},
 		created() {
 			this.etp3_selecionarImagens()
@@ -854,6 +960,10 @@
 			},
 			mudouEstado: function (){
 				this.etp3a5_resetarCheckboxes();
+				if(this.estado>11){
+					this.fecharChat();
+				}
+				
 			},		
 			abrirModalAjuda1: function () {
 				this.estadoModal1 = "block"
@@ -967,6 +1077,18 @@
 			},
 			etp10_enviarResposta: function (){
 				this.etp10_foiRespondida = true;
+			},
+			etp11_enviarResposta: function (){
+				this.etp11_foiRespondida = true;
+			},
+			etp12_enviarResposta: function (){
+				this.etp12_foiRespondida = true;
+			},
+			etp13_enviarResposta: function (){
+				this.etp13_foiRespondida = true;
+			},
+			etp14_enviarResposta: function (){
+				this.etp14_foiRespondida = true;
 			}
 
 		},
