@@ -33,7 +33,7 @@
 		<!--Navbar-->
 		<nav class="light-blue lighten-1" role="navigation" v-show="estado >= 1">
 			<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Quimicol
-					<small>Bem vindo <strong>{{usuario}}! {{estado}}</strong></small></a>
+					<small>Bem vindo <strong>{{usuario}}</strong>! seu parceiro é <strong>{{usernameParseiro}} {{estado}}</strong></small></a>
 				<ul class="right hide-on-med-and-down">
 					<li v-show="estado >=1 && estado < 12" v-on:click="alternarChat"><a>Chat</a></li>
 				</ul>
@@ -44,7 +44,7 @@
 		<!--conteudo-->
 		<div>
 			<!--mostrar tela entrar nome-->
-			<div v-if="estado == 0" class="row" id="tela_nome">
+			<div v-if="estado == -1" class="row" id="tela_nome">
 				<br><br>
 				<h1 class="header center orange-text">Bem vindo ao Quimicol</h1>
 				<div class="row center">
@@ -62,6 +62,10 @@
 				</div>
 			</div>
 			<!--Fim tela entrar nome-->
+
+			<div class="row" v-if="estado == 0">
+				<h5>{{log}}</h5>
+			</div>
 
 			<div class="row">
 				<div class="col s9">
@@ -516,6 +520,10 @@
 											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
 												<input name="questao5" value="Framboesa" type="checkbox" v-model="etp10_resposta" />
 												<span>Framboesa</span>
+											</label>
+											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+												<input name="questao5" value="Nenhuma das alternativas" type="checkbox" v-model="etp10_resposta" />
+												<span>Nenhuma das alternativas</span>
 											</label>										
 										</p>
 										
@@ -634,7 +642,7 @@
 							<div class="row" style="border-style: solid;">
 								<form action="#">
 									<div class="col s5">
-										<p>Quais condições são observadas nessa classificação?</p>
+										<p>Quais as três condições são observadas nessa classificação?</p>
 										<p>1
 											<label>
 											  <input name="etp3" id="etp3_1" type="checkbox" v-model=etp3_checkboxes[0]  value="1"/>
@@ -808,16 +816,20 @@
 
 <script type="text/javascript">
 	var socket = io();
-	socket.on('connect', () => {
+	/*socket.on('connect', () => {
 		console.log("Estou conectado meu id é: " + socket.id); // an alphanumeric id...
-	});
+	});*/
 	var app = new Vue({
 		el: '#app',
 		data: {
 			drawer: null,
-			estado: 0,
+			jogador: 0,
+			estado: -1,
 			usuario: 'jere',
+			usernameParseiro: "",
 			idUsuario: 0,
+			idSala: 0,
+			log: " -",
 			novaMsg: "",
 			chatlogs: [{ idUsuario: 0, usuario: "jeremias", msg: "oi isso é um teste", hora: "12:00:00" },
 			{ idUsuario: 1, usuario: "jeremias", msg: "oi isso é um teste", hora: "12:00:00" },
@@ -946,7 +958,7 @@
 			etp9_respostaCorreta: ["F"],
 			etp9_foiRespondida: false,
 			etp10_resposta: [],
-			etp10_respostaCorreta: ["Morango"],
+			etp10_respostaCorreta: ["Nenhuma das Alternativas"],
 			etp10_foiRespondida: false,
 			etp11_resposta: "",			
 			etp11_foiRespondida: false,
@@ -959,20 +971,45 @@
 		},
 		created() {
 			this.etp3_selecionarImagens()
+			
 			socket.on('chat-message', (data) => {
 				this.chatlogs.push(data)
 				this.abrirChat();
 				this.autoScrollBottomChat();
 			});
+			
 
+		},
+		mounted() {
+			socket.on('updatechat', (username, data,id, cont) => {
+				console.log(data, id, username, cont);			
+				this.idUsuario = socket.id;
+				//this.usernameParseiro = username;
+				this.idSala = id;
+				this.log = data;
+				this.jogador = cont;
+				if(cont == 2){
+					this.estado++;
+					this.abrirChat();
+				}				 
+			});
+			socket.on('usernames', (j1, j2) =>{
+				console.log("jogador", this.jogador, j1, j2)
+				if(this.jogador==1){
+					this.usernameParseiro = j2;
+				}else{
+					this.usernameParseiro = j1;
+				}
+				 
+			});	
 		},
 		methods: {
 			entrar: function () {
 				if (this.usuario != "") {
-					this.estado = 1
-					this.abrirChat();
+					this.estado = 0										
+					socket.emit('addClient', this.usuario);			
 				}
-			},
+			},	
 			alternarChat: function () {
 				this.autoScrollBottomChat()
 				if (this.ativoChat == "none") {
@@ -1000,7 +1037,7 @@
 				this.etp3a5_resetarCheckboxes();
 				if(this.estado>11){
 					this.fecharChat();
-				}
+				}				
 				
 			},		
 			abrirModalAjuda1: function () {
@@ -1021,6 +1058,7 @@
 			},
 			enviar: function () {
 				socket.emit('chat-message', {
+					sala: this.idSala,
 					msg: this.novaMsg,
 					usuario: this.usuario,
 					idUsuario: this.idUsuario,
@@ -1029,7 +1067,7 @@
 				this.novaMsg = ""
 				//this.chatlogs.push({ idUsuario: this.idUsuario, usuario: this.usuario, msg: this.novaMsg, hora: "13:00:00" })
 				this.autoScrollBottomChat();
-			},
+			},			
 			etp3_selecionarImagens: function (){
 				var array = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
 				var indice_atual = array.length, valor_temporario, indice_aleatorio;

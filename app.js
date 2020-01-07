@@ -8,6 +8,7 @@ var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 
 var usernames = {};
+var usernamesArray = []
 var pairCount = 0, id, clientsno, pgmstart = 0, varCounter;
 var mensagens = []
 
@@ -38,7 +39,7 @@ io.on('connection', function (socket) {
   socket.on('addClient', function (username) {
     socket.username = username;
     usernames[username] = username;
-    scores[socket.username] = 0;
+    usernamesArray.push(username)    
     varCounter = 0
     //var id = Math.round((Math.random() * 1000000));
     pairCount++;
@@ -49,36 +50,28 @@ io.on('connection', function (socket) {
       console.log(pairCount + " " + id);
       socket.join(id);
       pgmstart = 1;
-    } else if (pairCount === 2) {
+    } else if (pairCount === 2) {      
       console.log(pairCount + " " + id);
       socket.join(id);
       pgmstart = 2;
+      //console.log(usernamesArray)
+      
     }
-
+    //console.log(usernames)
     console.log(username + " joined to " + id);
 
-    socket.emit('updatechat', 'SERVER', 'You are connected! <br> Waiting for other player to connect...', id);
+    socket.emit('updatechat', 'SERVER', 'Você está conectado! Aguardado o outro usuário conectar...', id, pairCount);
 
-    socket.broadcast.to(id).emit('updatechat', 'SERVER', username + ' has joined to this game !', id);
-
-    if (pgmstart == 2) {
-      fs.readFile(__dirname + "/lib/questions.json", "Utf-8", function (err, data) {
-        jsoncontent = JSON.parse(data);
-        io.sockets.in(id).emit('sendQuestions', jsoncontent);
-
-      });
-      console.log("Player2");
-      //io.sockets.in(id).emit('game', "haaaaai");
-    } else {
-      console.log("Player1");
-
+    socket.broadcast.to(id).emit('updatechat', username, username + ' has joined to this game !', id, pairCount);
+    if(pairCount ===2){
+      io.in(id).emit('usernames', usernamesArray[usernamesArray.length-2], usernamesArray[usernamesArray.length-1])
     }
   });
 
 
   socket.on('chat-message', function (msg) {
     mensagens.push(msg)
-    io.emit('chat-message', msg)
+    io.in(msg.sala).emit('chat-message', msg)
     //console.log(msg);
   });
 
