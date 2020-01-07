@@ -1067,12 +1067,25 @@
 				container.scrollTop = container.scrollHeight;
 			},
 			enviar: function () {
+				function getHora() {
+					var today = new Date();
+					var h = today.getHours();
+					var m = today.getMinutes();
+					var s = today.getSeconds();
+					m = checkTime(m);
+					s = checkTime(s);			
+					return h + ":" + m + ":" + s;
+				}
+				function checkTime(i) {
+					if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+					return i;
+				}
 				socket.emit('chat-message', {
 					sala: this.idSala,
 					msg: this.novaMsg,
 					usuario: this.usuario,
 					idUsuario: this.idUsuario,
-					hora: "12:00:00"
+					hora: getHora()
 				});
 				this.novaMsg = ""
 				//this.chatlogs.push({ idUsuario: this.idUsuario, usuario: this.usuario, msg: this.novaMsg, hora: "13:00:00" })
