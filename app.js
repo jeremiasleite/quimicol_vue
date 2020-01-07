@@ -79,6 +79,10 @@ io.on('connection', function (socket) {
     io.to(sala).emit('estado', sala, jogador, estado)
   })
 
+  socket.on('enviarRespostas', function (respostas){
+    console.log(respostas)
+  })
+
   socket.on('disconnect', function(){		
 		delete usernames[socket.username];
 		io.sockets.emit('updateusers', usernames);

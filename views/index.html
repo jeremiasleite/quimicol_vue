@@ -33,7 +33,8 @@
 		<!--Navbar-->
 		<nav class="light-blue lighten-1" role="navigation" v-show="estado >= 1">
 			<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Quimicol
-					<small>Bem vindo <strong>{{usuario}}</strong>! seu parceiro é <strong>{{usernameParseiro}}</strong></small></a>
+					<small>Bem vindo <strong>{{usuario}}</strong>! seu parceiro é
+						<strong>{{usernameParseiro}}</strong></small></a>
 				<ul class="right hide-on-med-and-down">
 					<li v-show="estado >=1 && estado < 12" v-on:click="alternarChat"><a>Chat</a></li>
 				</ul>
@@ -69,6 +70,7 @@
 
 			<div class="row">
 				<div class="col s9">
+
 					<!--Estado 1-->
 					<div class="col s10 offset-s1" v-if="estado == 1">
 						<div class="row">
@@ -93,10 +95,11 @@
 					<div class="col s10 offset-s1" v-if="estado == 2">
 						<div class="row">
 							<div class="row">
-								<h4 class="">Agora assistam ao vídeo sobre álcoois e discutam sobre ele no chat a respeito das informações apresentadas.</h4>
+								<h4 class="">Agora assistam ao vídeo sobre álcoois e discutam sobre ele no chat a
+									respeito das informações apresentadas.</h4>
 							</div>
 							<div class="row">
-								<iframe width="600" height="400" src="https://www.youtube.com/embed/e2ThDia1fVs"
+								<iframe width="560" height="315" src="https://www.youtube.com/embed/LI9ImGIm9ys"
 									frameborder="0"
 									allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
 									allowfullscreen></iframe>
@@ -127,102 +130,133 @@
 								</div>
 							</div>-->
 						</div>
-						</div>
-						<!--Fim do estado 2-->
+					</div>
+					<!--Fim do estado 2-->
 
-						<!--Estado 3-->
-						<div class="col s10 offset-s1" v-if="estado == 3">
+					<!--Estado 3-->
+					<div class="col s10 offset-s1" v-if="estado == 3">
+						<div class="row">
 							<div class="row">
-								<div class="row">
-									<!--h3 class="header left orange-text">Introdução <small>Alimentos</small></!--h3>-->
-								</div>
-								<div class="col s6" style="border-style: solid; border-width: 2px; padding: 2px;">
-									<div style="border-bottom-style: solid; border-width: 2px; height: 40px; text-align: center;">
-										<p>ÁLCOOIS</p>
-									</div>
-									<div style="display: flex; flex-wrap: wrap;">
-										<div class="image-etp3">
-											<img v-bind:src="estruturasAlcoois[etp3_imagensSelecionadas[0]].url" alt="5 Terre" style="padding: 1px; max-width: 100%;">
-											<p style="font-size: 10px; text-align: center;"><strong>{{estruturasAlcoois[etp3_imagensSelecionadas[0]].nome}}</strong></p>
-											<p style="font-size: 10px; text-align: center;">{{estruturasAlcoois[etp3_imagensSelecionadas[0]].descricao}}</p>
-										</div>										
-										
-										<div class="image-etp3">
-											<img v-bind:src="estruturasAlcoois[etp3_imagensSelecionadas[1]].url" alt="5 Terre" style="padding: 1px; max-width: 100%;">
-											<p style="font-size: 10px; text-align: center;"><strong>{{estruturasAlcoois[etp3_imagensSelecionadas[1]].nome}}</strong></p>
-											<p style="font-size: 10px; text-align: center;">{{estruturasAlcoois[etp3_imagensSelecionadas[1]].descricao}}</p>
-										</div>
-										<div class="image-etp3">
-											<img v-bind:src="estruturasAlcoois[etp3_imagensSelecionadas[2]].url" alt="5 Terre" style="padding: 1px; max-width: 100%;" >
-											<p style="font-size: 10px; text-align: center;"><strong>{{estruturasAlcoois[etp3_imagensSelecionadas[2]].nome}}</strong></p>
-											<p style="font-size: 10px; text-align: center;">{{estruturasAlcoois[etp3_imagensSelecionadas[2]].descricao}}</p>
-										</div>
-										<div class="image-etp3">
-											<img v-bind:src="estruturasAlcoois[etp3_imagensSelecionadas[3]].url" alt="5 Terre" style="padding: 1px; max-width: 100%;">
-											<p style="font-size: 10px; text-align: center;"><strong>{{estruturasAlcoois[etp3_imagensSelecionadas[3]].nome}}</strong></p>
-											<p style="font-size: 10px; text-align: center;">{{estruturasAlcoois[etp3_imagensSelecionadas[3]].descricao}}</p>
-										</div>
-									</div>
-								</div>
-								<div class="col s6" style="border-style: solid; border-width: 2px; padding: 2px; ">
-									<div style="border-bottom-style: solid; border-width: 2px; height: 40px; text-align: center;">
-										<p>NÃO ÁLCOOIS</p>
-									</div>
-									<div style="display: flex; flex-wrap: wrap;">
-										<div class="image-etp3">
-											<img v-bind:src="estruturasNaoAlcoois[etp3_imagensSelecionadas[0]].url" alt="5 Terre" style="padding: 1px; max-width: 100%;">
-											<p style="font-size: 10px; text-align: center;"><strong>{{estruturasNaoAlcoois[etp3_imagensSelecionadas[0]].nome}}</strong></p>
-											<p style="font-size: 10px; text-align: center;">{{estruturasNaoAlcoois[etp3_imagensSelecionadas[0]].descricao}}</p>
-										</div>									
-										<div class="image-etp3">
-											<img v-bind:src="estruturasNaoAlcoois[etp3_imagensSelecionadas[1]].url" alt="5 Terre" style="padding: 1px; max-width: 100%;">
-											<p style="font-size: 10px; text-align: center;"><strong>{{estruturasNaoAlcoois[etp3_imagensSelecionadas[1]].nome}}</strong></p>
-											<p style="font-size: 10px; text-align: center;">{{estruturasNaoAlcoois[etp3_imagensSelecionadas[1]].descricao}}</p>
-										</div>
-										<div class="image-etp3">
-											<img v-bind:src="estruturasNaoAlcoois[etp3_imagensSelecionadas[2]].url" alt="5 Terre" style="padding: 1px; max-width: 100%;">
-											<p style="font-size: 10px; text-align: center;"><strong>{{estruturasNaoAlcoois[etp3_imagensSelecionadas[2]].nome}}</strong></p>
-											<p style="font-size: 10px; text-align: center;">{{estruturasNaoAlcoois[etp3_imagensSelecionadas[2]].descricao}}</p>
-										</div>
-										<div class="image-etp3">
-											<img v-bind:src="estruturasNaoAlcoois[etp3_imagensSelecionadas[3]].url" alt="5 Terre" style="padding: 1px; max-width: 100%;">
-											<p style="font-size: 10px; text-align: center;"><strong>{{estruturasNaoAlcoois[etp3_imagensSelecionadas[3]].nome}}</strong></p>
-											<p style="font-size: 10px; text-align: center;">{{estruturasNaoAlcoois[etp3_imagensSelecionadas[3]].descricao}}</p>
-										</div>	
-									</div>
-								</div>								
+								<!--h3 class="header left orange-text">Introdução <small>Alimentos</small></!--h3>-->
 							</div>
-							
-						</div>
-						<!--Fim do estado 3-->
+							<div class="col s6" style="border-style: solid; border-width: 2px; padding: 2px;">
+								<div
+									style="border-bottom-style: solid; border-width: 2px; height: 40px; text-align: center;">
+									<p>ÁLCOOIS</p>
+								</div>
+								<div style="display: flex; flex-wrap: wrap;">
+									<div class="image-etp3">
+										<img v-bind:src="estruturasAlcoois[etp3_imagensSelecionadas[0]].url"
+											alt="5 Terre" style="padding: 1px; max-width: 100%;">
+										<p style="font-size: 10px; text-align: center;">
+											<strong>{{estruturasAlcoois[etp3_imagensSelecionadas[0]].nome}}</strong></p>
+										<p style="font-size: 10px; text-align: center;">
+											{{estruturasAlcoois[etp3_imagensSelecionadas[0]].descricao}}</p>
+									</div>
 
-						<!--Estado 4-->
-						<div class="col s10 offset-s1" v-if="estado == 4">
-							
-							<div class="row">
-								<h6>Selecione os compostos que são ÁLCOOIS</h6>
-							</div>
-							<div class="row" style="display: flex; flex-wrap: wrap;">
-								<div class="" v-for="comp, index in etp4_imagensSelecionadas" style="margin: 10px;">
-									<div class="img-select"
-										v-bind:class="{imgSelectTrue : comp.resp, imgAcertou: comp.verificado }"
-										v-on:click="etp4_selecionarEstrutura(index)">
-										<div>
-											<img class="img-composto" v-bind:src="comp.url" style="max-width: 100%;">
-											<p style="font-size: 10px; text-align: center;"><strong>{{comp.nome}}</strong></p>
-											<p style="font-size: 10px; text-align: center;">{{comp.descricao}}</p>
-										</div>
-										
+									<div class="image-etp3">
+										<img v-bind:src="estruturasAlcoois[etp3_imagensSelecionadas[1]].url"
+											alt="5 Terre" style="padding: 1px; max-width: 100%;">
+										<p style="font-size: 10px; text-align: center;">
+											<strong>{{estruturasAlcoois[etp3_imagensSelecionadas[1]].nome}}</strong></p>
+										<p style="font-size: 10px; text-align: center;">
+											{{estruturasAlcoois[etp3_imagensSelecionadas[1]].descricao}}</p>
+									</div>
+									<div class="image-etp3">
+										<img v-bind:src="estruturasAlcoois[etp3_imagensSelecionadas[2]].url"
+											alt="5 Terre" style="padding: 1px; max-width: 100%;">
+										<p style="font-size: 10px; text-align: center;">
+											<strong>{{estruturasAlcoois[etp3_imagensSelecionadas[2]].nome}}</strong></p>
+										<p style="font-size: 10px; text-align: center;">
+											{{estruturasAlcoois[etp3_imagensSelecionadas[2]].descricao}}</p>
+									</div>
+									<div class="image-etp3">
+										<img v-bind:src="estruturasAlcoois[etp3_imagensSelecionadas[3]].url"
+											alt="5 Terre" style="padding: 1px; max-width: 100%;">
+										<p style="font-size: 10px; text-align: center;">
+											<strong>{{estruturasAlcoois[etp3_imagensSelecionadas[3]].nome}}</strong></p>
+										<p style="font-size: 10px; text-align: center;">
+											{{estruturasAlcoois[etp3_imagensSelecionadas[3]].descricao}}</p>
 									</div>
 								</div>
-								
 							</div>
-							
-							<div class="row">
-								<button class="btn waves-effect waves-light light-green accent-4"
-									v-on:click='etp4_verificar'>Verificar</button>
+							<div class="col s6" style="border-style: solid; border-width: 2px; padding: 2px; ">
+								<div
+									style="border-bottom-style: solid; border-width: 2px; height: 40px; text-align: center;">
+									<p>NÃO ÁLCOOIS</p>
+								</div>
+								<div style="display: flex; flex-wrap: wrap;">
+									<div class="image-etp3">
+										<img v-bind:src="estruturasNaoAlcoois[etp3_imagensSelecionadas[0]].url"
+											alt="5 Terre" style="padding: 1px; max-width: 100%;">
+										<p style="font-size: 10px; text-align: center;">
+											<strong>{{estruturasNaoAlcoois[etp3_imagensSelecionadas[0]].nome}}</strong>
+										</p>
+										<p style="font-size: 10px; text-align: center;">
+											{{estruturasNaoAlcoois[etp3_imagensSelecionadas[0]].descricao}}</p>
+									</div>
+									<div class="image-etp3">
+										<img v-bind:src="estruturasNaoAlcoois[etp3_imagensSelecionadas[1]].url"
+											alt="5 Terre" style="padding: 1px; max-width: 100%;">
+										<p style="font-size: 10px; text-align: center;">
+											<strong>{{estruturasNaoAlcoois[etp3_imagensSelecionadas[1]].nome}}</strong>
+										</p>
+										<p style="font-size: 10px; text-align: center;">
+											{{estruturasNaoAlcoois[etp3_imagensSelecionadas[1]].descricao}}</p>
+									</div>
+									<div class="image-etp3">
+										<img v-bind:src="estruturasNaoAlcoois[etp3_imagensSelecionadas[2]].url"
+											alt="5 Terre" style="padding: 1px; max-width: 100%;">
+										<p style="font-size: 10px; text-align: center;">
+											<strong>{{estruturasNaoAlcoois[etp3_imagensSelecionadas[2]].nome}}</strong>
+										</p>
+										<p style="font-size: 10px; text-align: center;">
+											{{estruturasNaoAlcoois[etp3_imagensSelecionadas[2]].descricao}}</p>
+									</div>
+									<div class="image-etp3">
+										<img v-bind:src="estruturasNaoAlcoois[etp3_imagensSelecionadas[3]].url"
+											alt="5 Terre" style="padding: 1px; max-width: 100%;">
+										<p style="font-size: 10px; text-align: center;">
+											<strong>{{estruturasNaoAlcoois[etp3_imagensSelecionadas[3]].nome}}</strong>
+										</p>
+										<p style="font-size: 10px; text-align: center;">
+											{{estruturasNaoAlcoois[etp3_imagensSelecionadas[3]].descricao}}</p>
+									</div>
+								</div>
 							</div>
-							<!--<div class="row">
+						</div>
+
+					</div>
+					<!--Fim do estado 3-->
+
+					<!--Estado 4-->
+					<div class="col s10 offset-s1" v-if="estado == 4">
+
+						<div class="row">
+							<h6>Selecione os compostos que são ÁLCOOIS</h6>
+						</div>
+						<div class="row" style="display: flex; flex-wrap: wrap;">
+							<div class="" v-for="comp, index in etp4_imagensSelecionadas" style="margin: 10px;">
+								<div class="img-select"
+									v-bind:class="{imgSelectTrue : comp.resp, imgAcertou: comp.verificado }"
+									v-on:click="etp4_selecionarEstrutura(index)">
+									<div>
+										<img class="img-composto" v-bind:src="comp.url" style="max-width: 100%;">
+										<p style="font-size: 10px; text-align: center;"><strong>{{comp.nome}}</strong>
+										</p>
+										<p style="font-size: 10px; text-align: center;">{{comp.descricao}}</p>
+									</div>
+
+								</div>
+							</div>
+
+						</div>
+
+						<div class="row">
+							<button class="btn waves-effect waves-light light-green accent-4"
+								v-on:click='etp4_verificar'>Verificar</button>
+						</div>
+						<!--<div class="row">
 								<button class="btn waves-effect waves-light light-green accent-4"
 									v-on:click='etp4_verificar'>Verificar</button>
 								<button class="btn waves-effect waves-light red"
@@ -230,40 +264,42 @@
 								<button class="btn waves-effect waves-light red"
 									v-on:click="abrirModalAjuda2">Prioridade</button>
 							</div>-->
-							
-						</div>
-						<!--Fim do estado 4-->
 
-						<!--Estado 5-->
-						<div class="col s10 offset-s1" v-if="estado == 5">
-							
-							<div class="row">
-								<h6>Selecione os compostos que são ÁLCOOIS</h6>
-							</div>
-							<div class="row" style="display: flex; flex-wrap: wrap;">
-								<div class="" v-for="comp, index in etp5_imagensSelecionadas" style="margin: 10px;">
-									<div class="img-select"
-										v-bind:class="{imgSelectTrue : comp.resp, imgAcertou: comp.verificado }"
-										v-on:click="etp5_selecionarEstrutura(index)">
-										<img class="img-composto" v-bind:src="comp.url">
-									</div>
+					</div>
+					<!--Fim do estado 4-->
+
+					<!--Estado 5-->
+					<div class="col s10 offset-s1" v-if="estado == 5">
+
+						<div class="row">
+							<h6>Selecione os compostos que são ÁLCOOIS</h6>
+						</div>
+						<div class="row" style="display: flex; flex-wrap: wrap;">
+							<div class="" v-for="comp, index in etp5_imagensSelecionadas" style="margin: 10px;">
+								<div class="img-select"
+									v-bind:class="{imgSelectTrue : comp.resp, imgAcertou: comp.verificado }"
+									v-on:click="etp5_selecionarEstrutura(index)">
+									<img class="img-composto" v-bind:src="comp.url">
 								</div>
-								
 							</div>
-							<div class="row">
-								<button class="btn waves-effect waves-light light-green accent-4"
-									v-on:click='etp5_verificar'>Verificar</button>
-							</div>
-						</div>
-						<!--Fim do estado 5-->
 
-						<!--Estado 6-->
-						<div class="col s10 offset-s1" v-if="estado == 6">							
-							<div class="row">
-								<h4>Responda a questão abaixo</h4>
-								<h6>A lista de reagentes para síntese de fármacos apresentada abaixo foi enviada para o almoxarifado de uma loja. O conferente verificou que os álcoois listados estavam em falta. Indique-os.</h6>
-							</div>
-							<div class="row" style="display: flex; flex-wrap: wrap;">
+						</div>
+						<div class="row">
+							<button class="btn waves-effect waves-light light-green accent-4"
+								v-on:click='etp5_verificar'>Verificar</button>
+						</div>
+					</div>
+					<!--Fim do estado 5-->
+
+					<!--Estado 6-->
+					<div class="col s10 offset-s1" v-if="estado == 6">
+						<div class="row">
+							<h4>Responda a questão abaixo</h4>
+							<h6>A lista de reagentes para síntese de fármacos apresentada abaixo foi enviada para o
+								almoxarifado de uma loja. O conferente verificou que os álcoois listados estavam em
+								falta. Indique-os.</h6>
+						</div>
+						<!--<div class="row" style="display: flex; flex-wrap: wrap;">
 								<div class="" v-for="comp, index in etp6_imagens" style="margin: 10px;">
 									<div class="img-select"
 										v-bind:class="{imgSelectTrue : comp.resp, imgAcertou: comp.isAlcool && etp6_respostaEnviada}"
@@ -272,447 +308,621 @@
 									</div>
 								</div>
 								
-							</div>
-							<div class="row">
-								<button class="btn waves-effect waves-light blue" v-on:click="etp6_enviarResposta">Enviar Respostas</button>
-							</div>							
+							</div>-->
+
+						<div class="row">
+							<img width="500" src="images/questoes/q1.png">
 						</div>
-						<!--Fim do estado 6-->
-
-						<!--Estado 7-->
-						<div class="col s10 offset-s1" v-if="estado == 7">
-							
+						<div class="row" v-show="!etp6_foiRespondida">
 							<div class="row">
-								<h4>Responda a questão abaixo</h4>
-								<h6>O quadro abaixo mostra estruturas de feromônios de alguns insetos que afetam determinadas culturas agrícolas.</h6>
-							</div>
-							<div class="row">
-								<img width="500" src="images/questoes/q2.png">
-								<p>Se esses álcoois forem utilizados em armadilhas para capturas de insetos, em quais culturas eles seriam empregados?</p>
-							</div>
-							<div class="row" v-show="!etp7_foiRespondida">
-								<div class="row">
-									<form action="#">
-										<p>
-											<label>
-											  <input name="questao2" value="milho" type="checkbox" v-model="etp7_resposta" />
-											  <span>MILHO</span>
-											</label>
-	
-											<label>
-												<input name="questao2" value="cana-açucar" type="checkbox" v-model="etp7_resposta"/>
-												<span>CANA-DE-AÇUCAR</span>
-											</label>
-											<label>
-												<input name="questao2" value="morango" type="checkbox" v-model="etp7_resposta"/>
-												<span>MORANGO</span>
-											</label>
-											<label>
-												<input name="questao2" value="frutas" type="checkbox" v-model="etp7_resposta"/>
-												<span>FRUTAS</span>
-											</label>
-	
-											<label>
-												<input name="questao2" value="tomate" type="checkbox" v-model="etp7_resposta"/>
-												<span>TOMATE</span>
-											</label>
-										</p>
-										
-									</form>
-								</div>
-								
-								<div class="row">
-									<button class="btn waves-effect waves-light blue" v-on:click="etp7_enviarResposta">Enviar Respostas</button>
-								</div>
-							</div>
-							<div class="row" v-show="etp7_foiRespondida" style="border-style: solid; border-radius: 5px; border-color: burlywood;">
-								<p>Sua resposta foi {{etp7_resposta}} a resposta correta é <strong>{{etp7_respostaCorreta}}</strong></p>
-							</div>
-														
-						</div>
-						<!--Fim do estado 7-->
-
-						<!--Estado 8-->
-						<div class="col s10 offset-s1" v-if="estado == 8">							
-							<div class="row">
-								<h4>Responda a questão abaixo</h4>
-								<h6>A produção de cachaça no Brasil é de aproximadamente 1,4 bilhões de litros e contribui com cerca de US$ 500 milhões para o nosso PIB. A sua fabricação envolve a fermentação alcoólica, a partir do sumo da cana-de-açúcar, processo utilizado desde o período colonial. Nesse tipo de produção são formados dois produtos principais - etanol e dióxido de carbono - no entanto, normalmente há a geração de pequenas quantidades de outros componentes, inclusive alguns bastante tóxicos.</h6>
-								<p><small>Adaptado de: SOUZA, Leandro Marelli de et al . Teores de compostos orgânicos em cachaças produzidas na região norte fluminense - Rio de Janeiro. Química Nova, v. 32, n. 9, p. 2304-2309, 2009.</small></p>
-								<h6>Abaixo, estão representadas as estruturas químicas de algumas substâncias, pertencentes a diferentes funções orgânicas, que são encontradas em cachaças. Identifique os álcoois.</h6>
-							</div>
-							<div class="row">
-								<img width="500" src="images/questoes/q3.png">
-								<p>Avalie aspectos positivos e negativos em torno da fabricação da cachaça para a sociedade brasileira e discuta alguns dos efeitos causados pela presença de álcoois em suas composições no <strong>Chat com o colega</strong>.</p>
-							</div>
-							<div class="row" v-show="!etp8_foiRespondida">
-								<div class="row">
-									<form action="#">
-										<p>
-											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
-											  <input name="questao3" value="A" type="checkbox" v-model="etp8_resposta" />
-											  <span>A</span>
-											</label>
-	
-											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
-												<input name="questao3" value="B" type="checkbox" v-model="etp8_resposta"/>
-												<span>B</span>
-											</label>
-											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
-												<input name="questao3" value="C" type="checkbox" v-model="etp8_resposta"/>
-												<span>C</span>
-											</label>
-											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
-												<input name="questao3" value="D" type="checkbox" v-model="etp8_resposta"/>
-												<span>D</span>
-											</label>
-	
-											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
-												<input name="questao3" value="E" type="checkbox" v-model="etp8_resposta"/>
-												<span>E</span>
-											</label>
-										
-											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
-											  <input name="questao3" value="F" type="checkbox" v-model="etp8_resposta" />
-											  <span>F</span>
-											</label>
-	
-											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
-												<input name="questao3" value="G" type="checkbox" v-model="etp8_resposta"/>
-												<span>G</span>
-											</label>
-											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
-												<input name="questao3" value="H" type="checkbox" v-model="etp8_resposta"/>
-												<span>H</span>
-											</label>
-											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;" style="border-style: solid; border-color: burlywood; border-radius: 5px;">
-												<input name="questao3" value="I" type="checkbox" v-model="etp8_resposta"/>
-												<span>I</span>
-											</label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
-	
-											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
-												<input name="questao3" value="J" type="checkbox" v-model="etp8_resposta"/>
-												<span>J</span>
-											</label>
-										</p>
-										
-									</form>
-								</div>
-								
-								<div class="row">
-									<button class="btn waves-effect waves-light blue" v-on:click="etp8_enviarResposta">Enviar Respostas</button>
-								</div>
-							</div>
-							<div class="row" v-show="etp8_foiRespondida" style="border-style: solid; border-radius: 5px; border-color: burlywood;">
-								<p>Sua resposta foi {{etp8_resposta}} a resposta correta é <strong>{{etp8_respostaCorreta}}</strong></p>
-							</div>														
-						</div>
-						<!--Fim do estado 8-->
-
-						<!--Estado 9-->
-						<div class="col s10 offset-s1" v-if="estado == 9">							
-							<div class="row">
-								<h4>Responda a questão abaixo</h4>
-								<h6>Um vídeo disponibilizado na internet que determinado volume de uma substância líquida, contendo fórmula molecular C<sub>4</sub>H<sub>10</sub>O, foi transferido para um balão de destilação e, em seguida, resfriado em um banho de gelo. Passados alguns minutos, a substância ficou sólida, com a aparência de cristais. Essa substância é citada na tabela abaixo, identifique-a.</h6>
-							</div>
-							<div class="row">
-								<img width="500" src="images/questoes/q4.png">								
-							</div>
-							<div class="row" v-show="!etp9_foiRespondida">
-								<div class="row">
-									<form action="#">
-										<p>
-											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
-											  <input name="questao4" value="A" type="checkbox" v-model="etp9_resposta" />
-											  <span>A</span>
-											</label>
-	
-											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
-												<input name="questao4" value="B" type="checkbox" v-model="etp9_resposta"/>
-												<span>B</span>
-											</label>
-											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
-												<input name="questao4" value="C" type="checkbox" v-model="etp9_resposta"/>
-												<span>C</span>
-											</label>
-											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
-												<input name="questao4" value="D" type="checkbox" v-model="etp9_resposta"/>
-												<span>D</span>
-											</label>
-	
-											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
-												<input name="questao4" value="E" type="checkbox" v-model="etp9_resposta"/>
-												<span>E</span>
-											</label>
-										
-											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
-											  <input name="questao4" value="F" type="checkbox" v-model="etp9_resposta" />
-											  <span>F</span>
-											</label>											
-										</p>
-										
-									</form>
-								</div>
-								
-								<div class="row">
-									<button class="btn waves-effect waves-light blue" v-on:click="etp9_enviarResposta">Enviar Respostas</button>
-								</div>
-							</div>
-							<div class="row" v-show="etp9_foiRespondida" style="border-style: solid; border-radius: 5px; border-color: burlywood;">
-								<p>Sua resposta foi {{etp9_resposta}} a resposta correta é <strong>{{etp9_respostaCorreta}}</strong></p>
-							</div>														
-						</div>
-						<!--Fim do estado 9-->
-
-						<!--Estado 10-->
-						<div class="col s10 offset-s1" v-if="estado == 10">							
-							<div class="row">
-								<h4>Responda a questão abaixo</h4>
-								<h6>Uma indústria alimentícia resolveu acrescentar uma nova opção de sabor à sua linha de biscoitos e bolachas. Para tanto, decidiu utilizar um aromatizante que é um álcool.
-									Com base nas opções abaixo, identifique o novo sabor para o produto.
-								</h6>
-							</div>
-							<div class="row">
-								<img width="500" src="images/questoes/q5.png">								
-							</div>
-							<div class="row" v-show="!etp10_foiRespondida">
-								<div class="row">
-									<form action="#">
-										<p>
-											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
-											  <input name="questao5" value="Uva" type="checkbox" v-model="etp10_resposta" />
-											  <span>Uva</span>
-											</label>
-	
-											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
-												<input name="questao5" value="Morango" type="checkbox" v-model="etp10_resposta"/>
-												<span>Morango</span>
-											</label>
-											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
-												<input name="questao5" value="Hortelã" type="checkbox" v-model="etp10_resposta"/>
-												<span>Hortelã</span>
-											</label>
-											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
-												<input name="questao5" value="Tomate" type="checkbox" v-model="etp10_resposta"/>
-												<span>Tomate</span>
-											</label>
-	
-											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
-												<input name="questao5" value="Calena" type="checkbox" v-model="etp10_resposta"/>
-												<span>Canela</span>
-											</label>
-										
-											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
-											  <input name="questao5" value="Anis" type="checkbox" v-model="etp10_resposta" />
-											  <span>Anis</span>
-											</label>
-											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
-												<input name="questao5" value="Manteiga" type="checkbox" v-model="etp10_resposta" />
-												<span>Manteiga</span>
-											</label>
-											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
-												<input name="questao5" value="Cereja" type="checkbox" v-model="etp10_resposta" />
-												<span>Cereja</span>
-											  </label>	
-											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
-												<input name="questao5" value="Melão" type="checkbox" v-model="etp10_resposta" />
-												<span>Melão</span>
-											</label>
-											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
-												<input name="questao5" value="Framboesa" type="checkbox" v-model="etp10_resposta" />
-												<span>Framboesa</span>
-											</label>
-											<label style="border-style: solid; border-color: burlywood; border-radius: 5px;">
-												<input name="questao5" value="Nenhuma das alternativas" type="checkbox" v-model="etp10_resposta" />
-												<span>Nenhuma das alternativas</span>
-											</label>										
-										</p>
-										
-									</form>
-								</div>
-								
-								<div class="row">
-									<button class="btn waves-effect waves-light blue" v-on:click="etp10_enviarResposta">Enviar Respostas</button>
-								</div>
-							</div>
-							<div class="row" v-show="etp10_foiRespondida" style="border-style: solid; border-radius: 5px; border-color: burlywood;">
-								<p>Sua resposta foi {{etp10_resposta}} a resposta correta é <strong>{{etp10_respostaCorreta}}</strong></p>
-							</div>														
-						</div>
-						<!--Fim do estado 10-->
-
-						<!--Estado 11-->
-						<div class="col s10 offset-s1" v-if="estado == 11">							
-							<div class="row">
-								<h4>Responda a questão abaixo</h4>
-								<h6>Uma substância apolar oxigenada e contendo halogênios, isolada de um animal, apresentou uma forte atividade antitumoral. O resultado dessa pesquisa foi noticiado por um jornal que trazia a seguinte manchete: Álcool isolado de animal pode combater o câncer.
-									Avalie se existe a possibilidade deque essa substância seja um álcool.									
-								</h6>
-							</div>
-
-							<div class="row" v-show="!etp11_foiRespondida">
-								<span>Escreva aqui a sua resposta:</span>
-								
-								<textarea v-model="etp11_resposta" placeholder="Escreva algo"></textarea>
-								<button class="btn waves-effect waves-light blue" v-on:click="etp11_enviarResposta">Enviar Respostas</button>
-							</div>
-							
-							<div class="row" v-show="etp11_foiRespondida" style="border-style: solid; border-radius: 5px; border-color: burlywood;">
-								<p>Sua resposta foi Enviada!</strong></p>
-							</div>														
-						</div>
-						<!--Fim do estado 11-->
-
-						<!--Estado 12-->
-						<div class="col s10 offset-s1" v-if="estado == 12">							
-							<div class="row">
-								<h4>Responda a questão abaixo</h4>
-								<h6>Grande quantidade de uma substância foi apreendida em um container, recém-chegado a um porto. Identificada como um álcool cíclico, insaturado e nitrogenado, a substância é de uso controlado e sua comercialização é proibida. As empresas envolvidas na negociação foram multadas e processadas por causa do delito. Os advogados das mesmas resolveram entrar com um recurso, exigindo a anulação da sentença. Em seus argumentos, eles indicaram que substâncias com essas características não podem ser um álcool.
-									<br><strong>Avalie se os argumentos dos advogados têm sustentação científica, capaz de ajudá-los na anulação da sentença.</strong>																		
-								</h6>
-							</div>
-
-							<div class="row" v-show="!etp12_foiRespondida">
-								<span>Escreva aqui a sua resposta:</span>
-								
-								<textarea v-model="etp12_resposta" placeholder="Escreva algo"></textarea>
-								<button class="btn waves-effect waves-light blue" v-on:click="etp12_enviarResposta">Enviar Respostas</button>
-							</div>
-							
-							<div class="row" v-show="etp12_foiRespondida" style="border-style: solid; border-radius: 5px; border-color: burlywood;">
-								<p>Sua resposta foi Enviada!</strong></p>
-							</div>														
-						</div>
-						<!--Fim do estado 12-->
-
-						<!--Estado 13-->
-						<div class="col s10 offset-s1" v-if="estado == 13">							
-							<div class="row">
-								<h4>Responda a questão abaixo</h4>
-								<h6>O termo poliol abrange uma grande variedade os compostos contendo grupos hidroxilas. Eles são importantes matérias-primas para as indústrias de espumas e de tintas, pois reagem com outras substâncias para formar polímeros.
-									<br><strong>É adequado afirmar que os polióis são álcoois com importantes aplicações industriais?</strong>																		
-								</h6>
-							</div>
-
-							<div class="row" v-show="!etp13_foiRespondida">
-								<span>Escreva aqui a sua resposta:</span>
-								
-								<textarea v-model="etp13_resposta" placeholder="Escreva algo"></textarea>
-								<button class="btn waves-effect waves-light blue" v-on:click="etp13_enviarResposta">Enviar Respostas</button>
-							</div>
-							
-							<div class="row" v-show="etp13_foiRespondida" style="border-style: solid; border-radius: 5px; border-color: burlywood;">
-								<p>Sua resposta foi Enviada!</strong></p>
-							</div>														
-						</div>
-						<!--Fim do estado 13-->
-
-						<!--Estado 14-->
-						<div class="col s10 offset-s1" v-if="estado == 14">							
-							<div class="row">
-								<h4>Responda a questão abaixo</h4>
-								<h6>Determinada substância, naturalmente abundante em algumas espécies vegetais, é muito utilizada, na forma de solução, como aromatizante pelas indústrias de alimentos, cosméticos e de produtos de higiene bucal. Em uma atividade experimental realizada em sala de aula, uma pequena quantidade de cristais dessa substância foi transferida para um béquer contendo 250mL de água destilada. A solução foi agitada por 1h. Depois, verificou-se que não houve nenhuma dissolução dos cristais.
-									<br><strong>Avalie se essa substância pode ser um álcool.</strong>																		
-								</h6>
-							</div>
-
-							<div class="row" v-show="!etp14_foiRespondida">
-								<span>Escreva aqui a sua resposta:</span>
-								
-								<textarea v-model="etp14_resposta" placeholder="Escreva algo"></textarea>
-								<button class="btn waves-effect waves-light blue" v-on:click="etp14_enviarResposta">Enviar Respostas</button>
-							</div>
-							
-							<div class="row" v-show="etp14_foiRespondida" style="border-style: solid; border-radius: 5px; border-color: burlywood;">
-								<p>Sua resposta foi Enviada!</strong></p>
-							</div>														
-						</div>
-						<!--Fim do estado 14-->
-
-						<!--Estado 15-->
-						<div class="col s10 offset-s1" v-if="estado == 15">
-							<br>						
-							<div class="row alert success">
-								<h2>Parabéns você concluiu todas as etapas!</h2>								
-							</div>
-																					
-						</div>
-						<!--Fim do estado 15-->
-
-						<div class="col s10 offset-s1" v-if="estado > 2 && estado <6">
-							<div class="row" style="border-style: solid;">
 								<form action="#">
-									<div class="col s5">
-										<p>Quais as três condições são observadas nessa classificação?</p>
-										<p>1
-											<label>
-											  <input name="etp3" id="etp3_1" type="checkbox" v-model=etp3_checkboxes[0]  value="1"/>
-											  <span>Possui HIDROXILA</span>
-											</label>
-										</p>
-										<p>2
-											<label>
-											  <input name="etp3" id="etp3_2" type="checkbox" v-model=etp3_checkboxes[1] value="2"/>
-											  <span>Possui CARBOXILA</span>
-											</label>
-										</p>
-										<p>3
-											<label>
-											  <input name="etp3" id="etp3_3" type="checkbox" v-model=etp3_checkboxes[2] value="3"/>
-											  <span>Ligada ao carbono saturado</span>
-											</label>
-										</p>
-									</div>
-									<div class="col s5">
-										<p>4
-											<label>
-											  <input name="etp3" id="etp3_4" type="checkbox" v-model=etp3_checkboxes[3] value="4"/>
-											  <span>Ligada ao carbono insaturado</span>
-											</label>
-										</p>
-										<p>5
-											<label>
-											  <input name="etp3" id="etp3_5" type="checkbox"  v-model=etp3_checkboxes[4] value="5"/>
-											  <span>É grupo funcional principal</span>
-											</label>
-										</p>
-										<p>6
-											<label>
-											  <input name="etp3" id="etp3_6" type="checkbox" v-model=etp3_checkboxes[5] value="6"/>
-											  <span>É grupo funcional Minoritário</span>
-											</label>
-										</p>
-									</div>
-									
-									<div class="col s2">
-										<p>
-											<a class="waves-effect waves-light btn" v-on:click="etp3_verificar" >Verificar</a>
-										</p>										
-									</div>										
-									
+									<p>
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao1" value="A" type="checkbox" v-model="etp6_resposta" />
+											<span>A</span>
+										</label>
+
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao1" value="B" type="checkbox" v-model="etp6_resposta" />
+											<span>B</span>
+										</label>
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao1" value="C" type="checkbox" v-model="etp6_resposta" />
+											<span>C</span>
+										</label>
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao1" value="D" type="checkbox" v-model="etp6_resposta" />
+											<span>D</span>
+										</label>
+
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao1" value="E" type="checkbox" v-model="etp6_resposta" />
+											<span>E</span>
+										</label>
+
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao1" value="F" type="checkbox" v-model="etp6_resposta" />
+											<span>F</span>
+										</label>
+
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao1" value="G" type="checkbox" v-model="etp6_resposta" />
+											<span>G</span>
+										</label>
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao1" value="H" type="checkbox" v-model="etp6_resposta" />
+											<span>H</span>
+										</label>
+
+									</p>
+
 								</form>
-								
 							</div>
-							<div class="row" v-if="etp3_foiVerificado">
-								<div class="alert warning">											  
-									<strong>{{etp3_texto}}!</strong> Você marcou {{etp3_resp}} !
-								  </div>
+							<div class="row">
+								<button class="btn waves-effect waves-light blue"
+									v-on:click="etp6_enviarResposta">Enviar Respostas</button>
 							</div>
+						</div>
+						<div class="row" v-show="etp6_foiRespondida"
+								style="border-style: solid; border-radius: 5px; border-color: burlywood;">
+								<p>Sua resposta foi {{etp6_resposta}} a resposta correta é
+									<strong>{{etp6_respostaCorreta}}</strong></p>
+							</div>
+					</div>
+					<!--Fim do estado 6-->
+
+					<!--Estado 7-->
+					<div class="col s10 offset-s1" v-if="estado == 7">
+
+						<div class="row">
+							<h4>Responda a questão abaixo</h4>
+							<h6>O quadro abaixo mostra estruturas de feromônios de alguns insetos que afetam
+								determinadas culturas agrícolas.</h6>
+						</div>
+						<div class="row">
+							<img width="500" src="images/questoes/q2.png">
+							<p>Se esses álcoois forem utilizados em armadilhas para capturas de insetos, em quais
+								culturas eles seriam empregados?</p>
+						</div>
+						<div class="row" v-show="!etp7_foiRespondida">
+							<div class="row">
+								<form action="#">
+									<p>
+										<label>
+											<input name="questao2" value="milho" type="checkbox"
+												v-model="etp7_resposta" />
+											<span>MILHO</span>
+										</label>
+
+										<label>
+											<input name="questao2" value="cana-açucar" type="checkbox"
+												v-model="etp7_resposta" />
+											<span>CANA-DE-AÇUCAR</span>
+										</label>
+										<label>
+											<input name="questao2" value="morango" type="checkbox"
+												v-model="etp7_resposta" />
+											<span>MORANGO</span>
+										</label>
+										<label>
+											<input name="questao2" value="frutas" type="checkbox"
+												v-model="etp7_resposta" />
+											<span>FRUTAS</span>
+										</label>
+
+										<label>
+											<input name="questao2" value="tomate" type="checkbox"
+												v-model="etp7_resposta" />
+											<span>TOMATE</span>
+										</label>
+									</p>
+
+								</form>
+							</div>
+
+							<div class="row">
+								<button class="btn waves-effect waves-light blue"
+									v-on:click="etp7_enviarResposta">Enviar Respostas</button>
+							</div>
+						</div>
+						<div class="row" v-show="etp7_foiRespondida"
+							style="border-style: solid; border-radius: 5px; border-color: burlywood;">
+							<p>Sua resposta foi {{etp7_resposta}} a resposta correta é
+								<strong>{{etp7_respostaCorreta}}</strong></p>
 						</div>
 
-						<div class="col s10 offset-s1" v-show="estado > 0 && estado<15">
-							<div class="col s1 offset-s10" v-if="estado == estadoParseiro || estado < estadoParseiro || estado > 11">
-								<a class="waves-effect waves-light btn blue" v-on:click="seguir">Seguir</a>
-							</div>
-							<div v-else class="alert warning">
-								<p>O <strong>parceiro</strong> ainda se encontra na etapa anterior, aguarde ele chegar nesse etapa para passar para próxima etapa!</p>
-							</div>	
-						</div>
-						
 					</div>
-					
+					<!--Fim do estado 7-->
+
+					<!--Estado 8-->
+					<div class="col s10 offset-s1" v-if="estado == 8">
+						<div class="row">
+							<h4>Responda a questão abaixo</h4>
+							<h6>A produção de cachaça no Brasil é de aproximadamente 1,4 bilhões de litros e
+								contribui com cerca de US$ 500 milhões para o nosso PIB. A sua fabricação envolve a
+								fermentação alcoólica, a partir do sumo da cana-de-açúcar, processo utilizado desde
+								o período colonial. Nesse tipo de produção são formados dois produtos principais -
+								etanol e dióxido de carbono - no entanto, normalmente há a geração de pequenas
+								quantidades de outros componentes, inclusive alguns bastante tóxicos.</h6>
+							<p><small>Adaptado de: SOUZA, Leandro Marelli de et al . Teores de compostos orgânicos
+									em cachaças produzidas na região norte fluminense - Rio de Janeiro. Química
+									Nova, v. 32, n. 9, p. 2304-2309, 2009.</small></p>
+							<h6>Abaixo, estão representadas as estruturas químicas de algumas substâncias,
+								pertencentes a diferentes funções orgânicas, que são encontradas em cachaças.
+								Identifique os álcoois.</h6>
+						</div>
+						<div class="row">
+							<img width="500" src="images/questoes/q3.png">
+							<p>Avalie aspectos positivos e negativos em torno da fabricação da cachaça para a
+								sociedade brasileira e discuta alguns dos efeitos causados pela presença de álcoois
+								em suas composições no <strong>Chat com o colega</strong>.</p>
+						</div>
+						<div class="row" v-show="!etp8_foiRespondida">
+							<div class="row">
+								<form action="#">
+									<p>
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao3" value="A" type="checkbox" v-model="etp8_resposta" />
+											<span>A</span>
+										</label>
+
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao3" value="B" type="checkbox" v-model="etp8_resposta" />
+											<span>B</span>
+										</label>
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao3" value="C" type="checkbox" v-model="etp8_resposta" />
+											<span>C</span>
+										</label>
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao3" value="D" type="checkbox" v-model="etp8_resposta" />
+											<span>D</span>
+										</label>
+
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao3" value="E" type="checkbox" v-model="etp8_resposta" />
+											<span>E</span>
+										</label>
+
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao3" value="F" type="checkbox" v-model="etp8_resposta" />
+											<span>F</span>
+										</label>
+
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao3" value="G" type="checkbox" v-model="etp8_resposta" />
+											<span>G</span>
+										</label>
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao3" value="H" type="checkbox" v-model="etp8_resposta" />
+											<span>H</span>
+										</label>
+										<label style="border-style: solid; border-color: burlywood; border-radius: 5px;"
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao3" value="I" type="checkbox" v-model="etp8_resposta" />
+											<span>I</span>
+										</label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao3" value="J" type="checkbox" v-model="etp8_resposta" />
+											<span>J</span>
+										</label>
+									</p>
+
+								</form>
+							</div>
+
+							<div class="row">
+								<button class="btn waves-effect waves-light blue"
+									v-on:click="etp8_enviarResposta">Enviar Respostas</button>
+							</div>
+						</div>
+						<div class="row" v-show="etp8_foiRespondida"
+							style="border-style: solid; border-radius: 5px; border-color: burlywood;">
+							<p>Sua resposta foi {{etp8_resposta}} a resposta correta é
+								<strong>{{etp8_respostaCorreta}}</strong></p>
+						</div>
+					</div>
+					<!--Fim do estado 8-->
+
+					<!--Estado 9-->
+					<div class="col s10 offset-s1" v-if="estado == 9">
+						<div class="row">
+							<h4>Responda a questão abaixo</h4>
+							<h6>Um vídeo disponibilizado na internet que determinado volume de uma substância
+								líquida, contendo fórmula molecular C<sub>4</sub>H<sub>10</sub>O, foi transferido
+								para um balão de destilação e, em seguida, resfriado em um banho de gelo. Passados
+								alguns minutos, a substância ficou sólida, com a aparência de cristais. Essa
+								substância é citada na tabela abaixo, identifique-a.</h6>
+						</div>
+						<div class="row">
+							<img width="500" src="images/questoes/q4.png">
+						</div>
+						<div class="row" v-show="!etp9_foiRespondida">
+							<div class="row">
+								<form action="#">
+									<p>
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao4" value="A" type="checkbox" v-model="etp9_resposta" />
+											<span>A</span>
+										</label>
+
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao4" value="B" type="checkbox" v-model="etp9_resposta" />
+											<span>B</span>
+										</label>
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao4" value="C" type="checkbox" v-model="etp9_resposta" />
+											<span>C</span>
+										</label>
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao4" value="D" type="checkbox" v-model="etp9_resposta" />
+											<span>D</span>
+										</label>
+
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao4" value="E" type="checkbox" v-model="etp9_resposta" />
+											<span>E</span>
+										</label>
+
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao4" value="F" type="checkbox" v-model="etp9_resposta" />
+											<span>F</span>
+										</label>
+									</p>
+
+								</form>
+							</div>
+
+							<div class="row">
+								<button class="btn waves-effect waves-light blue"
+									v-on:click="etp9_enviarResposta">Enviar Respostas</button>
+							</div>
+						</div>
+						<div class="row" v-show="etp9_foiRespondida"
+							style="border-style: solid; border-radius: 5px; border-color: burlywood;">
+							<p>Sua resposta foi {{etp9_resposta}} a resposta correta é
+								<strong>{{etp9_respostaCorreta}}</strong></p>
+						</div>
+					</div>
+					<!--Fim do estado 9-->
+
+					<!--Estado 10-->
+					<div class="col s10 offset-s1" v-if="estado == 10">
+						<div class="row">
+							<h4>Responda a questão abaixo</h4>
+							<h6>Uma indústria alimentícia resolveu acrescentar uma nova opção de sabor à sua linha
+								de biscoitos e bolachas. Para tanto, decidiu utilizar um aromatizante que é um
+								álcool.
+								Com base nas opções abaixo, identifique o novo sabor para o produto.
+							</h6>
+						</div>
+						<div class="row">
+							<img width="500" src="images/questoes/q5.png">
+						</div>
+						<div class="row" v-show="!etp10_foiRespondida">
+							<div class="row">
+								<form action="#">
+									<p>
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao5" value="Uva" type="checkbox"
+												v-model="etp10_resposta" />
+											<span>Uva</span>
+										</label>
+
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao5" value="Morango" type="checkbox"
+												v-model="etp10_resposta" />
+											<span>Morango</span>
+										</label>
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao5" value="Hortelã" type="checkbox"
+												v-model="etp10_resposta" />
+											<span>Hortelã</span>
+										</label>
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao5" value="Tomate" type="checkbox"
+												v-model="etp10_resposta" />
+											<span>Tomate</span>
+										</label>
+
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao5" value="Calena" type="checkbox"
+												v-model="etp10_resposta" />
+											<span>Canela</span>
+										</label>
+
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao5" value="Anis" type="checkbox"
+												v-model="etp10_resposta" />
+											<span>Anis</span>
+										</label>
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao5" value="Manteiga" type="checkbox"
+												v-model="etp10_resposta" />
+											<span>Manteiga</span>
+										</label>
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao5" value="Cereja" type="checkbox"
+												v-model="etp10_resposta" />
+											<span>Cereja</span>
+										</label>
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao5" value="Melão" type="checkbox"
+												v-model="etp10_resposta" />
+											<span>Melão</span>
+										</label>
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao5" value="Framboesa" type="checkbox"
+												v-model="etp10_resposta" />
+											<span>Framboesa</span>
+										</label>
+										<label
+											style="border-style: solid; border-color: burlywood; border-radius: 5px;">
+											<input name="questao5" value="Nenhuma das alternativas" type="checkbox"
+												v-model="etp10_resposta" />
+											<span>Nenhuma das alternativas</span>
+										</label>
+									</p>
+
+								</form>
+							</div>
+
+							<div class="row">
+								<button class="btn waves-effect waves-light blue"
+									v-on:click="etp10_enviarResposta">Enviar Respostas</button>
+							</div>
+						</div>
+						<div class="row" v-show="etp10_foiRespondida"
+							style="border-style: solid; border-radius: 5px; border-color: burlywood;">
+							<p>Sua resposta foi {{etp10_resposta}} a resposta correta é
+								<strong>{{etp10_respostaCorreta}}</strong></p>
+						</div>
+					</div>
+					<!--Fim do estado 10-->
+
+					<!--Estado 11-->
+					<div class="col s10 offset-s1" v-if="estado == 11">
+						<div class="row">
+							<h4>Responda a questão abaixo</h4>
+							<h6>Uma substância apolar oxigenada e contendo halogênios, isolada de um animal,
+								apresentou uma forte atividade antitumoral. O resultado dessa pesquisa foi noticiado
+								por um jornal que trazia a seguinte manchete: Álcool isolado de animal pode combater
+								o câncer.
+								Avalie se existe a possibilidade deque essa substância seja um álcool.
+							</h6>
+						</div>
+
+						<div class="row" v-show="!etp11_foiRespondida">
+							<span>Escreva aqui a sua resposta:</span>
+
+							<textarea v-model="etp11_resposta" placeholder="Escreva algo"></textarea>
+							<button class="btn waves-effect waves-light blue" v-on:click="etp11_enviarResposta">Enviar
+								Respostas</button>
+						</div>
+
+						<div class="row" v-show="etp11_foiRespondida"
+							style="border-style: solid; border-radius: 5px; border-color: burlywood;">
+							<p>Sua resposta foi Enviada!</strong></p>
+						</div>
+					</div>
+					<!--Fim do estado 11-->
+
+					<!--Estado 12-->
+					<div class="col s10 offset-s1" v-if="estado == 12">
+						<div class="row">
+							<h4>Responda a questão abaixo</h4>
+							<h6>Grande quantidade de uma substância foi apreendida em um container, recém-chegado a
+								um porto. Identificada como um álcool cíclico, insaturado e nitrogenado, a
+								substância é de uso controlado e sua comercialização é proibida. As empresas
+								envolvidas na negociação foram multadas e processadas por causa do delito. Os
+								advogados das mesmas resolveram entrar com um recurso, exigindo a anulação da
+								sentença. Em seus argumentos, eles indicaram que substâncias com essas
+								características não podem ser um álcool.
+								<br><strong>Avalie se os argumentos dos advogados têm sustentação científica, capaz
+									de ajudá-los na anulação da sentença.</strong>
+							</h6>
+						</div>
+
+						<div class="row" v-show="!etp12_foiRespondida">
+							<span>Escreva aqui a sua resposta:</span>
+
+							<textarea v-model="etp12_resposta" placeholder="Escreva algo"></textarea>
+							<button class="btn waves-effect waves-light blue" v-on:click="etp12_enviarResposta">Enviar
+								Respostas</button>
+						</div>
+
+						<div class="row" v-show="etp12_foiRespondida"
+							style="border-style: solid; border-radius: 5px; border-color: burlywood;">
+							<p>Sua resposta foi Enviada!</strong></p>
+						</div>
+					</div>
+					<!--Fim do estado 12-->
+
+					<!--Estado 13-->
+					<div class="col s10 offset-s1" v-if="estado == 13">
+						<div class="row">
+							<h4>Responda a questão abaixo</h4>
+							<h6>O termo poliol abrange uma grande variedade os compostos contendo grupos hidroxilas.
+								Eles são importantes matérias-primas para as indústrias de espumas e de tintas, pois
+								reagem com outras substâncias para formar polímeros.
+								<br><strong>É adequado afirmar que os polióis são álcoois com importantes aplicações
+									industriais?</strong>
+							</h6>
+						</div>
+
+						<div class="row" v-show="!etp13_foiRespondida">
+							<span>Escreva aqui a sua resposta:</span>
+
+							<textarea v-model="etp13_resposta" placeholder="Escreva algo"></textarea>
+							<button class="btn waves-effect waves-light blue" v-on:click="etp13_enviarResposta">Enviar
+								Respostas</button>
+						</div>
+
+						<div class="row" v-show="etp13_foiRespondida"
+							style="border-style: solid; border-radius: 5px; border-color: burlywood;">
+							<p>Sua resposta foi Enviada!</strong></p>
+						</div>
+					</div>
+					<!--Fim do estado 13-->
+
+					<!--Estado 14-->
+					<div class="col s10 offset-s1" v-if="estado == 14">
+						<div class="row">
+							<h4>Responda a questão abaixo</h4>
+							<h6>Determinada substância, naturalmente abundante em algumas espécies vegetais, é muito
+								utilizada, na forma de solução, como aromatizante pelas indústrias de alimentos,
+								cosméticos e de produtos de higiene bucal. Em uma atividade experimental realizada
+								em sala de aula, uma pequena quantidade de cristais dessa substância foi transferida
+								para um béquer contendo 250mL de água destilada. A solução foi agitada por 1h.
+								Depois, verificou-se que não houve nenhuma dissolução dos cristais.
+								<br><strong>Avalie se essa substância pode ser um álcool.</strong>
+							</h6>
+						</div>
+
+						<div class="row" v-show="!etp14_foiRespondida">
+							<span>Escreva aqui a sua resposta:</span>
+
+							<textarea v-model="etp14_resposta" placeholder="Escreva algo"></textarea>
+							<button class="btn waves-effect waves-light blue" v-on:click="etp14_enviarResposta">Enviar
+								Respostas</button>
+						</div>
+
+						<div class="row" v-show="etp14_foiRespondida"
+							style="border-style: solid; border-radius: 5px; border-color: burlywood;">
+							<p>Sua resposta foi Enviada!</strong></p>
+						</div>
+					</div>
+					<!--Fim do estado 14-->
+
+					<!--Estado 15-->
+					<div class="col s10 offset-s1" v-if="estado == 15">
+						<br>
+						<div class="row alert success">
+							<h2>Parabéns você concluiu todas as etapas!</h2>
+						</div>
+
+					</div>
+					<!--Fim do estado 15-->
+
+					<div class="col s10 offset-s1" v-if="estado > 2 && estado <6">
+						<div class="row" style="border-style: solid;">
+							<form action="#">
+								<div class="col s5">
+									<p>Quais as três condições são observadas nessa classificação?</p>
+									<p>1
+										<label>
+											<input name="etp3" id="etp3_1" type="checkbox" v-model=etp3_checkboxes[0]
+												value="1" />
+											<span>Possui HIDROXILA</span>
+										</label>
+									</p>
+									<p>2
+										<label>
+											<input name="etp3" id="etp3_2" type="checkbox" v-model=etp3_checkboxes[1]
+												value="2" />
+											<span>Possui CARBOXILA</span>
+										</label>
+									</p>
+									<p>3
+										<label>
+											<input name="etp3" id="etp3_3" type="checkbox" v-model=etp3_checkboxes[2]
+												value="3" />
+											<span>Ligada ao carbono saturado</span>
+										</label>
+									</p>
+								</div>
+								<div class="col s5">
+									<p>4
+										<label>
+											<input name="etp3" id="etp3_4" type="checkbox" v-model=etp3_checkboxes[3]
+												value="4" />
+											<span>Ligada ao carbono insaturado</span>
+										</label>
+									</p>
+									<p>5
+										<label>
+											<input name="etp3" id="etp3_5" type="checkbox" v-model=etp3_checkboxes[4]
+												value="5" />
+											<span>É grupo funcional principal</span>
+										</label>
+									</p>
+									<p>6
+										<label>
+											<input name="etp3" id="etp3_6" type="checkbox" v-model=etp3_checkboxes[5]
+												value="6" />
+											<span>É grupo funcional Minoritário</span>
+										</label>
+									</p>
+								</div>
+
+								<div class="col s2">
+									<p>
+										<a class="waves-effect waves-light btn"
+											v-on:click="etp3_verificar">Verificar</a>
+									</p>
+								</div>
+
+							</form>
+
+						</div>
+						<div class="row" v-if="etp3_foiVerificado">
+							<div class="alert warning">
+								<strong>{{etp3_texto}}!</strong> Você marcou {{etp3_resp}} !
+							</div>
+						</div>
+					</div>
+
+					<div class="col s10 offset-s1" v-show="estado > 0 && estado<15">
+						<div class="col s1 offset-s10"
+							v-if="estado == estadoParseiro || estado < estadoParseiro || estado > 11">
+							<a class="waves-effect waves-light btn blue" v-on:click="seguir">Seguir</a>
+						</div>
+						<div v-else class="alert warning">
+							<p>O <strong>parceiro</strong> ainda se encontra na etapa anterior, aguarde ele chegar
+								nesse etapa para passar para próxima etapa!</p>
+						</div>
+					</div>
+
 				</div>
 
-				<!--<div class="j-footer " v-show="estado > 0">
+			</div>
+
+			<!--<div class="j-footer " v-show="estado > 0">
 					<div class="row">
 						<div class="row">
 							<div class="col s1">
@@ -727,9 +937,9 @@
 
 				</div>-->
 
-			</div>
+		</div>
 
-			<!--Rodape
+		<!--Rodape
 		<div class="j-footer">
 			<div class="page-footer orange">
 				<div class="footer-copyright">
@@ -740,73 +950,74 @@
 			</div>
 		</div>-->
 
-			<!-- The Modal -->
-			<div id="myModal" class="modal" v-bind:style="{display: estadoModal1}">
+		<!-- The Modal -->
+		<div id="myModal" class="modal" v-bind:style="{display: estadoModal1}">
 
-				<!-- Modal content -->
-				<div class="modal-content">
-					<div class="modal-header">
-						<span class="close" v-on:click="fecharModalAjuda1">&times;</span>
-						<h5>Procedimento para se identificar um álcool</h5>
-					</div>
-					<div class="modal-body">
-						<ul class="collection center-align">
-							<li class="collection-item">PRESENÇA DE PELO MENOS UM GRUPO HIDROXILA - OH</li>
-							<li class="collection-item">O GRUPO DEVE ESTA LIGADO A UM CARBONO SATURADO</li>
-							<li class="collection-item">SER O GRUPO FUNCIONAL PRIORITÁRIO DA MOLECULA</li>
-						</ul>
-					</div>
+			<!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="close" v-on:click="fecharModalAjuda1">&times;</span>
+					<h5>Procedimento para se identificar um álcool</h5>
+				</div>
+				<div class="modal-body">
+					<ul class="collection center-align">
+						<li class="collection-item">PRESENÇA DE PELO MENOS UM GRUPO HIDROXILA - OH</li>
+						<li class="collection-item">O GRUPO DEVE ESTA LIGADO A UM CARBONO SATURADO</li>
+						<li class="collection-item">SER O GRUPO FUNCIONAL PRIORITÁRIO DA MOLECULA</li>
+					</ul>
 				</div>
 			</div>
-
-			<!-- The Modal Grupos Funcionais-Prioridade -->
-			<div id="myModal2" class="modal" v-bind:style="{display: estadoModal2}">
-
-				<!-- Modal content -->
-				<div class="modal-content">
-					<div class="modal-header">
-						<span class="close" v-on:click="fecharModalAjuda2">&times;</span>
-						<h5>COMO IDENTIFICAR UM ÁLCOOl <small>Grupos Funcionais-Prioridade</small></h5>
-					</div>
-					<div class="modal-body">
-						<img class="responsive-img" src="/images/prioridade.jpg">
-					</div>
-				</div>
-			</div>
-
-			<!--Chat-->
-			<div class="chat-popup" id="chat" v-bind:style="{display: ativoChat}">
-				<div class="form-container">
-					<h3>Chat</h3>
-					<label for="msg"><b>Messagens</b></label>
-					<div class="c-container2" id="containerChat">
-						<div class="c-container darker" v-for="msg in chatlogs">
-							<p style="font-size: small;"><Strong>{{msg.usuario == usuario? "Eu": msg.usuario}}</Strong></p>
-							<div style="word-wrap: break-word; font-size: small;">{{msg.msg}}</div>
-							<span class="time-right" style="font-size: small;">{{msg.hora}}</span>
-						</div>
-					</div>
-
-					<label for="msg"><b>Message</b></label>
-					<textarea placeholder="Type message.." name="msg" required v-model="novaMsg"></textarea>
-
-					<button class="btn" v-on:click="enviar">Enviar</button>
-					<button type="button" class="btn cancel" v-on:click="fecharChat">Fechar</button>
-				</div>
-			</div>
-
 		</div>
 
-		<script type="text/javascript"
-			src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-		<script type="text/javascript">
-			M.AutoInit();
+		<!-- The Modal Grupos Funcionais-Prioridade -->
+		<div id="myModal2" class="modal" v-bind:style="{display: estadoModal2}">
 
-			document.addEventListener('DOMContentLoaded', function () {
-				var elems = document.querySelectorAll('.modal');
-				var instances = M.Modal.init(elems);
-			});
-		</script>
+			<!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="close" v-on:click="fecharModalAjuda2">&times;</span>
+					<h5>COMO IDENTIFICAR UM ÁLCOOl <small>Grupos Funcionais-Prioridade</small></h5>
+				</div>
+				<div class="modal-body">
+					<img class="responsive-img" src="/images/prioridade.jpg">
+				</div>
+			</div>
+		</div>
+
+		<!--Chat-->
+		<div class="chat-popup" id="chat" v-bind:style="{display: ativoChat}">
+			<div class="form-container">
+				<h3>Chat</h3>
+				<label for="msg"><b>Messagens</b></label>
+				<div class="c-container2" id="containerChat">
+					<div class="c-container darker" v-for="msg in chatlogs">
+						<p style="font-size: small;"><Strong>{{msg.usuario == usuario? "Eu": msg.usuario}}</Strong>
+						</p>
+						<div style="word-wrap: break-word; font-size: small;">{{msg.msg}}</div>
+						<span class="time-right" style="font-size: small;">{{msg.hora}}</span>
+					</div>
+				</div>
+
+				<label for="msg"><b>Message</b></label>
+				<textarea placeholder="Type message.." name="msg" required v-model="novaMsg"></textarea>
+
+				<button class="btn" v-on:click="enviar">Enviar</button>
+				<button type="button" class="btn cancel" v-on:click="fecharChat">Fechar</button>
+			</div>
+		</div>
+
+	</div>
+
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script type="text/javascript">
+		M.AutoInit();
+
+		document.addEventListener('DOMContentLoaded', function () {
+			var elems = document.querySelectorAll('.modal');
+			var instances = M.Modal.init(elems);
+		});
+	</script>
 
 </body>
 
@@ -847,44 +1058,44 @@
 				'images/boa/11.jpg',
 				'images/boa/12.jpg',
 				'images/boa/13.jpg'
-			],			
+			],
 			estruturasAlcoois: [
-				{id: 1, nome: "Glicerina", descricao: "Constituinte de sabonetes, sabões, detergentes líquidos, loções para a pele.", url: "images/estruturas/alcool/1.png"},
-				{id: 2, nome: "Esfingosina", descricao: "Presente em shampoos de ceramida", url: "images/estruturas/alcool/2.png"},
-				{id: 3, nome: "Guaifenesina", descricao: "Expectorante, no combate à tosse.", url: "images/estruturas/alcool/3.png"},
-				{id: 4, nome: "Trietanolamina", descricao: "Utilizada em preparações cosméticas e de higiene.", url: "images/estruturas/alcool/4.png"},
-				{id: 5, nome: "Diadinoxantina", descricao: "Carotenoide (pigmento) típico de algas pardas da classe Phaeophyceae.", url: "images/estruturas/alcool/5.png"},
-				{id: 6, nome: "3-nitrobenzenometanol", descricao: "Reagente para síntese de fármacos.", url: "images/estruturas/alcool/6.png"},
-				{id: 7, nome: "4-(2-bromoetinil)-1,2,5-trimetillpiperidin-4-ol", descricao: "Reagente para síntese de fármacos.", url: "images/estruturas/alcool/7.png"},
-				{id: 8, nome: "(3-metoxi-4-nitrofenil)metanol", descricao: "Reagente para síntese de fármacos.", url: "images/estruturas/alcool/8.png"},
-				{id: 9, nome: "(3-metoxi-4-trifluorometil fenil) metanol", descricao: "Reagente para síntese de fármacos.", url: "images/estruturas/alcool/9.png"},
-				{id: 10, nome: "Mentol", descricao: "Cremes dentrifícios, enxaguantes bucais, gomas de mascar, balas (bombons).", url: "images/estruturas/alcool/10.png"},
-				{id: 11, nome: "2-furancarbinol", descricao: "Monômero para síntese de resinas usadas em cimentos e adesivos", url: "images/estruturas/alcool/11.png"},
-				{id: 12, nome: "Retinol", descricao: "Cremes e géis “anti-idade”.", url: "images/estruturas/alcool/12.png"},
-				{id: 13, nome: "Propanolol", descricao: "Tratamento da hipertensão arterial.", url: "images/estruturas/alcool/13.png"},
-				{id: 14, nome: "Citronelol", descricao: "Óleo de citronela, repelente de insetos.", url: "images/estruturas/alcool/14.png"},
-				{id: 15, nome: "Sorbitol", descricao: "Alimentos dietéticos; chicletes “sem açúcar”; cremes dentrifícios; pomadas, cremes e loções para a pele.", url: "images/estruturas/alcool/15.png"},
-				{id: 16, nome: "4-tiapentan-1-ol", descricao: "Produzido na fermentação do vinho.", url: "images/estruturas/alcool/16.png"},
-				{id: 17, nome: "3-sulfanilhexanol", descricao: "Produzido na fermentação do vinho.", url: "images/estruturas/alcool/17.png"},
+				{ id: 1, nome: "Glicerina", descricao: "Constituinte de sabonetes, sabões, detergentes líquidos, loções para a pele.", url: "images/estruturas/alcool/1.png" },
+				{ id: 2, nome: "Esfingosina", descricao: "Presente em shampoos de ceramida", url: "images/estruturas/alcool/2.png" },
+				{ id: 3, nome: "Guaifenesina", descricao: "Expectorante, no combate à tosse.", url: "images/estruturas/alcool/3.png" },
+				{ id: 4, nome: "Trietanolamina", descricao: "Utilizada em preparações cosméticas e de higiene.", url: "images/estruturas/alcool/4.png" },
+				{ id: 5, nome: "Diadinoxantina", descricao: "Carotenoide (pigmento) típico de algas pardas da classe Phaeophyceae.", url: "images/estruturas/alcool/5.png" },
+				{ id: 6, nome: "3-nitrobenzenometanol", descricao: "Reagente para síntese de fármacos.", url: "images/estruturas/alcool/6.png" },
+				{ id: 7, nome: "4-(2-bromoetinil)-1,2,5-trimetillpiperidin-4-ol", descricao: "Reagente para síntese de fármacos.", url: "images/estruturas/alcool/7.png" },
+				{ id: 8, nome: "(3-metoxi-4-nitrofenil)metanol", descricao: "Reagente para síntese de fármacos.", url: "images/estruturas/alcool/8.png" },
+				{ id: 9, nome: "(3-metoxi-4-trifluorometil fenil) metanol", descricao: "Reagente para síntese de fármacos.", url: "images/estruturas/alcool/9.png" },
+				{ id: 10, nome: "Mentol", descricao: "Cremes dentrifícios, enxaguantes bucais, gomas de mascar, balas (bombons).", url: "images/estruturas/alcool/10.png" },
+				{ id: 11, nome: "2-furancarbinol", descricao: "Monômero para síntese de resinas usadas em cimentos e adesivos", url: "images/estruturas/alcool/11.png" },
+				{ id: 12, nome: "Retinol", descricao: "Cremes e géis “anti-idade”.", url: "images/estruturas/alcool/12.png" },
+				{ id: 13, nome: "Propanolol", descricao: "Tratamento da hipertensão arterial.", url: "images/estruturas/alcool/13.png" },
+				{ id: 14, nome: "Citronelol", descricao: "Óleo de citronela, repelente de insetos.", url: "images/estruturas/alcool/14.png" },
+				{ id: 15, nome: "Sorbitol", descricao: "Alimentos dietéticos; chicletes “sem açúcar”; cremes dentrifícios; pomadas, cremes e loções para a pele.", url: "images/estruturas/alcool/15.png" },
+				{ id: 16, nome: "4-tiapentan-1-ol", descricao: "Produzido na fermentação do vinho.", url: "images/estruturas/alcool/16.png" },
+				{ id: 17, nome: "3-sulfanilhexanol", descricao: "Produzido na fermentação do vinho.", url: "images/estruturas/alcool/17.png" },
 			],
 			estruturasNaoAlcoois: [
-				{id: 1, nome: "Vanilina", descricao: "Essência de baunilha.", url: "images/estruturas/nao_alcool/1.png"},
-				{id: 2, nome: "Treonina", descricao: "Constituinte de alguns suplementos nutricionais para humanos e animais.", url: "images/estruturas/nao_alcool/2.png"},
-				{id: 3, nome: "Gabapentina", descricao: "Fármaco usado no tratamento da epilepsia.", url: "images/estruturas/nao_alcool/3.png"},
-				{id: 4, nome: "Cafeína", descricao: "Estimulante.", url: "images/estruturas/nao_alcool/4.png"},
-				{id: 5, nome: "Fucoxantina", descricao: "Carotenoide (pigmento) típico de algas pardas da classe Phaeophyceae.", url: "images/estruturas/nao_alcool/5.png"},
-				{id: 6, nome: "4-bromo-2-nitrobenzaldeído", descricao: "Reagente para síntese de fármacos.", url: "images/estruturas/nao_alcool/6.png"},
-				{id: 7, nome: "(5-cloro-2-hidroxi-3-nitrobenzil)etanona", descricao: "Reagente para síntese de fármacos.", url: "images/estruturas/nao_alcool/7.png"},
-				{id: 8, nome: "4-etoxi-3-(hidroximetil)benzaldeído", descricao: "Reagente para síntese de fármacos.", url: "images/estruturas/nao_alcool/8.png"},
-				{id: 9, nome: "2-cloro-3-trifluorometil-benzaldeído", descricao: "Reagente para síntese de fármacos.", url: "images/estruturas/nao_alcool/9.png"},
-				{id: 10, nome: "Timol", descricao: "Cremes dentrifícios, enxaguantes bucais, gomas de mascar, balas (bombons).", url: "images/estruturas/nao_alcool/10.png"},
-				{id: 11, nome: "Furaneol", descricao: "Aroma de morango usado em iogurtes e biscoitos.", url: "images/estruturas/nao_alcool/11.png"},
-				{id: 12, nome: "Resveratrol", descricao: "Antioxidante presente na uva.", url: "images/estruturas/nao_alcool/12.png"},
-				{id: 13, nome: "Atenolol", descricao: "Tratamento da hipertensão arterial", url: "images/estruturas/nao_alcool/13.png"},
-				{id: 14, nome: "Eugenol", descricao: "Cravo-da-India.", url: "images/estruturas/nao_alcool/14.png"},
-				{id: 15, nome: "Neral", descricao: "Balas e refrigerantes com aromas de limão.", url: "images/estruturas/nao_alcool/15.png"},
-				{id: 16, nome: "3-sulfanilpropionato de etila", descricao: "Produzido na fermentação do vinho.", url: "images/estruturas/nao_alcool/16.png"},
-				{id: 17, nome: "Metional", descricao: "Produzido na fermentação do vinho.", url: "images/estruturas/nao_alcool/17.png"},
+				{ id: 1, nome: "Vanilina", descricao: "Essência de baunilha.", url: "images/estruturas/nao_alcool/1.png" },
+				{ id: 2, nome: "Treonina", descricao: "Constituinte de alguns suplementos nutricionais para humanos e animais.", url: "images/estruturas/nao_alcool/2.png" },
+				{ id: 3, nome: "Gabapentina", descricao: "Fármaco usado no tratamento da epilepsia.", url: "images/estruturas/nao_alcool/3.png" },
+				{ id: 4, nome: "Cafeína", descricao: "Estimulante.", url: "images/estruturas/nao_alcool/4.png" },
+				{ id: 5, nome: "Fucoxantina", descricao: "Carotenoide (pigmento) típico de algas pardas da classe Phaeophyceae.", url: "images/estruturas/nao_alcool/5.png" },
+				{ id: 6, nome: "4-bromo-2-nitrobenzaldeído", descricao: "Reagente para síntese de fármacos.", url: "images/estruturas/nao_alcool/6.png" },
+				{ id: 7, nome: "(5-cloro-2-hidroxi-3-nitrobenzil)etanona", descricao: "Reagente para síntese de fármacos.", url: "images/estruturas/nao_alcool/7.png" },
+				{ id: 8, nome: "4-etoxi-3-(hidroximetil)benzaldeído", descricao: "Reagente para síntese de fármacos.", url: "images/estruturas/nao_alcool/8.png" },
+				{ id: 9, nome: "2-cloro-3-trifluorometil-benzaldeído", descricao: "Reagente para síntese de fármacos.", url: "images/estruturas/nao_alcool/9.png" },
+				{ id: 10, nome: "Timol", descricao: "Cremes dentrifícios, enxaguantes bucais, gomas de mascar, balas (bombons).", url: "images/estruturas/nao_alcool/10.png" },
+				{ id: 11, nome: "Furaneol", descricao: "Aroma de morango usado em iogurtes e biscoitos.", url: "images/estruturas/nao_alcool/11.png" },
+				{ id: 12, nome: "Resveratrol", descricao: "Antioxidante presente na uva.", url: "images/estruturas/nao_alcool/12.png" },
+				{ id: 13, nome: "Atenolol", descricao: "Tratamento da hipertensão arterial", url: "images/estruturas/nao_alcool/13.png" },
+				{ id: 14, nome: "Eugenol", descricao: "Cravo-da-India.", url: "images/estruturas/nao_alcool/14.png" },
+				{ id: 15, nome: "Neral", descricao: "Balas e refrigerantes com aromas de limão.", url: "images/estruturas/nao_alcool/15.png" },
+				{ id: 16, nome: "3-sulfanilpropionato de etila", descricao: "Produzido na fermentação do vinho.", url: "images/estruturas/nao_alcool/16.png" },
+				{ id: 17, nome: "Metional", descricao: "Produzido na fermentação do vinho.", url: "images/estruturas/nao_alcool/17.png" },
 			],
 			index: null,
 			estadoModal1: "none",
@@ -896,62 +1107,64 @@
 			etp3_texto: "",
 			etp3_foiVerificado: false,
 			etp4_imagensSelecionadas: [
-				{url: "images/estruturas/alcool/13.png", nome: "Propanolol", descricao: "Tratamento da hipertensão arterial.", isAlcool: true, resp: false, verificado: false },
-				{url: "images/estruturas/nao_alcool/14.png", nome: "Eugenol", descricao: "Cravo-da-India.", isAlcool: false, resp: false, verificado: false },
+				{ url: "images/estruturas/alcool/13.png", nome: "Propanolol", descricao: "Tratamento da hipertensão arterial.", isAlcool: true, resp: false, verificado: false },
+				{ url: "images/estruturas/nao_alcool/14.png", nome: "Eugenol", descricao: "Cravo-da-India.", isAlcool: false, resp: false, verificado: false },
 				{ url: "images/estruturas/nao_alcool/13.png", nome: "Atenolol", descricao: "Tratamento da hipertensão arterial", isAlcool: false, resp: false, verificado: false },
 				{ url: "images/estruturas/nao_alcool/15.png", nome: "Neral", descricao: "Balas e refrigerantes com aromas de limão.", isAlcool: false, resp: false, verificado: false },
 				{ url: "images/estruturas/alcool/15.png", nome: "Sorbitol", descricao: "Alimentos dietéticos; chicletes “sem açúcar”; cremes dentrifícios; pomadas, cremes e loções para a pele.", isAlcool: true, resp: false, verificado: false },
-				{url: "images/estruturas/alcool/14.png", nome: "Citronelol", descricao: "Óleo de citronela, repelente de insetos.", isAlcool: true, resp: false, verificado: false },
-				{ url: "images/estruturas/nao_alcool/16.png",nome: "3-sulfanilpropionato de etila", descricao: "Produzido na fermentação do vinho.", isAlcool: false, resp: false, verificado: false },
-				{url: "images/estruturas/alcool/16.png", nome: "4-tiapentan-1-ol", descricao: "Produzido na fermentação do vinho.", isAlcool: true, resp: false, verificado: false },
+				{ url: "images/estruturas/alcool/14.png", nome: "Citronelol", descricao: "Óleo de citronela, repelente de insetos.", isAlcool: true, resp: false, verificado: false },
+				{ url: "images/estruturas/nao_alcool/16.png", nome: "3-sulfanilpropionato de etila", descricao: "Produzido na fermentação do vinho.", isAlcool: false, resp: false, verificado: false },
+				{ url: "images/estruturas/alcool/16.png", nome: "4-tiapentan-1-ol", descricao: "Produzido na fermentação do vinho.", isAlcool: true, resp: false, verificado: false },
 			],
 
 			etp5_imagensSelecionadas: [
-				{url: "images/estruturas/nao_alcool/1.png", isAlcool: false, resp: false, verificado: false },
-				{url: "images/estruturas/nao_alcool/2.png", isAlcool: false, resp: false, verificado: false },
+				{ url: "images/estruturas/nao_alcool/1.png", isAlcool: false, resp: false, verificado: false },
+				{ url: "images/estruturas/nao_alcool/2.png", isAlcool: false, resp: false, verificado: false },
 				{ url: "images/estruturas/alcool/1.png", isAlcool: true, resp: false, verificado: false },
 				{ url: "images/estruturas/alcool/2.png", isAlcool: true, resp: false, verificado: false },
 				{ url: "images/estruturas/alcool/3.png", isAlcool: true, resp: false, verificado: false },
-				{url: "images/estruturas/nao_alcool/3.png", isAlcool: false, resp: false, verificado: false },
+				{ url: "images/estruturas/nao_alcool/3.png", isAlcool: false, resp: false, verificado: false },
 				{ url: "images/estruturas/alcool/4.png", isAlcool: true, resp: false, verificado: false },
-				{url: "images/estruturas/nao_alcool/4.png", isAlcool: false, resp: false, verificado: false },
+				{ url: "images/estruturas/nao_alcool/4.png", isAlcool: false, resp: false, verificado: false },
 			],
 			etp6_imagensSelecionadas: [
-				{url: "images/estruturas/nao_alcool/5.png", isAlcool: false, resp: false, verificado: false },
-				{url: "images/estruturas/alcool/5.png", isAlcool: true, resp: false, verificado: false },
+				{ url: "images/estruturas/nao_alcool/5.png", isAlcool: false, resp: false, verificado: false },
+				{ url: "images/estruturas/alcool/5.png", isAlcool: true, resp: false, verificado: false },
 				{ url: "images/estruturas/alcool/6.png", isAlcool: true, resp: false, verificado: false },
 				{ url: "images/estruturas/alcool/7.png", isAlcool: true, resp: false, verificado: false },
 				{ url: "images/estruturas/nao_alcool/8.png", isAlcool: false, resp: false, verificado: false },
-				{url: "images/estruturas/alcool/8.png", isAlcool: true, resp: false, verificado: false },
+				{ url: "images/estruturas/alcool/8.png", isAlcool: true, resp: false, verificado: false },
 				{ url: "images/estruturas/nao_alcool/7.png", isAlcool: false, resp: false, verificado: false },
-				{url: "images/estruturas/nao_alcool/6.png", isAlcool: false, resp: false, verificado: false },
+				{ url: "images/estruturas/nao_alcool/6.png", isAlcool: false, resp: false, verificado: false },
 			],
 			etp7_imagensSelecionadas: [
-				{url: "images/estruturas/alcool/9.png", isAlcool: true, resp: false, verificado: false },
-				{url: "images/estruturas/alcool/9.png", isAlcool: true, resp: false, verificado: false },
+				{ url: "images/estruturas/alcool/9.png", isAlcool: true, resp: false, verificado: false },
+				{ url: "images/estruturas/alcool/9.png", isAlcool: true, resp: false, verificado: false },
 				{ url: "images/estruturas/nao_alcool/10.png", isAlcool: false, resp: false, verificado: false },
 				{ url: "images/estruturas/alcool/12.png", isAlcool: true, resp: false, verificado: false },
 				{ url: "images/estruturas/nao_alcool/12.png", isAlcool: false, resp: false, verificado: false },
-				{url: "images/estruturas/alcool/11.png", isAlcool: true, resp: false, verificado: false },
+				{ url: "images/estruturas/alcool/11.png", isAlcool: true, resp: false, verificado: false },
 				{ url: "images/estruturas/nao_alcool/11.png", isAlcool: false, resp: false, verificado: false },
-				{url: "images/estruturas/alcool/10.png", isAlcool: true, resp: false, verificado: false },
+				{ url: "images/estruturas/alcool/10.png", isAlcool: true, resp: false, verificado: false },
 			],
 			etp6_imagens: [
-				{url: "images/estruturas/alcool/6.png", isAlcool: true, resp: false, verificado: false },
-				{url: "images/estruturas/alcool/7.png", isAlcool: true, resp: false, verificado: false },
+				{ url: "images/estruturas/alcool/6.png", isAlcool: true, resp: false, verificado: false },
+				{ url: "images/estruturas/alcool/7.png", isAlcool: true, resp: false, verificado: false },
 				{ url: "images/estruturas/nao_alcool/6.png", isAlcool: false, resp: false, verificado: false },
 				{ url: "images/estruturas/nao_alcool/7.png", isAlcool: false, resp: false, verificado: false },
-				{url: "images/estruturas/alcool/8.png", isAlcool: true, resp: false, verificado: false },
-				{url: "images/estruturas/alcool/9.png", isAlcool: true, resp: false, verificado: false },
+				{ url: "images/estruturas/alcool/8.png", isAlcool: true, resp: false, verificado: false },
+				{ url: "images/estruturas/alcool/9.png", isAlcool: true, resp: false, verificado: false },
 				{ url: "images/estruturas/nao_alcool/8.png", isAlcool: false, resp: false, verificado: false },
-				{ url: "images/estruturas/nao_alcool/9.png", isAlcool: false, resp: false, verificado: false },			
+				{ url: "images/estruturas/nao_alcool/9.png", isAlcool: false, resp: false, verificado: false },
 			],
-			etp6_respostaEnviada: false,
+			etp6_resposta: [],
+			etp6_respostaCorreta: ["A", "B", "E", "F"],
+			etp6_foiRespondida: false,
 			etp7_resposta: [],
 			etp7_respostaCorreta: ["Milho", "Morango", "Frutas"],
 			etp7_foiRespondida: false,
 			etp8_resposta: [],
-			etp8_respostaCorreta: ["C", "D", "G","H","J"],
+			etp8_respostaCorreta: ["C", "D", "G", "H", "J"],
 			etp8_foiRespondida: false,
 			etp9_resposta: [],
 			etp9_respostaCorreta: ["F"],
@@ -959,64 +1172,64 @@
 			etp10_resposta: [],
 			etp10_respostaCorreta: ["Nenhuma das Alternativas"],
 			etp10_foiRespondida: false,
-			etp11_resposta: "",			
+			etp11_resposta: "",
 			etp11_foiRespondida: false,
-			etp12_resposta: "",			
+			etp12_resposta: "",
 			etp12_foiRespondida: false,
-			etp13_resposta: "",			
+			etp13_resposta: "",
 			etp13_foiRespondida: false,
-			etp14_resposta: "",			
+			etp14_resposta: "",
 			etp14_foiRespondida: false,
 		},
 		created() {
 			this.etp3_selecionarImagens()
-			
+
 			socket.on('chat-message', (data) => {
 				this.chatlogs.push(data)
 				this.abrirChat();
 				this.autoScrollBottomChat();
 			});
-			
+
 
 		},
 		mounted() {
-			socket.on('updatechat', (username, data,id, cont) => {
-				console.log(data, id, username, cont);			
+			socket.on('updatechat', (username, data, id, cont) => {
+				console.log(data, id, username, cont);
 				this.idUsuario = socket.id;
 				//this.usernameParseiro = username;
 				this.idSala = id;
 				this.log = data;
-				if(this.jogador== 0){				
+				if (this.jogador == 0) {
 					this.jogador = cont;
 				}
-				if(cont == 2){
+				if (cont == 2) {
 					this.estado++;
 					this.abrirChat();
-				}				 
+				}
 			});
-			socket.on('usernames', (j1, j2) =>{
+			socket.on('usernames', (j1, j2) => {
 				//console.log("jogador", this.jogador, j1, j2)
-				if(this.jogador==1){
+				if (this.jogador == 1) {
 					this.usernameParseiro = j2;
-				}else{
+				} else {
 					this.usernameParseiro = j1;
-				}				 
+				}
 			});
 			socket.on('estado', (sala, jogador, estado) => {
-				console.log("jogador",this.jogador, "jogador do evento:", jogador)
-				if(this.jogador != jogador){
+				console.log("jogador", this.jogador, "jogador do evento:", jogador)
+				if (this.jogador != jogador) {
 					this.estadoParseiro = estado;
 				}
-				
+
 			});
 		},
 		methods: {
 			entrar: function () {
 				if (this.usuario != "") {
-					this.estado = 0										
-					socket.emit('addClient', this.usuario);			
+					this.estado = 0
+					socket.emit('addClient', this.usuario);
 				}
-			},	
+			},
 			alternarChat: function () {
 				this.autoScrollBottomChat()
 				if (this.ativoChat == "none") {
@@ -1032,24 +1245,92 @@
 				this.ativoChat = "none"
 			},
 			seguir: function () {
-				this.estado = this.estado + 1
-				this.mudouEstado();
+				if (this.estado < 6) {
+					this.estado = this.estado + 1
+					this.mudouEstado();
+				} else if (this.estado == 6) {
+					if (this.etp6_foiRespondida) {
+						this.estado = this.estado + 1
+						this.mudouEstado();
+					} else {
+						alert('Click no botão Enviar Respostas!')
+					}
+				} else if (this.estado == 7) {
+					if (this.etp7_foiRespondida) {
+						this.estado = this.estado + 1
+						this.mudouEstado();
+					} else {
+						alert('Click no botão Enviar Respostas!')
+					}
+				} else if (this.estado == 8) {
+					if (this.etp8_foiRespondida) {
+						this.estado = this.estado + 1
+						this.mudouEstado();
+					} else {
+						alert('Click no botão Enviar Respostas!')
+					}
+				} else if (this.estado == 9) {
+					if (this.etp9_foiRespondida) {
+						this.estado = this.estado + 1
+						this.mudouEstado();
+					} else {
+						alert('Click no botão Enviar Respostas!')
+					}
+				} else if (this.estado == 10) {
+					if (this.etp10_foiRespondida) {
+						this.estado = this.estado + 1
+						this.mudouEstado();
+					}
+				} else if (this.estado == 11) {
+					if (this.etp11_foiRespondida) {
+						this.estado = this.estado + 1
+						this.mudouEstado();
+					} else {
+						alert('Click no botão Enviar Respostas!')
+					}
+				} else if (this.estado == 12) {
+					if (this.etp12_foiRespondida) {
+						this.estado = this.estado + 1
+						this.mudouEstado();
+					} else {
+						alert('Click no botão Enviar Respostas!')
+					}
+				} else if (this.estado == 13) {
+					if (this.etp13_foiRespondida) {
+						this.estado = this.estado + 1
+						this.mudouEstado();
+					} else {
+						alert('Click no botão Enviar Respostas!')
+					}
+				} else if (this.estado == 14) {
+					if (this.etp14_foiRespondida) {
+						this.estado = this.estado + 1
+						this.mudouEstado();
+					} else {
+						alert('Click no botão Enviar Respostas!')
+					}
+				}
+
+
 			},
 			voltar: function () {
 				if (this.estado > 1) {
 					this.estado = this.estado - 1
 				}
 			},
-			mudouEstado: function (){
+			mudouEstado: function () {
 				this.etp3a5_resetarCheckboxes();
-				if(this.estado>11){
+				if (this.estado > 11) {
 					this.fecharChat();
 				}
-				if(this.estado >= 1){
-					socket.emit('estado', this.idSala, this.jogador,this.estado);	
-				}			
-				
-			},		
+				if (this.estado >= 1) {
+					socket.emit('estado', this.idSala, this.jogador, this.estado);
+				}
+				if (this.estado == 15) {
+					this.enviarTudo();
+				}
+
+			},
 			abrirModalAjuda1: function () {
 				this.estadoModal1 = "block"
 			},
@@ -1073,11 +1354,11 @@
 					var m = today.getMinutes();
 					var s = today.getSeconds();
 					m = checkTime(m);
-					s = checkTime(s);			
+					s = checkTime(s);
 					return h + ":" + m + ":" + s;
 				}
 				function checkTime(i) {
-					if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+					if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
 					return i;
 				}
 				socket.emit('chat-message', {
@@ -1090,11 +1371,11 @@
 				this.novaMsg = ""
 				//this.chatlogs.push({ idUsuario: this.idUsuario, usuario: this.usuario, msg: this.novaMsg, hora: "13:00:00" })
 				this.autoScrollBottomChat();
-			},			
-			etp3_selecionarImagens: function (){
-				var array = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+			},
+			etp3_selecionarImagens: function () {
+				var array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
 				var indice_atual = array.length, valor_temporario, indice_aleatorio;
-				while (0 !== indice_atual) { 
+				while (0 !== indice_atual) {
 					indice_aleatorio = Math.floor(Math.random() * indice_atual);
 					indice_atual -= 1;
 					valor_temporario = array[indice_atual];
@@ -1104,34 +1385,34 @@
 				console.log(array)
 				this.etp3_imagensSelecionadas.push(array[0], array[1], array[2], array[3]);
 			},
-			etp3_verificar: function(){
+			etp3_verificar: function () {
 				var corretas = [true, false, true, false, true, false]
-				if(!this.etp3_foiVerificado){
+				if (!this.etp3_foiVerificado) {
 					var text = "";
 					var marcadas = []
-					var i;					
+					var i;
 					for (i = 0; i < this.etp3_checkboxes.length; i++) {
-						if(this.etp3_checkboxes[i] == true){
-							marcadas.push((i+1))
+						if (this.etp3_checkboxes[i] == true) {
+							marcadas.push((i + 1))
 						}
 					}
 
-					if (marcadas.length != 3){
-						text= "Errou"
-					}else{
-						if(marcadas[0]==1 && marcadas[1]==3 && marcadas[2]==5){
-							text= "Acertou"
-						}else{
-							text= "Errou"
+					if (marcadas.length != 3) {
+						text = "Errou"
+					} else {
+						if (marcadas[0] == 1 && marcadas[1] == 3 && marcadas[2] == 5) {
+							text = "Acertou"
+						} else {
+							text = "Errou"
 						}
 					}
 					this.etp3_texto = text;
 					this.etp3_resp = marcadas;
 					this.etp3_checkboxes = corretas;
 					this.etp3_foiVerificado = true;
-				}	
+				}
 			},
-			etp3a5_resetarCheckboxes: function (){
+			etp3a5_resetarCheckboxes: function () {
 				this.etp3_checkboxes = ["", "", "", "", "", ""];
 				this.etp3_foiVerificado = false;
 				this.etp3_texto = "";
@@ -1157,37 +1438,54 @@
 				}
 			},
 			etp6_selecionarEstrutura: function (index) {
-				if(this.etp6_respostaEnviada == false){
+				if (this.etp6_respostaEnviada == false) {
 					this.etp6_imagens[index].resp = !this.etp6_imagens[index].resp
 				}
-				
+
 			},
-			etp6_enviarResposta: function (){
-				this.etp6_respostaEnviada = true;
+			etp6_enviarResposta: function () {
+				this.etp6_foiRespondida = true;
 			},
-			etp7_enviarResposta: function (){
+			etp7_enviarResposta: function () {
 				this.etp7_foiRespondida = true;
 			},
-			etp8_enviarResposta: function (){
+			etp8_enviarResposta: function () {
 				this.etp8_foiRespondida = true;
 			},
-			etp9_enviarResposta: function (){
+			etp9_enviarResposta: function () {
 				this.etp9_foiRespondida = true;
 			},
-			etp10_enviarResposta: function (){
+			etp10_enviarResposta: function () {
 				this.etp10_foiRespondida = true;
 			},
-			etp11_enviarResposta: function (){
+			etp11_enviarResposta: function () {
 				this.etp11_foiRespondida = true;
 			},
-			etp12_enviarResposta: function (){
+			etp12_enviarResposta: function () {
 				this.etp12_foiRespondida = true;
 			},
-			etp13_enviarResposta: function (){
+			etp13_enviarResposta: function () {
 				this.etp13_foiRespondida = true;
 			},
-			etp14_enviarResposta: function (){
+			etp14_enviarResposta: function () {
 				this.etp14_foiRespondida = true;
+			},
+			enviarTudo: function () {
+				var todasRespostas = {
+					idSala: this.idSala,
+					idUsuario: this.idUsuario,
+					usuario: this.usuario,
+					q1: this.etp6_resposta,
+					q2: this.etp7_resposta,
+					q3: this.etp8_resposta,
+					q4: this.etp9_resposta,
+					q5: this.etp10_resposta,
+					q6: this.etp11_resposta,
+					q7: this.etp12_resposta,
+					q8: this.etp13_resposta,
+					q9: this.etp14_resposta,
+				}
+				socket.emit('enviarRespostas', todasRespostas);
 			}
 
 		},
