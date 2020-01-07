@@ -60,12 +60,12 @@ io.on('connection', function (socket) {
     //console.log(usernames)
     console.log(username + " joined to " + id);
 
-    socket.emit('updatechat', 'SERVER', 'Você está conectado! Aguardado o outro usuário conectar...', id, pairCount);
+    socket.emit('updatechat', 'SERVER', 'Você está conectado! Aguardado o outro usuário conectar...', id, pgmstart);
 
-    socket.broadcast.to(id).emit('updatechat', username, username + ' has joined to this game !', id, pairCount);
+    socket.broadcast.to(id).emit('updatechat', username, username + ' has joined to this game !', id, pgmstart);
     if(pairCount ===2){
       io.in(id).emit('usernames', usernamesArray[usernamesArray.length-2], usernamesArray[usernamesArray.length-1])
-    }
+    } 
   });
 
 
@@ -74,6 +74,10 @@ io.on('connection', function (socket) {
     io.in(msg.sala).emit('chat-message', msg)
     //console.log(msg);
   });
+
+  socket.on('estado', function (sala, jogador, estado){
+    io.to(sala).emit('estado', sala, jogador, estado)
+  })
 
   socket.on('disconnect', function(){		
 		delete usernames[socket.username];

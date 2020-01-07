@@ -33,7 +33,7 @@
 		<!--Navbar-->
 		<nav class="light-blue lighten-1" role="navigation" v-show="estado >= 1">
 			<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Quimicol
-					<small>Bem vindo <strong>{{usuario}}</strong>! seu parceiro é <strong>{{usernameParseiro}} {{estado}}</strong></small></a>
+					<small>Bem vindo <strong>{{usuario}}</strong>! seu parceiro é <strong>{{usernameParseiro}}</strong></small></a>
 				<ul class="right hide-on-med-and-down">
 					<li v-show="estado >=1 && estado < 12" v-on:click="alternarChat"><a>Chat</a></li>
 				</ul>
@@ -96,7 +96,7 @@
 								<h4 class="">Agora assistam ao vídeo sobre álcoois e discutam sobre ele no chat a respeito das informações apresentadas.</h4>
 							</div>
 							<div class="row">
-								<iframe width="700" height="450" src="https://www.youtube.com/embed/e2ThDia1fVs"
+								<iframe width="600" height="400" src="https://www.youtube.com/embed/e2ThDia1fVs"
 									frameborder="0"
 									allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
 									allowfullscreen></iframe>
@@ -699,12 +699,12 @@
 							</div>
 						</div>
 
-						<div class="col s10 offset-s1" v-show="estado > 0 && estado<15">							
-							<div class="col s1">
-								<a class="waves-effect waves-light btn blue lighten-4" v-on:click="voltar">Voltar</a>
-							</div>
-							<div class="col s1 offset-s10">
+						<div class="col s10 offset-s1" v-show="estado > 0 && estado<15">
+							<div class="col s1 offset-s10" v-if="estado == estadoParseiro || estado < estadoParseiro || estado > 11">
 								<a class="waves-effect waves-light btn blue" v-on:click="seguir">Seguir</a>
+							</div>
+							<div v-else class="alert warning">
+								<p>O <strong>parceiro</strong> ainda se encontra na etapa anterior, aguarde ele chegar nesse etapa para passar para próxima etapa!</p>
 							</div>	
 						</div>
 						
@@ -781,9 +781,9 @@
 					<label for="msg"><b>Messagens</b></label>
 					<div class="c-container2" id="containerChat">
 						<div class="c-container darker" v-for="msg in chatlogs">
-							<p><Strong>{{msg.usuario == usuario? "Eu": msg.usuario}}</Strong></p>
-							<div>{{msg.msg}}</div>
-							<span class="time-right">{{msg.hora}}</span>
+							<p style="font-size: small;"><Strong>{{msg.usuario == usuario? "Eu": msg.usuario}}</Strong></p>
+							<div style="word-wrap: break-word; font-size: small;">{{msg.msg}}</div>
+							<span class="time-right" style="font-size: small;">{{msg.hora}}</span>
 						</div>
 					</div>
 
@@ -825,15 +825,14 @@
 			drawer: null,
 			jogador: 0,
 			estado: -1,
+			estadoParseiro: 1,
 			usuario: 'jere',
 			usernameParseiro: "",
 			idUsuario: 0,
 			idSala: 0,
 			log: " -",
 			novaMsg: "",
-			chatlogs: [{ idUsuario: 0, usuario: "jeremias", msg: "oi isso é um teste", hora: "12:00:00" },
-			{ idUsuario: 1, usuario: "jeremias", msg: "oi isso é um teste", hora: "12:00:00" },
-			],
+			chatlogs: [],
 			images: [
 				'images/boa/1.jpg',
 				'images/boa/2.jpg',
@@ -987,21 +986,29 @@
 				//this.usernameParseiro = username;
 				this.idSala = id;
 				this.log = data;
-				this.jogador = cont;
+				if(this.jogador== 0){				
+					this.jogador = cont;
+				}
 				if(cont == 2){
 					this.estado++;
 					this.abrirChat();
 				}				 
 			});
 			socket.on('usernames', (j1, j2) =>{
-				console.log("jogador", this.jogador, j1, j2)
+				//console.log("jogador", this.jogador, j1, j2)
 				if(this.jogador==1){
 					this.usernameParseiro = j2;
 				}else{
 					this.usernameParseiro = j1;
+				}				 
+			});
+			socket.on('estado', (sala, jogador, estado) => {
+				console.log("jogador",this.jogador, "jogador do evento:", jogador)
+				if(this.jogador != jogador){
+					this.estadoParseiro = estado;
 				}
-				 
-			});	
+				
+			});
 		},
 		methods: {
 			entrar: function () {
@@ -1037,7 +1044,10 @@
 				this.etp3a5_resetarCheckboxes();
 				if(this.estado>11){
 					this.fecharChat();
-				}				
+				}
+				if(this.estado >= 1){
+					socket.emit('estado', this.idSala, this.jogador,this.estado);	
+				}			
 				
 			},		
 			abrirModalAjuda1: function () {
