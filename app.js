@@ -11,6 +11,7 @@ var usernames = {};
 var usernamesArray = []
 var pairCount = 0, id, clientsno, pgmstart = 0, varCounter;
 var mensagens = []
+var respostasArray = []
 
 //var indexRouter = require('./routes/index');
 //var usersRouter = require('./routes/users');
@@ -27,6 +28,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
+  //res.send("oi");
+});
+
+app.get('/admin', function (req, res) {
+  res.sendFile(__dirname + '/views/admin.html');
   //res.send("oi");
 });
 
@@ -80,7 +86,8 @@ io.on('connection', function (socket) {
   })
 
   socket.on('enviarRespostas', function (respostas){
-    console.log(respostas)
+    respostasArray.push(respostas)
+    console.log(respostasArray)
   })
 
   socket.on('disconnect', function(){		

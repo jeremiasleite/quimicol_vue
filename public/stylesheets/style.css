@@ -80,6 +80,10 @@ div.container2 {
   border-color: greenyellow;
   border-width: 10px;
 }
+.imgErrou{
+  border-color: red;
+  border-width: 10px;
+}
 .img-composto{
   width: 100%;
   height: 100%;
