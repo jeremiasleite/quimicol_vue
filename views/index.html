@@ -32,10 +32,10 @@
 	<div id="app">
 		<!--Navbar-->
 		<nav class="light-blue lighten-1" role="navigation" v-show="estado >= 1">
-			<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Quimicol
-					<small>Bem vindo <strong>{{usuario}}</strong>! seu parceiro é
-						<strong>{{usernameParseiro}}</strong></small></a>
+			<div class="nav-wrapper"><a id="logo-container" href="#" class="brand-logo"> Quimicol</a>					
+				
 				<ul class="right hide-on-med-and-down">
+					<li><strong>{{usuario}}</strong>! seu parceiro é <strong>{{usernameParseiro}}</strong></li>					
 					<li v-show="estado >=1 && estado < 12" v-on:click="alternarChat"><a>Chat</a></li>
 				</ul>
 
@@ -74,7 +74,7 @@
 					<!--Estado 1-->
 					<div class="col s10 offset-s1" v-if="estado == 1">
 						<div class="row">
-							<h3 class="header left orange-text">Introdução <small>ÁLCOOIS</small></h3>
+							<h3 class="header left orange-text"><small>ÁLCOOIS</small></h3>
 						</div>
 						<div class="row">
 
@@ -104,31 +104,7 @@
 									allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
 									allowfullscreen></iframe>
 							</div>
-							<!--
-							<div class="col s4 image2" v-for="img2, img2Index in compostosAlimento">
-							<div class="card-panel z-depth-1">
-								<div class="row valign-wrapper">
-									<div class="col s6">
-										<img v-bind:src="img2.img" alt="" class="responsive-img" style="height: 100px;">
-										
-									</div>
-									<div class="col s6">
-										<span class="black-text">
-											{{img2.texto}}
-										</span>
-									</div>
-								</div>
-							</div>
-						</div>
-							<div
-								style="display: flex; flex-wrap: wrap; overflow-y: scroll; height: 450px; width: 100%;">
-								<div class="polaroid" v-for="img2, img2Index in compostosAlimento">
-									<img v-bind:src="img2.img" alt="5 Terre" style="width:200px; height: 100px;">
-									<div class="container2">
-										<p>{{img2.texto}}</p>
-									</div>
-								</div>
-							</div>-->
+							
 						</div>
 					</div>
 					<!--Fim do estado 2-->
@@ -249,8 +225,6 @@
 									</div>
 
 								</div>
-								
-
 							</div>
 							
 						</div>
@@ -258,15 +232,7 @@
 						<div class="row">
 							<button class="btn waves-effect waves-light light-green accent-4"
 								v-on:click='etp4_verificar'>Verificar</button>
-						</div>
-						<!--<div class="row">
-								<button class="btn waves-effect waves-light light-green accent-4"
-									v-on:click='etp4_verificar'>Verificar</button>
-								<button class="btn waves-effect waves-light red"
-									v-on:click="abrirModalAjuda1">Ajuda</button>
-								<button class="btn waves-effect waves-light red"
-									v-on:click="abrirModalAjuda2">Prioridade</button>
-							</div>-->
+						</div>						
 
 					</div>
 					<!--Fim do estado 4-->
@@ -280,12 +246,18 @@
 						<div class="row" style="display: flex; flex-wrap: wrap;">
 							<div class="" v-for="comp, index in etp5_imagensSelecionadas" style="margin: 10px;">
 								<div class="img-select"
-									v-bind:class="{imgSelectTrue : comp.resp, imgAcertou: comp.verificado }"
+									v-bind:class="{imgSelectTrue : comp.resp, imgAcertou: comp.verificado, imgErrou: !comp.verificado && etp4_verificada && comp.resp}"
 									v-on:click="etp5_selecionarEstrutura(index)">
-									<img class="img-composto" v-bind:src="comp.url">
-								</div>
-							</div>
+									<div v-if="etp5_verificada" style="text-align: center;"> <strong>{{comp.isAlcool ? "Alcool": "Não Alcool"}}</strong></div>
+									<div>
+										<img class="img-composto" v-bind:src="comp.url" style="max-width: 100%;">
+										<p style="font-size: 10px; text-align: center;"><strong>{{comp.nome}}</strong>
+										</p>
+										<p style="font-size: 10px; text-align: center;">{{comp.descricao}}</p>
+									</div>
 
+								</div>
+							</div>							
 						</div>
 						<div class="row">
 							<button class="btn waves-effect waves-light light-green accent-4"
@@ -803,12 +775,7 @@
 							<button class="btn waves-effect waves-light blue" v-on:click="etp12_enviarResposta">Enviar
 								Respostas</button>
 						</div>
-						<div class="row">							
-							<button class="btn waves-effect waves-light red"
-								v-on:click="abrirModalAjuda1">Identificação</button>
-							<button class="btn waves-effect waves-light red"
-								v-on:click="abrirModalAjuda2">Ordem de Prioridade</button>
-						</div>
+						
 						<div class="row" v-show="etp12_foiRespondida"
 							style="border-style: solid; border-radius: 5px; border-color: burlywood;">
 							<p>Sua resposta foi Enviada!</strong></p>
@@ -835,12 +802,7 @@
 							<button class="btn waves-effect waves-light blue" v-on:click="etp13_enviarResposta">Enviar
 								Respostas</button>
 						</div>
-						<div class="row">							
-							<button class="btn waves-effect waves-light red"
-								v-on:click="abrirModalAjuda1">Identificação</button>
-							<button class="btn waves-effect waves-light red"
-								v-on:click="abrirModalAjuda2">Ordem de Prioridade</button>
-						</div>
+						
 						<div class="row" v-show="etp13_foiRespondida"
 							style="border-style: solid; border-radius: 5px; border-color: burlywood;">
 							<p>Sua resposta foi Enviada!</strong></p>
@@ -869,12 +831,7 @@
 							<button class="btn waves-effect waves-light blue" v-on:click="etp14_enviarResposta">Enviar
 								Respostas</button>
 						</div>
-						<div class="row">							
-							<button class="btn waves-effect waves-light red"
-								v-on:click="abrirModaldentificação1">Identificação</button>
-							<button class="btn waves-effect waves-light red"
-								v-on:click="abrirModalAjuda2">Ordem de Prioridade</button>
-						</div>
+						
 						<div class="row" v-show="etp14_foiRespondida"
 							style="border-style: solid; border-radius: 5px; border-color: burlywood;">
 							<p>Sua resposta foi Enviada!</strong></p>
@@ -960,7 +917,7 @@
 						</div>
 					</div>
 
-					<div class="col s10 offset-s1" v-show="estado > 0 && estado<15">
+					<div class="col s10 offset-s1" v-show="estado > 0 && estado < 15">
 						<div class="col s1 offset-s10"
 							v-if="estado == estadoParseiro || estado < estadoParseiro || estado > 11">
 							<a class="waves-effect waves-light btn blue" v-on:click="seguir">Seguir</a>
@@ -1003,40 +960,6 @@
 			</div>
 		</div>-->
 
-		<!-- The Modal -->
-		<div id="myModal" class="modal" v-bind:style="{display: estadoModal1}">
-
-			<!-- Modal content -->
-			<div class="modal-content">
-				<div class="modal-header">
-					<span class="close" v-on:click="fecharModalAjuda1">&times;</span>
-					<h5>Procedimento para se identificar um álcool</h5>
-				</div>
-				<div class="modal-body">
-					<ul class="collection center-align">
-						<li class="collection-item">PRESENÇA DE PELO MENOS UM GRUPO HIDROXILA - OH</li>
-						<li class="collection-item">O GRUPO DEVE ESTA LIGADO A UM CARBONO SATURADO</li>
-						<li class="collection-item">SER O GRUPO FUNCIONAL PRIORITÁRIO DA MOLECULA</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-
-		<!-- The Modal Grupos Funcionais-Prioridade -->
-		<div id="myModal2" class="modal" v-bind:style="{display: estadoModal2}">
-
-			<!-- Modal content -->
-			<div class="modal-content">
-				<div class="modal-header">
-					<span class="close" v-on:click="fecharModalAjuda2">&times;</span>
-					<h5>COMO IDENTIFICAR UM ÁLCOOl <small>Grupos Funcionais-Prioridade</small></h5>
-				</div>
-				<div class="modal-body">
-					<img class="responsive-img" src="/images/prioridade.jpg">
-				</div>
-			</div>
-		</div>
-
 		<!--Chat-->
 		<div class="chat-popup" id="chat" v-bind:style="{display: ativoChat}">
 			<div class="form-container">
@@ -1058,6 +981,42 @@
 				<button type="button" class="btn cancel" v-on:click="fecharChat">Fechar</button>
 			</div>
 		</div>
+
+		<!-- The Modal -->
+		<div id="myModal" class="modal col s10 offset-s1" v-bind:style="{display: estadoModal1}">
+
+			<!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="close" v-on:click="fecharModalAjuda1">&times;</span>
+					<h5>Procedimento para se identificar um álcool</h5>
+				</div>
+				<div class="modal-body">
+					<ul class="collection center-align">
+						<li class="collection-item">PRESENÇA DE PELO MENOS UM GRUPO HIDROXILA - OH</li>
+						<li class="collection-item">O GRUPO DEVE ESTA LIGADO A UM CARBONO SATURADO</li>
+						<li class="collection-item">SER O GRUPO FUNCIONAL PRIORITÁRIO DA MOLECULA</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<!-- The Modal Grupos Funcionais-Prioridade -->
+		<div id="myModal2" class="modal col s10 offset-s1" v-bind:style="{display: estadoModal2}">
+
+			<!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="close" v-on:click="fecharModalAjuda2">&times;</span>
+					<h5>COMO IDENTIFICAR UM ÁLCOOl <small>Grupos Funcionais-Prioridade</small></h5>
+				</div>
+				<div class="modal-body">
+					<img class="responsive-img" src="/images/prioridade.jpg">
+				</div>
+			</div>
+		</div>
+
+		
 
 	</div>
 
@@ -1171,15 +1130,16 @@
 			],
 			etp4_verificada: false,
 			etp5_imagensSelecionadas: [
-				{ url: "images/estruturas/nao_alcool/1.png", isAlcool: false, resp: false, verificado: false },
-				{ url: "images/estruturas/nao_alcool/2.png", isAlcool: false, resp: false, verificado: false },
-				{ url: "images/estruturas/alcool/1.png", isAlcool: true, resp: false, verificado: false },
-				{ url: "images/estruturas/alcool/2.png", isAlcool: true, resp: false, verificado: false },
-				{ url: "images/estruturas/alcool/3.png", isAlcool: true, resp: false, verificado: false },
-				{ url: "images/estruturas/nao_alcool/3.png", isAlcool: false, resp: false, verificado: false },
-				{ url: "images/estruturas/alcool/4.png", isAlcool: true, resp: false, verificado: false },
-				{ url: "images/estruturas/nao_alcool/4.png", isAlcool: false, resp: false, verificado: false },
+				{ url: "images/estruturas/nao_alcool/1.png" , nome: "Vanilina", descricao: "Essência de baunilha.", isAlcool: false, resp: false, verificado: false },
+				{ url: "images/estruturas/nao_alcool/2.png", nome: "Treonina", descricao: "Constituinte de alguns suplementos nutricionais para humanos e animais.",isAlcool: false, resp: false, verificado: false },
+				{ url: "images/estruturas/alcool/1.png", nome: "Glicerina", descricao: "Constituinte de sabonetes, sabões, detergentes líquidos, loções para a pele.", isAlcool: true, resp: false, verificado: false },
+				{ url: "images/estruturas/alcool/2.png", nome: "Esfingosina", descricao: "Presente em shampoos de ceramida", isAlcool: true, resp: false, verificado: false },
+				{ url: "images/estruturas/alcool/3.png", nome: "Guaifenesina", descricao: "Expectorante, no combate à tosse.", isAlcool: true, resp: false, verificado: false },
+				{ url: "images/estruturas/nao_alcool/3.png", nome: "Gabapentina", descricao: "Fármaco usado no tratamento da epilepsia.",isAlcool: false, resp: false, verificado: false },
+				{ url: "images/estruturas/alcool/4.png",  nome: "Trietanolamina", descricao: "Utilizada em preparações cosméticas e de higiene.", isAlcool: true, resp: false, verificado: false },
+				{ url: "images/estruturas/nao_alcool/4.png", nome: "Cafeína", descricao: "Estimulante.", isAlcool: false, resp: false, verificado: false },
 			],
+			etp5_verificada: false,
 			etp6_imagensSelecionadas: [
 				{ url: "images/estruturas/nao_alcool/5.png", isAlcool: false, resp: false, verificado: false },
 				{ url: "images/estruturas/alcool/5.png", isAlcool: true, resp: false, verificado: false },
@@ -1493,6 +1453,7 @@
 				this.etp5_imagensSelecionadas[index].resp = !this.etp5_imagensSelecionadas[index].resp
 			},
 			etp5_verificar: function () {
+				this.etp5_verificada=true;
 				for (i = 0; i < this.etp5_imagensSelecionadas.length; i++) {
 					if (this.etp5_imagensSelecionadas[i].resp == true && this.etp5_imagensSelecionadas[i].isAlcool == true) {
 						this.etp5_imagensSelecionadas[i].verificado = true

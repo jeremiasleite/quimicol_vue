@@ -1,11 +1,19 @@
 var app = require('express')();
 var express = require('express')
 var path = require('path');
+const mongoose = require("mongoose");
 //var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var http = require('http').createServer(app);
 //console.log(http)
 var io = require('socket.io')(http);
+//var respostaController = require('./controllers/respostaController')
+
+// Conecta no MongoDB
+mongoose.connect(  
+  "mongodb://jeremias:autocad789@ds031657.mlab.com:31657/daniel_imoveis", 
+  {useNewUrlParser: true}
+);
 
 var usernames = {};
 var usernamesArray = []
@@ -87,7 +95,14 @@ io.on('connection', function (socket) {
 
   socket.on('enviarRespostas', function (respostas){
     respostasArray.push(respostas)
-    console.log(respostasArray)
+    /*respostaController.save(respostas, function (resposta_, error){
+      if(error){
+        console.log(error)
+      }else{
+        console.log("salvo com sucesso")
+      }
+    })*/
+    //console.log(respostasArray)
   })
 
   socket.on('disconnect', function(){		
