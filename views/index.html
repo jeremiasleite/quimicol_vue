@@ -37,7 +37,7 @@
 				<span class="brand-logo center"> <small><strong>{{usuario}}</strong>! seu parceiro é <strong>{{usernameParseiro}}</strong></small></span>
 
 				<ul class="right hide-on-med-and-down">
-					<li>Etapa ({{estado}}/15)</li>											
+					<li>Página ({{estado}}/15)</li>											
 					<li v-show="estado >=1 && estado < 12" v-on:click="alternarChat"><a>Chat</a></li>
 				</ul>
 
@@ -90,8 +90,8 @@
 					<div class="col s10 offset-s1" v-if="estado == 2">
 						<div class="row">
 							<div class="row">
-								<h4 class="">Agora assistam ao vídeo sobre álcoois e discutam sobre ele no chat a
-									respeito das informações apresentadas.</h4>
+								<h5 class="">Agora assistam ao vídeo sobre álcoois e discutam sobre ele no chat a
+									respeito das informações apresentadas.</h5>
 							</div>
 							<div class="row">
 								<iframe width="560" height="315" src="https://www.youtube.com/embed/LI9ImGIm9ys"
@@ -109,7 +109,7 @@
 						<div class="row">
 							<div class="row">
 								<!--h3 class="header left orange-text">Introdução <small>Alimentos</small></!--h3>-->
-								<p>Análise todas as estruturas representativas de alcoois e não alcoois</p>
+								<5>Análise todas as estruturas representativas de alcoois e não alcoois</5>
 							</div>
 							<div class="col s6" style="border-style: solid; border-width: 2px; padding: 2px;">
 								<div
@@ -206,7 +206,7 @@
 					<div class="col s10 offset-s1" v-if="estado == 4">
 
 						<div class="row">
-							<h6>Selecione os compostos que são ÁLCOOIS!</h6>
+							<h5>Selecione os compostos que são ÁLCOOIS!</h5>
 						</div>
 						<div class="row" style="display: flex; flex-wrap: wrap;">
 							<div class="" v-for="comp, index in etp4_imagensSelecionadas" style="margin: 10px;">
@@ -238,12 +238,12 @@
 					<div class="col s10 offset-s1" v-if="estado == 5">
 
 						<div class="row">
-							<h6>Selecione os compostos que são ÁLCOOIS</h6>
+							<h5>Selecione os compostos que são ÁLCOOIS</h5>
 						</div>
 						<div class="row" style="display: flex; flex-wrap: wrap;">
 							<div class="" v-for="comp, index in etp5_imagensSelecionadas" style="margin: 10px;">
 								<div class="img-select"
-									v-bind:class="{imgSelectTrue : comp.resp, imgAcertou: comp.verificado, imgErrou: !comp.verificado && etp4_verificada && comp.resp}"
+									v-bind:class="{imgSelectTrue : comp.resp, imgAcertou: comp.verificado, imgErrou: !comp.verificado && etp5_verificada && comp.resp}"
 									v-on:click="etp5_selecionarEstrutura(index)">
 									<div v-if="etp5_verificada" style="text-align: center;"> <strong>{{comp.isAlcool ? "Alcool": "Não Alcool"}}</strong></div>
 									<div>
@@ -268,11 +268,11 @@
 						<div class="row alert info" v-if="jogador == 2">
 							<p>Ajude o seu parceiro a responder essa questão, para isso utilize o chat!</p>
 						</div>
-						<div class="row alert info" v-else>
-							<p>Peça ajuda ao parceiro para responder essa questão, para isso utilize o chat!</p>
+						<div class="row alert warning" v-else>
+							<p><strong>Atenção! </strong>Peça ajuda ao parceiro para responder essa questão, para isso utilize o chat!</p>
 						</div>
 						<div class="row">
-							<h4>Responda a questão abaixo</h4>
+							<h5>Responda a questão abaixo</h5>
 							<h6>A lista de reagentes para síntese de fármacos apresentada abaixo foi enviada para o
 								almoxarifado de uma loja. O conferente verificou que os álcoois listados estavam em
 								falta. Indique-os.</h6>
@@ -358,11 +358,11 @@
 						<div class="row alert info" v-if="jogador == 1">
 							<p>Ajude o seu parceiro a responder essa questão, para isso utilize o chat!</p>
 						</div>
-						<div class="row alert info" v-else>
-							<p>Peça ajuda ao parceiro para responder essa questão, para isso utilize o chat!</p>
+						<div class="row alert warning" v-else>
+							<p><strong>Atenção! </strong>Peça ajuda ao parceiro para responder essa questão, para isso utilize o chat!</p>
 						</div>
 						<div class="row">
-							<h4>Responda a questão abaixo</h4>
+							<h5>Responda a questão abaixo</h5>
 							<h6>O quadro abaixo mostra estruturas de feromônios de alguns insetos que afetam
 								determinadas culturas agrícolas.</h6>
 						</div>
@@ -432,11 +432,11 @@
 						<div class="row alert info" v-if="jogador == 2">
 							<p>Ajude o seu parceiro a responder essa questão, para isso utilize o chat!</p>
 						</div>
-						<div class="row alert info" v-else>
-							<p>Peça ajuda ao parceiro para responder essa questão, para isso utilize o chat!</p>
+						<div class="row alert warning" v-else>
+							<p><strong>Atenção! </strong>Peça ajuda ao parceiro para responder essa questão, para isso utilize o chat!</p>
 						</div>
 						<div class="row">
-							<h4>Responda a questão abaixo</h4>
+							<h5>Responda a questão abaixo</h5>
 							<h6>A produção de cachaça no Brasil é de aproximadamente 1,4 bilhões de litros e
 								contribui com cerca de US$ 500 milhões para o nosso PIB. A sua fabricação envolve a
 								fermentação alcoólica, a partir do sumo da cana-de-açúcar, processo utilizado desde
@@ -545,11 +545,11 @@
 						<div class="row alert info" v-if="jogador == 1">
 							<p>Ajude o seu parceiro a responder essa questão, para isso utilize o chat!</p>
 						</div>
-						<div class="row alert info" v-else>
-							<p>Peça ajuda ao parceiro para responder essa questão, para isso utilize o chat!</p>
+						<div class="row alert warning" v-else>
+							<p><strong>Atenção! </strong>Peça ajuda ao parceiro para responder essa questão, para isso utilize o chat!</p>
 						</div>
 						<div class="row">
-							<h4>Responda a questão abaixo</h4>
+							<h5>Responda a questão abaixo</h5>
 							<h6>Um vídeo disponibilizado na internet que determinado volume de uma substância
 								líquida, contendo fórmula molecular C<sub>4</sub>H<sub>10</sub>O, foi transferido
 								para um balão de destilação e, em seguida, resfriado em um banho de gelo. Passados
@@ -625,11 +625,11 @@
 						<div class="row alert info" v-if="jogador == 2">
 							<p>Ajude o seu parceiro a responder essa questão, para isso utilize o chat!</p>
 						</div>
-						<div class="row alert info" v-else>
-							<p>Peça ajuda ao parceiro para responder essa questão, para isso utilize o chat!</p>
+						<div class="row alert warning" v-else>
+							<p><strong>Atenção! </strong>Peça ajuda ao parceiro para responder essa questão, para isso utilize o chat!</p>
 						</div>
 						<div class="row">
-							<h4>Responda a questão abaixo</h4>
+							<h5>Responda a questão abaixo</h5>
 							<h6>Uma indústria alimentícia resolveu acrescentar uma nova opção de sabor à sua linha
 								de biscoitos e bolachas. Para tanto, decidiu utilizar um aromatizante que é um
 								álcool.
@@ -741,16 +741,16 @@
 						<div class="row alert info" v-if="jogador == 1">
 							<p>Ajude o seu parceiro a responder essa questão, para isso utilize o chat!</p>
 						</div>
-						<div class="row alert info" v-else>
-							<p>Peça ajuda ao parceiro para responder essa questão, para isso utilize o chat!</p>
+						<div class="row alert warning" v-else>
+							<p><strong>Atenção! </strong>Peça ajuda ao parceiro para responder essa questão, para isso utilize o chat!</p>
 						</div>
 						<div class="row">
-							<h4>Responda a questão abaixo</h4>
+							<h5>Responda a questão abaixo</h5>
 							<h6>Uma substância apolar oxigenada e contendo halogênios, isolada de um animal,
 								apresentou uma forte atividade antitumoral. O resultado dessa pesquisa foi noticiado
 								por um jornal que trazia a seguinte manchete: Álcool isolado de animal pode combater
 								o câncer.
-								Avalie se existe a possibilidade deque essa substância seja um álcool.
+								Avalie se existe a possibilidade de que essa substância seja um álcool.
 							</h6>
 						</div>
 
@@ -777,7 +777,7 @@
 					<!--Estado 12-->
 					<div class="col s10 offset-s1" v-if="estado == 12">
 						<div class="row">
-							<h4>Responda a questão abaixo</h4>
+							<h5>Responda a questão abaixo</h5>
 							<h6>Grande quantidade de uma substância foi apreendida em um container, recém-chegado a
 								um porto. Identificada como um álcool cíclico, insaturado e nitrogenado, a
 								substância é de uso controlado e sua comercialização é proibida. As empresas
@@ -808,7 +808,7 @@
 					<!--Estado 13-->
 					<div class="col s10 offset-s1" v-if="estado == 13">
 						<div class="row">
-							<h4>Responda a questão abaixo</h4>
+							<h5>Responda a questão abaixo</h5>
 							<h6>O termo poliol abrange uma grande variedade os compostos contendo grupos hidroxilas.
 								Eles são importantes matérias-primas para as indústrias de espumas e de tintas, pois
 								reagem com outras substâncias para formar polímeros.
@@ -835,7 +835,7 @@
 					<!--Estado 14-->
 					<div class="col s10 offset-s1" v-if="estado == 14">
 						<div class="row">
-							<h4>Responda a questão abaixo</h4>
+							<h5>Responda a questão abaixo</h5>
 							<h6>Determinada substância, naturalmente abundante em algumas espécies vegetais, é muito
 								utilizada, na forma de solução, como aromatizante pelas indústrias de alimentos,
 								cosméticos e de produtos de higiene bucal. Em uma atividade experimental realizada
@@ -860,16 +860,6 @@
 						</div>
 					</div>
 					<!--Fim do estado 14-->
-
-					<!--Estado 15-->
-					<div class="col s10 offset-s1" v-if="estado == 15">
-						<br>
-						<div class="row alert success">
-							<h4>Muito bem. Agora, você conhece o processo de identificação de alcoóis, com a grande diversidade estrutural e de aplicações!</h4>
-						</div>
-
-					</div>
-					<!--Fim do estado 15-->
 
 					<div class="col s10 offset-s1" v-if="estado > 2 && estado <6">
 						<div class="row" style="border-style: solid;">
@@ -940,7 +930,7 @@
 						</div>
 					</div>
 
-					<div class="col s10 offset-s1" v-show="estado > 0 && estado < 15">
+					<div class="col s10 offset-s1" v-show="estado > 0 && estado < 17">
 						<div class="col s1 offset-s10"
 							v-if="estado == estadoParseiro || estado < estadoParseiro || estado > 11">
 							<a class="waves-effect waves-light btn blue" v-on:click="seguir">Seguir</a>
@@ -952,36 +942,59 @@
 					</div>
 
 				</div>
-
-			</div>
-
-			<!--<div class="j-footer " v-show="estado > 0">
-					<div class="row">
-						<div class="row">
-							<div class="col s1">
-								<a class="waves-effect waves-light btn blue lighten-4" v-on:click="voltar">Voltar</a>
-							</div>
-							<div class="col s1 offset-s10">
-								<a class="waves-effect waves-light btn blue" v-on:click="seguir">Seguir</a>
-							</div>
+				<!--Estado 15 -->
+				<div class="row" v-if="estado == 15">
+					<br>
+					<div class="container">
+						<div class="row" style="text-align: center;">
+							<h6>UNIVERSIDADE FEDERAL RURAL DE PERNAMBUCO</h6>
+							<h6>MESTRADO PROFISSIONAL EM QUÍMICA</h6>
+							<h6>TERMO DE CONSENTIMENTO LIVRE E ESCLARECIDO</h6>
+						</div> 
+						<div style="line-height: 2; text-align: justify;">
+							<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Convidamos V.Sa. a participar da pesquisa:  <strong>DESENVOLVIMENTO E UTILIZAÇÃO DE UM AMBIENTE VIRTUAL DE APRENDIZAGEM, BASEADO NA TEORIA DE GALPERIN, PARA A IDENTIFICAÇÃO DE ÁLCOOIS</strong> que tem por objetivo analisar o uso de um software em um processo de ensino-aprendizagem para alunos do ensino médio. Como procedimentos de coleta de dados, utilizamos os exercícios e problemas feitos pelos participantes.
+								Destacamos ainda os seguintes direitos: a garantia de esclarecimento e resposta a qualquer pergunta e a garantia de privacidade à sua identidade e do sigilo de suas informações.
+								Você, participante, depois de conhecer e entender os objetivos e procedimentos metodológicos da pesquisa, bem como de estar ciente da necessidade do uso de minha imagem e/ou depoimento, especificados no Termo de Consentimento Livre e Esclarecido (TCLE), AUTORIZO, através do presente termo, a pesquisadora Fabiana Alves da Silva a realizar fotos/filmagem que se façam necessária e/ou colher meu depoimento sem quaisquer ônus financeiros a nenhuma parte.
+								</p>
 						</div>
-
 					</div>
 
-				</div>-->
-
-		</div>
-
-		<!--Rodape
-		<div class="j-footer">
-			<div class="page-footer orange">
-				<div class="footer-copyright">
-					<div class="container">
-						Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Next-Develops</a>
+					<div class="center">
+						<a class="waves-effect blue btn" v-on:click="autorizar">Autorizar</a>
+						<a class="waves-effect red btn" v-on:click="negar">Negar</a>
 					</div>
 				</div>
+								
+				<!--Fim do estado 15-->
+
+				<!--Estado 16-->
+				<div class="col s10 offset-s1" v-if="estado == 16">
+					<br>
+					<div class="row">
+						<h5>Responda o questionário abaixo.</h5>
+					</div>
+					<div class="row">
+						<h4>Aqui é o questionário</h4>
+					</div>
+					<div class="row">
+						<a class="waves-effect blue btn" v-on:click="enviar_questionario">Enviar</a>
+					</div>
+
+				</div>
+				<!--Fim do estado 16-->
+
+				<!--Estado 17-->
+				<div class="col s10 offset-s1" v-if="estado == 17">
+					<br>
+					<div class="row alert success">
+						<h4>Muito bem. Agora, você conhece o processo de identificação de alcoóis, com a grande diversidade estrutural e de aplicações!</h4>
+					</div>
+
+				</div>
+				<!--Fim do estado 17-->
+
 			</div>
-		</div>-->
+		</div>	
 
 		<!--Chat-->
 		<div class="chat-popup" id="chat" v-bind:style="{display: ativoChat}">
@@ -990,7 +1003,7 @@
 				<label for="msg"><b>Messagens</b></label>
 				<div class="c-container2" id="containerChat">
 					<div class="c-container darker" v-for="msg in chatlogs">
-						<p style="font-size: small;"><Strong>{{msg.usuario == usuario? "Eu": msg.usuario}}</Strong>
+						<p style="font-size: small;"><Strong>{{msg.jogador == jogador? "Eu": msg.usuario}}</Strong>
 						</p>
 						<div style="word-wrap: break-word; font-size: small;">{{msg.msg}}</div>
 						<span class="time-right" style="font-size: small;">{{msg.hora}}</span>
@@ -1017,7 +1030,7 @@
 				<div class="modal-body">
 					<ul class="collection center-align">
 						<li class="collection-item">PRESENÇA DE PELO MENOS UM GRUPO HIDROXILA - OH</li>
-						<li class="collection-item">O GRUPO DEVE ESTA LIGADO A UM CARBONO SATURADO</li>
+						<li class="collection-item">O GRUPO DEVE ESTAR LIGADO A UM CARBONO SATURADO</li>
 						<li class="collection-item">SER O GRUPO FUNCIONAL PRIORITÁRIO DA MOLECULA</li>
 					</ul>
 				</div>
@@ -1074,7 +1087,7 @@
 			estado: -1,			
 			estadoParseiro: 1,
 			seguirParceiro: false,
-			usuario: 'jere',
+			usuario: '',
 			usernameParseiro: "",
 			idUsuario: 0,
 			idSala: 0,
@@ -1210,21 +1223,19 @@
 			etp13_foiRespondida: false,
 			etp14_resposta: "",
 			etp14_foiRespondida: false,
+			estaAutorizado: false
 		},
 		created() {
 			this.etp3_selecionarImagens()
-
+		},
+		mounted() {
 			socket.on('chat-message', (data) => {
 				this.chatlogs.push(data)
 				this.abrirChat();
 				this.autoScrollBottomChat();
 			});
-
-
-		},
-		mounted() {
 			socket.on('updatechat', (username, data, id, cont) => {
-				console.log(data, id, username, cont);
+				//console.log(data, id, username, cont);
 				this.idUsuario = socket.id;
 				//this.usernameParseiro = username;
 				this.idSala = id;
@@ -1476,6 +1487,7 @@
 					return i;
 				}
 				socket.emit('chat-message', {
+					jogador: this.jogador,
 					sala: this.idSala,
 					msg: this.novaMsg,
 					usuario: this.usuario,
@@ -1607,6 +1619,16 @@
 			},
 			etp14_enviarResposta: function () {
 				this.etp14_foiRespondida = true;
+			},
+			autorizar: function (){
+				this.estaAutorizado = true;
+				this.estado++;
+			},
+			negar: function (){		
+				this.estado++;
+			},
+			enviar_questionario: function (){
+				this.estado++;
 			},
 			enviarTudo: function () {
 				var todasRespostas = {
