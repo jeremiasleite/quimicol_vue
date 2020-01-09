@@ -93,6 +93,29 @@ io.on('connection', function (socket) {
     io.to(sala).emit('estado', sala, jogador, estado)
   })
 
+  socket.on('etp6_respondida', function(sala, foiRespondida){
+    socket.broadcast.to(id).emit('etp6_respondida', foiRespondida)
+  })
+  
+  socket.on('etp7_respondida', function(sala, foiRespondida){
+    socket.broadcast.to(id).emit('etp7_respondida', foiRespondida)
+  })
+  socket.on('etp8_respondida', function(sala, foiRespondida){
+    socket.broadcast.to(id).emit('etp8_respondida', foiRespondida)
+  })
+
+  socket.on('etp9_respondida', function(sala, foiRespondida){
+    socket.broadcast.to(id).emit('etp9_respondida', foiRespondida)
+  })
+
+  socket.on('etp10_respondida', function(sala, foiRespondida){
+    socket.broadcast.to(id).emit('etp10_respondida', foiRespondida)
+  })
+
+  socket.on('etp11_respondida', function(sala, foiRespondida){
+    socket.broadcast.to(id).emit('etp11_respondida', foiRespondida)
+  })
+
   socket.on('enviarRespostas', function (respostas){
     respostasArray.push(respostas)
     /*respostaController.save(respostas, function (resposta_, error){
