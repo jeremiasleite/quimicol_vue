@@ -109,7 +109,7 @@
 						<div class="row">
 							<div class="row">
 								<!--h3 class="header left orange-text">Introdução <small>Alimentos</small></!--h3>-->
-								<5>Análise todas as estruturas representativas de alcoois e não alcoois</5>
+								<h5>Análise todas as estruturas representativas de alcoois e não alcoois</h5>
 							</div>
 							<div class="col s6" style="border-style: solid; border-width: 2px; padding: 2px;">
 								<div
@@ -867,53 +867,53 @@
 								<div class="col s5">
 									<!--<p>Quais as três condições observadas que os distinguem nessa classificação?</p>-->
 									<p>Há três condições para que uma substância seja identificada como um álcool:</p>
-									<p>1
-										<label>
+									<p>1 <span class="black-text" v-show="etp3_foiVerificado" style="padding: 2px; background-color: chartreuse;">Possui HIDROXILA</span>
+										<label v-show="!etp3_foiVerificado">
 											<input name="etp3" id="etp3_1" type="checkbox" v-model=etp3_checkboxes[0]
 												value="1" />
-											<span>Possui HIDROXILA</span>
+											<span class="black-text">Possui HIDROXILA</span>
 										</label>
 									</p>
-									<p>2
-										<label>
+									<p>2 <span class="black-text" v-show="etp3_foiVerificado">Possui CARBOXILA</span>
+										<label v-show="!etp3_foiVerificado">
 											<input name="etp3" id="etp3_2" type="checkbox" v-model=etp3_checkboxes[1]
 												value="2" />
-											<span>Possui CARBOXILA</span>
+											<span class="black-text">Possui CARBOXILA</span>
 										</label>
 									</p>
-									<p>3
-										<label>
+									<p>3 <span class="black-text" v-show="etp3_foiVerificado" style="padding: 2px; background-color: chartreuse;">Ligada ao carbono saturado</span>
+										<label v-show="!etp3_foiVerificado">
 											<input name="etp3" id="etp3_3" type="checkbox" v-model=etp3_checkboxes[2]
 												value="3" />
-											<span>Ligada ao carbono saturado</span>
+											<span class="black-text">Ligada ao carbono saturado</span>
 										</label>
 									</p>
 								</div>
 								<div class="col s5">
-									<p>4
-										<label>
+									<p>4 <span class="black-text" v-show="etp3_foiVerificado" >Ligada ao carbono insaturado</span>
+										<label v-show="!etp3_foiVerificado">
 											<input name="etp3" id="etp3_4" type="checkbox" v-model=etp3_checkboxes[3]
 												value="4" />
-											<span>Ligada ao carbono insaturado</span>
+											<span class="black-text">Ligada ao carbono insaturado</span>
 										</label>
 									</p>
-									<p>5
-										<label>
+									<p>5 <span class="black-text" v-show="etp3_foiVerificado" style="padding: 2px; background-color: chartreuse;">É grupo funcional principal</span>
+										<label v-show="!etp3_foiVerificado">
 											<input name="etp3" id="etp3_5" type="checkbox" v-model=etp3_checkboxes[4]
 												value="5" />
-											<span>É grupo funcional principal</span>
+											<span class="black-text">É grupo funcional principal</span>
 										</label>
 									</p>
-									<p>6
-										<label>
+									<p>6 <span class="black-text" v-show="etp3_foiVerificado">É grupo funcional Minoritário</span>
+										<label v-show="!etp3_foiVerificado">
 											<input name="etp3" id="etp3_6" type="checkbox" v-model=etp3_checkboxes[5]
 												value="6" />
-											<span>É grupo funcional Minoritário</span>
+											<span class="black-text">É grupo funcional Minoritário</span>
 										</label>
 									</p>
 								</div>
 
-								<div class="col s2">
+								<div class="col s2" v-show="!etp3_foiVerificado">
 									<p>
 										<a class="waves-effect waves-light btn"
 											v-on:click="etp3_verificar">Verificar</a>
@@ -987,7 +987,22 @@
 				<div class="col s10 offset-s1" v-if="estado == 17">
 					<br>
 					<div class="row alert success">
-						<h4>Muito bem. Agora, você conhece o processo de identificação de alcoóis, com a grande diversidade estrutural e de aplicações!</h4>
+						<h4>Muito bem. Agora, você conhece o processo de identificação de alcoóis, com grande diversidade estrutural e de aplicações!</h4>
+					</div>
+					<br>
+					<br>
+					<div class="row" style="border-style: solid; padding: 5px;">
+						<p> <strong>Links dos videos utilizados na produção do video utilizado nesse projeto.</strong></p>
+						<ul>
+							<li>https://www.youtube.com/watch?v=FjqYD2boLZ4</li>
+							<li>https://www.youtube.com/watch?v=hMXlYABp8_8</li>
+							<li>https://www.youtube.com/watch?v=oSJrmetXZro</li>
+							<li>https://www.youtube.com/watch?v=A_46uvUc00c</li>
+							<li>https://www.youtube.com/watch?v=_CeapQ4KDhk</li>
+							<li>https://www.youtube.com/watch?v=YmHPfS0qhYM</li>
+							<li>https://www.youtube.com/watch?v=MKqroe-cHM4</li>
+							<li>https://www.youtube.com/watch?v=Oy5yNd-F9Lo&t=57s</li>
+						</ul>
 					</div>
 
 				</div>
@@ -1534,7 +1549,8 @@
 						} else {
 							text = "Errou"
 						}
-					}
+					}					
+
 					this.etp3_texto = text;
 					this.etp3_resp = marcadas;
 					this.etp3_checkboxes = corretas;
