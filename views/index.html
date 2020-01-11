@@ -60,7 +60,7 @@
 						</div>
 					</div>
 					<div class="input-field col s2">
-						<a class="waves-effect orange btn" v-on:click="entrar">Entrar</a>
+						<a class="waves-effect orange btn" v-on:click="entrar" v-on:keyup.enter="entrar">Entrar</a>
 					</div>
 				</div>
 			</div>
@@ -1526,6 +1526,9 @@
 				}
 				if (this.estado == 15) {
 					this.enviarTudo();
+				}
+				if (this.estado == 12){
+					swal('Atenção: A partir das próximas telas. Não haverá mais chat, você continuará os próximos passos sozinho. Continue se  divertindo...')
 				}
 
 			},
