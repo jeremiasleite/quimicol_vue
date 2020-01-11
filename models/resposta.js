@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
-const UserSchema = new mongoose.Schema({
-  usename: {
+const respostaSchema = new mongoose.Schema({
+  usuario: {
     type: String,
     require: true
   },
@@ -10,6 +10,9 @@ const UserSchema = new mongoose.Schema({
     required: true    
   },
   idUsuario: {
+    type: String
+  },
+  jogador: {
     type: String
   },
   q1: {
@@ -39,7 +42,12 @@ const UserSchema = new mongoose.Schema({
   q9: {
     type: String
   },
+  questionario: {
+    type: [String]
+  },
+  estaAutorizado: {
+    type: Boolean
+  }
 });
 
-
-mongoose.model("Resposta", UserSchema);
+module.exports = mongoose.model("Resposta", respostaSchema);

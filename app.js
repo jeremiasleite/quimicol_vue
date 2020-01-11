@@ -7,12 +7,13 @@ var logger = require('morgan');
 var http = require('http').createServer(app);
 //console.log(http)
 var io = require('socket.io')(http);
-//var respostaController = require('./controllers/respostaController')
+var respostaController = require('./controllers/respostaController')
+var chatController = require('./controllers/ChatController')
 
 // Conecta no MongoDB
-mongoose.connect(  
-  "mongodb://jeremias:autocad789@ds031657.mlab.com:31657/daniel_imoveis", 
-  {useNewUrlParser: true}
+mongoose.connect(
+  "mongodb://jeremias:autocad789@ds031657.mlab.com:31657/daniel_imoveis",
+  { useNewUrlParser: true }
 );
 
 var usernames = {};
@@ -35,7 +36,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/views/index.html');
+  var pessoa = {nome: "jeremias", idade: "33"}
+  res.sendFile(__dirname + '/views/index.html', {pessoa: pessoa});
   //res.send("oi");
 });
 
@@ -53,7 +55,7 @@ io.on('connection', function (socket) {
   socket.on('addClient', function (username) {
     socket.username = username;
     usernames[username] = username;
-    usernamesArray.push(username)    
+    usernamesArray.push(username)
     varCounter = 0
     //var id = Math.round((Math.random() * 1000000));
     pairCount++;
@@ -64,12 +66,12 @@ io.on('connection', function (socket) {
       console.log(pairCount + " " + id);
       socket.join(id);
       pgmstart = 1;
-    } else if (pairCount === 2) {      
+    } else if (pairCount === 2) {
       console.log(pairCount + " " + id);
       socket.join(id);
       pgmstart = 2;
       //console.log(usernamesArray)
-      
+
     }
     //console.log(usernames)
     console.log(username + " joined to " + id);
@@ -77,9 +79,9 @@ io.on('connection', function (socket) {
     socket.emit('updatechat', 'SERVER', 'Você está conectado! Aguardando o outro usuário conectar...', id, pgmstart);
 
     socket.broadcast.to(id).emit('updatechat', username, username + ' has joined to this game !', id, pgmstart);
-    if(pairCount ===2){
-      io.in(id).emit('usernames', usernamesArray[usernamesArray.length-2], usernamesArray[usernamesArray.length-1])
-    } 
+    if (pairCount === 2) {
+      io.in(id).emit('usernames', usernamesArray[usernamesArray.length - 2], usernamesArray[usernamesArray.length - 1])
+    }
   });
 
 
@@ -89,54 +91,131 @@ io.on('connection', function (socket) {
     //console.log(msg);
   });
 
-  socket.on('estado', function (sala, jogador, estado){
+  socket.on('estado', function (sala, jogador, estado) {
     io.to(sala).emit('estado', sala, jogador, estado)
   })
 
-  socket.on('etp6_respondida', function(sala, foiRespondida){
+  socket.on('etp6_respondida', function (sala, foiRespondida) {
     socket.broadcast.to(id).emit('etp6_respondida', foiRespondida)
   })
-  
-  socket.on('etp7_respondida', function(sala, foiRespondida){
+
+  socket.on('etp7_respondida', function (sala, foiRespondida) {
     socket.broadcast.to(id).emit('etp7_respondida', foiRespondida)
   })
-  socket.on('etp8_respondida', function(sala, foiRespondida){
+  socket.on('etp8_respondida', function (sala, foiRespondida) {
     socket.broadcast.to(id).emit('etp8_respondida', foiRespondida)
   })
 
-  socket.on('etp9_respondida', function(sala, foiRespondida){
+  socket.on('etp9_respondida', function (sala, foiRespondida) {
     socket.broadcast.to(id).emit('etp9_respondida', foiRespondida)
   })
 
-  socket.on('etp10_respondida', function(sala, foiRespondida){
+  socket.on('etp10_respondida', function (sala, foiRespondida) {
     socket.broadcast.to(id).emit('etp10_respondida', foiRespondida)
   })
 
-  socket.on('etp11_respondida', function(sala, foiRespondida){
+  socket.on('etp11_respondida', function (sala, foiRespondida) {
     socket.broadcast.to(id).emit('etp11_respondida', foiRespondida)
   })
 
-  socket.on('enviarRespostas', function (respostas){
-    respostasArray.push(respostas)
-    /*respostaController.save(respostas, function (resposta_, error){
-      if(error){
+  socket.on('enviarRespostas', function (respostas) {
+    respostaController.save(respostas, function (dados, error) {
+      if (error) {
         console.log(error)
-      }else{
-        console.log("salvo com sucesso")
+      } else {
+        console.log(dados)
       }
-    })*/
-    //console.log(respostasArray)
+    })
   })
 
-  socket.on('disconnect', function(){		
-		delete usernames[socket.username];
-		io.sockets.emit('updateusers', usernames);
-		//io.sockets.in(id).emit('updatechat', 'SERVER', socket.username + ' has disconnected',id);
-		socket.leave(socket.room);
-	});
+  socket.on('enviarChatLogs', function (chatLogs) {
+    chatController.save(chatLogs, function (dados, error) {
+      if (error) {
+        console.log(error)
+      } else {
+        console.log(dados)
+      }
+    })
+  })
+
+
+  socket.on('disconnect', function () {
+    delete usernames[socket.username];
+    io.sockets.emit('updateusers', usernames);
+    //io.sockets.in(id).emit('updatechat', 'SERVER', socket.username + ' has disconnected',id);
+    socket.leave(socket.room);
+  });
 
 
 });
+
+/*var respostas = {
+  idSala: '2222',
+  idUsuario: '21',
+  usuario: 'jonathas',
+  jogador: '1',
+  q1: 'rq1',
+  q2: 'oi',
+  q3: 'oi2',
+  q4: 'iu3',
+  q5: 'oi4',
+  q6: 'oi5',
+  q7: 'oi6',
+  q8: 'oi7',
+  q9: 'oi8',
+  questionario: ["oi", "oi2", "oi3"],
+  estaAutorizado: true
+}
+
+respostaController.save(respostas, function (dados, error) {
+  if (error) {
+    console.log(error)
+  } else {
+    console.log(dados)
+  }
+})
+
+respostaController.findAll( function(dados, error){
+  if (error) {
+    console.log(error)
+  } else {
+    console.log(dados)
+  }
+})*/
+/*var chatLogs = [
+  {
+    jogador: 1,
+    sala: 2222,
+    msg: "estou bem e voce",
+    usuario: 'jeremias',
+    idUsuario: '222',
+    hora: "12:50:01"
+  },
+  {
+    jogador: 2,
+    sala: 2222,
+    msg: "bem sddsdsdsds",
+    usuario: 'jeremias2',
+    idUsuario: '223',
+    hora: "12:50:01"
+  }
+]
+chatController.save(chatLogs, function (dados, error) {
+  if (error) {
+    console.log(error)
+  } else {
+    console.log(dados)
+  }
+})*/
+//console.log(chatLogs[0].sala)
+chatController.findIdUsuario('222', function (dados, error){
+  if (error) {
+    console.log(error)
+  } else {
+    console.log(dados)
+  }
+})
+
 
 //module.exports = app;
 var debug = require('debug')('quimica-vue:server');
@@ -198,8 +277,3 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
-
-
-
-
-

@@ -37,7 +37,7 @@
 				<span class="brand-logo center"> <small><strong>{{usuario}}</strong>! seu parceiro é <strong>{{usernameParseiro}}</strong></small></span>
 
 				<ul class="right hide-on-med-and-down">
-					<li>Página ({{estado}}/15)</li>											
+					<li>Página ({{estado}}/17)</li>											
 					<li v-show="estado >=1 && estado < 12" v-on:click="alternarChat"><a>Chat</a></li>
 				</ul>
 
@@ -952,8 +952,8 @@
 							<h6>TERMO DE CONSENTIMENTO LIVRE E ESCLARECIDO</h6>
 						</div> 
 						<div style="line-height: 2; text-align: justify;">
-							<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Convidamos V.Sa. a participar da pesquisa:  <strong>DESENVOLVIMENTO E UTILIZAÇÃO DE UM AMBIENTE VIRTUAL DE APRENDIZAGEM, BASEADO NA TEORIA DE GALPERIN, PARA A IDENTIFICAÇÃO DE ÁLCOOIS</strong> que tem por objetivo analisar o uso de um software em um processo de ensino-aprendizagem para alunos do ensino médio. Como procedimentos de coleta de dados, utilizamos os exercícios e problemas feitos pelos participantes.
-								Destacamos ainda os seguintes direitos: a garantia de esclarecimento e resposta a qualquer pergunta e a garantia de privacidade à sua identidade e do sigilo de suas informações.
+							<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Convidamos V.Sa. a participar da pesquisa:  <strong>DESENVOLVIMENTO E UTILIZAÇÃO DE UM AMBIENTE VIRTUAL DE APRENDIZAGEM, BASEADO NA TEORIA DE GALPERIN, PARA A IDENTIFICAÇÃO DE ÁLCOOIS</strong> que tem por objetivo analisar o uso de um software em um processo de ensino-aprendizagem para alunos do Ensino Médio. Como procedimentos de coleta de dados, utilizamos os exercícios, problemas e questiorário feitos pelos participantes.
+								Destacamos ainda os seguintes direitos: garantia de esclarecimento e resposta a qualquer pergunta, garantia de privacidade à sua identidade e do sigilo de suas informações.
 								Você, participante, depois de conhecer e entender os objetivos e procedimentos metodológicos da pesquisa, bem como de estar ciente da necessidade do uso de minha imagem e/ou depoimento, especificados no Termo de Consentimento Livre e Esclarecido (TCLE), AUTORIZO, através do presente termo, a pesquisadora Fabiana Alves da Silva a realizar fotos/filmagem que se façam necessária e/ou colher meu depoimento sem quaisquer ônus financeiros a nenhuma parte.
 								</p>
 						</div>
@@ -1002,7 +1002,7 @@
 								</form>								
 							</li>
 							<li>
-								<p><b>Indiquepontos positivos e negativos do Quimicol.</b></p>
+								<p><b>Indique pontos positivos e negativos do Quimicol.</b></p>
 								<span>Pontos positivos:</span>
 								<textarea placeholder="Escreva algo" v-model="questionario[11]"></textarea>
 								<span>Pontos negativos:</span>
@@ -1019,7 +1019,7 @@
 				<div class="col s10 offset-s1" v-if="estado == 17">
 					<br>
 					<div class="row alert success">
-						<h4>Muito bem. Agora, você conhece o processo de identificação de alcoóis, com grande diversidade estrutural e de aplicações!</h4>
+						<h4>Muito bem. Agora, você conhece o processo de identificação de álcoois, com grande diversidade estrutural e de aplicações!</h4>
 					</div>
 					<br>
 					<br>
@@ -1272,8 +1272,8 @@
 			etp14_foiRespondida: false,
 			estaAutorizado: false,
 			questionarios: [
-				"Os recursos (vídeo, textos, estruturas, caixas de diálogo, quadros e tabelas) contidos no softwarepodem ser bem visualizados.",
-				"As suas telas possuemum formato de fácil reconhecimento e navegação.",
+				"Os recursos (vídeo, textos, estruturas, caixas de diálogo, quadros e tabelas) contidos no software podem ser bem visualizados.",
+				"As suas telas possuem um formato de fácil reconhecimento e navegação.",
 				"A interface do software é atraente e ajudam a manter a atenção.",
 				"O software é interativo.",
 				"O software proporcionou cooperação.",
@@ -1281,7 +1281,7 @@
 				"No uso do software, verifica-se porque é importante estudar o conteúdo álcool.",
 				"O Quimicol é útil para aprender parte do assunto anteriormente à aula na escola.",
 				"A quantidade de informações apresentada em cada tela do software foi adequada.",
-				"O softwarepermite aprender a identificar álcoois de uma forma agradável.",
+				"O software permite aprender a identificar álcoois de uma forma agradável.",
 				"O software é apropriado para verificar as aplicações de diferentes tipos de álcoois."
 			],
 			questionario: [null,null,null,null, null,null,null,null,null,null, null, null, null],
@@ -1713,6 +1713,7 @@
 					idSala: this.idSala,
 					idUsuario: this.idUsuario,
 					usuario: this.usuario,
+					jogador: this.jogador,
 					q1: this.etp6_resposta,
 					q2: this.etp7_resposta,
 					q3: this.etp8_resposta,
@@ -1722,8 +1723,12 @@
 					q7: this.etp12_resposta,
 					q8: this.etp13_resposta,
 					q9: this.etp14_resposta,
+					questionario: this.questionario,
+					estaAutorizado: this.estaAutorizado,
 				}
-				socket.emit('enviarRespostas', todasRespostas);
+				socket.emit('enviarRespostas', todasRespostas, this.chatlogs);
+				socket.emit('enviarChatLogs',this.chatlogs);
+
 			}
 
 		},
