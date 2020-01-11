@@ -970,16 +970,48 @@
 				<!--Estado 16-->
 				<div class="col s10 offset-s1" v-if="estado == 16">
 					<br>
-					<div class="row">
-						<h5>Responda o questionário abaixo.</h5>
-					</div>
-					<div class="row">
-						<h4>Aqui é o questionário</h4>
-					</div>
-					<div class="row">
+					<div class="col s8 offset-s2">
+						<p>Prezado(a) usuário(a),</p>												
+						<p style="text-align: justify;">Agradecemos por você ter utilizado o Quimicol. Gostaríamos que a sua experiência nos auxiliasse a melhorar ainda mais esse software didático gratuito e de livre acesso, e oportunizar mais qualidade para futuros usuários. Para tanto, precisamos que você responda as questões abaixo.</p>
+						<ol>
+							<li v-for="(quest, index) in questionarios"> 
+								<b>{{quest}}</b>
+								<form action="#">
+									<p>									
+										<label>
+										  <input class="with-gap" name="questionario" v-model="questionario[index]" value="Concordo fortemente" type="radio"/>
+										  <span>Concordo fortemente</span>
+										</label>										
+										<label>
+											<input class="with-gap" name="questionario" v-model="questionario[index]" value="Concordo" type="radio"/>
+											<span>Concordo</span>
+										</label>
+										<label>
+											<input class="with-gap" name="questionario" v-model="questionario[index]" value="Indeciso" type="radio"/>
+											<span>Indeciso</span>
+										</label>
+										<label>
+											<input class="with-gap" name="questionario" v-model="questionario[index]" value="Discordo" type="radio"/>
+											<span>Discordo</span>
+										</label>
+										<label>
+											<input class="with-gap" name="questionario" v-model="questionario[index]" value="Discordo fortemente" type="radio"/>
+											<span>Discordo fortemente</span>
+										</label>
+									</p>									
+								</form>								
+							</li>
+							<li>
+								<p><b>Indiquepontos positivos e negativos do Quimicol.</b></p>
+								<span>Pontos positivos:</span>
+								<textarea placeholder="Escreva algo" v-model="questionario[11]"></textarea>
+								<span>Pontos negativos:</span>
+								<textarea placeholder="Escreva algo" v-model="questionario[12]"></textarea>
+							</li>							
+						</ol>						
+						<p>Agradecemos a sua participação.</p>
 						<a class="waves-effect blue btn" v-on:click="enviar_questionario">Enviar</a>
 					</div>
-
 				</div>
 				<!--Fim do estado 16-->
 
@@ -1238,7 +1270,21 @@
 			etp13_foiRespondida: false,
 			etp14_resposta: "",
 			etp14_foiRespondida: false,
-			estaAutorizado: false
+			estaAutorizado: false,
+			questionarios: [
+				"Os recursos (vídeo, textos, estruturas, caixas de diálogo, quadros e tabelas) contidos no softwarepodem ser bem visualizados.",
+				"As suas telas possuemum formato de fácil reconhecimento e navegação.",
+				"A interface do software é atraente e ajudam a manter a atenção.",
+				"O software é interativo.",
+				"O software proporcionou cooperação.",
+				"Foi agradável usar o Quimicol com outro colega, via web, cada um em seu computador.",
+				"No uso do software, verifica-se porque é importante estudar o conteúdo álcool.",
+				"O Quimicol é útil para aprender parte do assunto anteriormente à aula na escola.",
+				"A quantidade de informações apresentada em cada tela do software foi adequada.",
+				"O softwarepermite aprender a identificar álcoois de uma forma agradável.",
+				"O software é apropriado para verificar as aplicações de diferentes tipos de álcoois."
+			],
+			questionario: [null,null,null,null, null,null,null,null,null,null, null, null, null],
 		},
 		created() {
 			this.etp3_selecionarImagens()
