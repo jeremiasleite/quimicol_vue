@@ -74,7 +74,7 @@ io.on('connection', function (socket) {
     //console.log(usernames)
     console.log(username + " joined to " + id);
 
-    socket.emit('updatechat', 'SERVER', 'Você está conectado! Aguardado o outro usuário conectar...', id, pgmstart);
+    socket.emit('updatechat', 'SERVER', 'Você está conectado! Aguardando o outro usuário conectar...', id, pgmstart);
 
     socket.broadcast.to(id).emit('updatechat', username, username + ' has joined to this game !', id, pgmstart);
     if(pairCount ===2){
