@@ -1365,8 +1365,21 @@
 			},
 			seguir: function () {				
 				if (this.estado < 6) {
-					if(!this.etp1_liberada){
-						swal('Você não enviou nenhuma mensagem no chat! por favor dialogar no chat.')
+					if(this.estado == 1){
+						if(!this.etp1_liberada){
+							swal('Você não enviou nenhuma mensagem no chat! por favor dialogar no chat.')
+						}else{
+							this.estado = this.estado + 1
+					    	this.mudouEstado();
+						}
+					}else if(this.estado > 2 && this.estado < 6){
+						if(this.etp3_foiVerificado){
+							this.estado = this.estado + 1
+					    	this.mudouEstado();
+						}else{
+							swal('Responda o quadro de condições para seguir.')
+						}						
+						
 					}else{
 						this.estado = this.estado + 1
 					    this.mudouEstado();
