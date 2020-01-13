@@ -1731,7 +1731,7 @@
 					estaAutorizado: this.estaAutorizado,
 				}
 				console.log( 'Está autorizado: ', this.estaAutorizado)
-				socket.emit('enviarRespostas', todasRespostas, this.chatlogs);
+				socket.emit('enviarRespostas', todasRespostas);
 				if(this.jogador ==1){
 					socket.emit('enviarChatLogs',this.chatlogs);
 				}			
