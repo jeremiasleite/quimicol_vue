@@ -8,7 +8,7 @@ var http = require('http').createServer(app);
 //console.log(http)
 var io = require('socket.io')(http);
 var respostaController = require('./controllers/respostaController')
-var chatController = require('./controllers/ChatController')
+var chatController = require('./controllers/chatController')
 
 // Conecta no MongoDB
 mongoose.connect( 
