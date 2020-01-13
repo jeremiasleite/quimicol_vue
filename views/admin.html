@@ -62,7 +62,7 @@
             <div class="row">
                 <div class="collection">
                     <a v-for="(item, index) in listaRespostas" class="collection-item black-text" v-on:click="abrir(index)">
-                        {{index+1}} - Sala: {{item.idSala}} - Usuario: {{item.usuario}}
+                       <b>{{index+1}} - Sala:</b> {{item.idSala}} - <b>Jogador:</b> {{item.jogador}} - <b>Nome:</b> {{item.usuario}}
                     </a>
                 </div>
             </div>

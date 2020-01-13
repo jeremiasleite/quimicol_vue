@@ -11,7 +11,7 @@ exports.save = function (_resposta, callback){
 }
 
 exports.findAll = function (callback){
-    Resposta.find({},function(err, docs) {
+    Resposta.find({}).sort('idSala').exec(function(err, docs) {
         if (!err){ 
             callback(docs);
         } else {
