@@ -10,8 +10,29 @@ exports.save = function (_chat, callback){
     })
 }
 
-exports.findIdUsuario = function (_sala, callback){    
-    Chat.find({ idUsuario: '222'}, function(error, docs){
+exports.findIdUsuario = function (_idUsuario, callback){    
+    Chat.find({ idUsuario: _idUsuario}, function(error, docs){
+        if(error){
+            callback(null, {msg: 'Erro inesperado ao savar!', error: error})
+        }else{
+            callback(docs)
+        }
+    })
+}
+
+exports.findAll = function (callback){    
+    Chat.find(function(error, docs){
+        if(error){
+            callback(null, {msg: 'Erro inesperado ao savar!', error: error})
+        }else{
+            callback(docs)
+        }
+    })
+}
+
+exports.findIdSala = function (_idSala, callback){
+    //console.log(_idSala)    
+    Chat.find({ sala: _idSala}, function(error, docs){
         if(error){
             callback(null, {msg: 'Erro inesperado ao savar!', error: error})
         }else{

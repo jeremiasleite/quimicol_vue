@@ -109,7 +109,7 @@
 						<div class="row">
 							<div class="row">
 								<!--h3 class="header left orange-text">Introdução <small>Alimentos</small></!--h3>-->
-								<h5>Análise todas as estruturas representativas de alcoois e não alcoois</h5>
+								<h5>Analise todas as estruturas representativas de alcoois e não alcoois</h5>
 							</div>
 							<div class="col s6" style="border-style: solid; border-width: 2px; padding: 2px;">
 								<div
@@ -266,7 +266,7 @@
 					<!--Estado 6-->
 					<div class="col s10 offset-s1" v-if="estado == 6">
 						<div class="row alert info" v-if="jogador == 2">
-							<p>Ajude o seu parceiro a responder essa questão, para isso utilize o chat!</p>
+							<p>Ajude seu parceiro (a) a responder essa questão, através do chat e usando os botões vermelhos abaixo.</p>
 						</div>
 						<div class="row alert warning" v-else>
 							<p><strong>Atenção! </strong>Peça ajuda ao parceiro para responder essa questão, para isso utilize o chat!</p>
@@ -356,7 +356,7 @@
 					<!--Estado 7-->
 					<div class="col s10 offset-s1" v-if="estado == 7">
 						<div class="row alert info" v-if="jogador == 1">
-							<p>Ajude o seu parceiro a responder essa questão, para isso utilize o chat!</p>
+							<p>Ajude seu parceiro (a) a responder essa questão, através do chat e usando os botões vermelhos abaixo.</p>
 						</div>
 						<div class="row alert warning" v-else>
 							<p><strong>Atenção! </strong>Peça ajuda ao parceiro para responder essa questão, para isso utilize o chat!</p>
@@ -430,7 +430,7 @@
 					<!--Estado 8-->
 					<div class="col s10 offset-s1" v-if="estado == 8">
 						<div class="row alert info" v-if="jogador == 2">
-							<p>Ajude o seu parceiro a responder essa questão, para isso utilize o chat!</p>
+							<p>Ajude seu parceiro (a) a responder essa questão, através do chat e usando os botões vermelhos abaixo.</p>
 						</div>
 						<div class="row alert warning" v-else>
 							<p><strong>Atenção! </strong>Peça ajuda ao parceiro para responder essa questão, para isso utilize o chat!</p>
@@ -543,7 +543,7 @@
 					<!--Estado 9-->
 					<div class="col s10 offset-s1" v-if="estado == 9">
 						<div class="row alert info" v-if="jogador == 1">
-							<p>Ajude o seu parceiro a responder essa questão, para isso utilize o chat!</p>
+							<p>Ajude seu parceiro (a) a responder essa questão, através do chat e usando os botões vermelhos abaixo.</p>
 						</div>
 						<div class="row alert warning" v-else>
 							<p><strong>Atenção! </strong>Peça ajuda ao parceiro para responder essa questão, para isso utilize o chat!</p>
@@ -623,7 +623,7 @@
 					<!--Estado 10-->
 					<div class="col s10 offset-s1" v-if="estado == 10">
 						<div class="row alert info" v-if="jogador == 2">
-							<p>Ajude o seu parceiro a responder essa questão, para isso utilize o chat!</p>
+							<p>Ajude seu parceiro (a) a responder essa questão, através do chat e usando os botões vermelhos abaixo.</p>
 						</div>
 						<div class="row alert warning" v-else>
 							<p><strong>Atenção! </strong>Peça ajuda ao parceiro para responder essa questão, para isso utilize o chat!</p>
@@ -739,7 +739,7 @@
 					<!--Estado 11-->
 					<div class="col s10 offset-s1" v-if="estado == 11">
 						<div class="row alert info" v-if="jogador == 1">
-							<p>Ajude o seu parceiro a responder essa questão, para isso utilize o chat!</p>
+							<p>Ajude seu parceiro (a) a responder essa questão, através do chat e usando os botões vermelhos abaixo.</p>
 						</div>
 						<div class="row alert warning" v-else>
 							<p><strong>Atenção! </strong>Peça ajuda ao parceiro para responder essa questão, para isso utilize o chat!</p>
@@ -979,23 +979,23 @@
 								<form action="#">
 									<p>									
 										<label>
-										  <input class="with-gap" name="questionario" v-model="questionario[index]" value="Concordo fortemente" type="radio"/>
+										  <input class="with-gap" name="questionario" v-model="questionario[index]" value="1" type="radio"/>
 										  <span>Concordo fortemente</span>
 										</label>										
 										<label>
-											<input class="with-gap" name="questionario" v-model="questionario[index]" value="Concordo" type="radio"/>
+											<input class="with-gap" name="questionario" v-model="questionario[index]" value="2" type="radio"/>
 											<span>Concordo</span>
 										</label>
 										<label>
-											<input class="with-gap" name="questionario" v-model="questionario[index]" value="Indeciso" type="radio"/>
+											<input class="with-gap" name="questionario" v-model="questionario[index]" value="3" type="radio"/>
 											<span>Indeciso</span>
 										</label>
 										<label>
-											<input class="with-gap" name="questionario" v-model="questionario[index]" value="Discordo" type="radio"/>
+											<input class="with-gap" name="questionario" v-model="questionario[index]" value="4" type="radio"/>
 											<span>Discordo</span>
 										</label>
 										<label>
-											<input class="with-gap" name="questionario" v-model="questionario[index]" value="Discordo fortemente" type="radio"/>
+											<input class="with-gap" name="questionario" v-model="questionario[index]" value="5" type="radio"/>
 											<span>Discordo fortemente</span>
 										</label>
 									</p>									
@@ -1524,7 +1524,7 @@
 				if (this.estado >= 1) {
 					socket.emit('estado', this.idSala, this.jogador, this.estado);
 				}
-				if (this.estado == 15) {
+				if (this.estado == 17) {
 					this.enviarTudo();
 				}
 				if (this.estado == 12){
@@ -1569,7 +1569,8 @@
 					msg: this.novaMsg,
 					usuario: this.usuario,
 					idUsuario: this.idUsuario,
-					hora: getHora()
+					hora: getHora(),
+					ordem: this.chatlogs.length
 				});
 				this.novaMsg = ""
 				//this.chatlogs.push({ idUsuario: this.idUsuario, usuario: this.usuario, msg: this.novaMsg, hora: "13:00:00" })
@@ -1699,7 +1700,9 @@
 				this.etp14_foiRespondida = true;
 			},
 			autorizar: function (){
-				this.estaAutorizado = true;
+				console.log(this.estaAutorizado )
+				this.estaAutorizado = true;	
+				console.log(this.estaAutorizado )			
 				this.estado++;
 			},
 			negar: function (){		
@@ -1726,8 +1729,11 @@
 					questionario: this.questionario,
 					estaAutorizado: this.estaAutorizado,
 				}
+				console.log( 'Está autorizado: ', this.estaAutorizado)
 				socket.emit('enviarRespostas', todasRespostas, this.chatlogs);
-				socket.emit('enviarChatLogs',this.chatlogs);
+				if(this.jogador ==1){
+					socket.emit('enviarChatLogs',this.chatlogs);
+				}			
 
 			}
 

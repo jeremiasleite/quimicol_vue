@@ -6,8 +6,7 @@ const chatSchema = new mongoose.Schema({
     require: true
   },
   sala: {
-    type: String,   
-    required: true    
+    type: Number    
   },
   idUsuario: {
     type: String
@@ -20,6 +19,9 @@ const chatSchema = new mongoose.Schema({
   },
   hora: {
     type: String
+  },
+  ordem:{
+    type: Number
   }
 });
 

@@ -24,12 +24,12 @@ const respostaSchema = new mongoose.Schema({
   q3: {
     type: [String]
   },
-  q5: {
+  q4: {
     type: [String]
   },
   q5: {
     type: [String]
-  },
+  },  
   q6: {
     type: String
   },

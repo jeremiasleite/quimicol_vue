@@ -11,7 +11,7 @@ var respostaController = require('./controllers/respostaController')
 var chatController = require('./controllers/ChatController')
 
 // Conecta no MongoDB
-mongoose.connect(
+mongoose.connect( 
   "mongodb://jeremias:autocad789@ds031657.mlab.com:31657/daniel_imoveis",
   { useNewUrlParser: true }
 );
@@ -20,7 +20,7 @@ var usernames = {};
 var usernamesArray = []
 var pairCount = 0, id, clientsno, pgmstart = 0, varCounter;
 var mensagens = []
-var respostasArray = []
+
 
 //var indexRouter = require('./routes/index');
 //var usersRouter = require('./routes/users');
@@ -35,17 +35,16 @@ app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.get('/', function (req, res) {
-  var pessoa = {nome: "jeremias", idade: "33"}
-  res.sendFile(__dirname + '/views/index.html', {pessoa: pessoa});
-  //res.send("oi");
+app.get('/', function (req, res) {  
+  res.sendFile(__dirname + '/views/index.html');  
 });
 
 app.get('/admin', function (req, res) {
-  res.sendFile(__dirname + '/views/admin.html');
-  //res.send("oi");
+  res.sendFile(__dirname + '/views/admin.html');  
 });
 
+app.use('/api/respostas', require('./router/respostaRouter'));
+app.use('/api/chat', require('./router/chatRouter'));
 //app.use('/login', indexRouter);
 //app.use('/users', usersRouter);
 
@@ -185,7 +184,7 @@ respostaController.findAll( function(dados, error){
 /*var chatLogs = [
   {
     jogador: 1,
-    sala: 2222,
+    idSala: 2222,
     msg: "estou bem e voce",
     usuario: 'jeremias',
     idUsuario: '222',
@@ -193,7 +192,7 @@ respostaController.findAll( function(dados, error){
   },
   {
     jogador: 2,
-    sala: 2222,
+    idSala: 2222,
     msg: "bem sddsdsdsds",
     usuario: 'jeremias2',
     idUsuario: '223',
@@ -208,7 +207,7 @@ chatController.save(chatLogs, function (dados, error) {
   }
 })*/
 //console.log(chatLogs[0].sala)
-chatController.findIdUsuario('222', function (dados, error){
+respostaController.getQuestionario(function (dados, error){
   if (error) {
     console.log(error)
   } else {

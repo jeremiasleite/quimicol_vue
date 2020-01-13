@@ -1,35 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin</title>
     <!--Import Google Icon Font-->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<!--Import materialize.css-->
-	<link type="text/css" rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-		media="screen,projection" />	
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+        media="screen,projection" />
 </head>
+
 <body>
-    <div id="app">
-        <h1>Area do professor {{professor}}</h1>
+    <div id="app" class="container">
+        <div class="row" v-if="pagina==0">
+
+            <h1>Área do professor</h1>
+            <div class="row">
+                <div class="row">
+                    <h6>Resultado dos Questionários</h6>
+                    <ul>
+                        <li>
+                            <b>1)</b> - {{resultQuest.q1[0]}} Concordo fortemente, {{resultQuest.q1[1]}} Concordo, {{resultQuest.q1[2]}} Indeciso, {{resultQuest.q1[3]}} Discordo, {{resultQuest.q1[4]}} Discordo fortemente    
+                        </li>
+                        <li>
+                            <b>2)</b> - {{resultQuest.q2[0]}} Concordo fortemente, {{resultQuest.q2[1]}} Concordo, {{resultQuest.q2[2]}} Indeciso, {{resultQuest.q2[3]}} Discordo, {{resultQuest.q2[4]}} Discordo fortemente    
+                        </li>
+                        <li>
+                            <b>3)</b> - {{resultQuest.q3[0]}} Concordo fortemente, {{resultQuest.q3[1]}} Concordo, {{resultQuest.q3[2]}} Indeciso, {{resultQuest.q3[3]}} Discordo, {{resultQuest.q3[4]}} Discordo fortemente    
+                        </li>
+                        <li>
+                            <b>4)</b> - {{resultQuest.q4[0]}} Concordo fortemente, {{resultQuest.q4[1]}} Concordo, {{resultQuest.q4[2]}} Indeciso, {{resultQuest.q4[3]}} Discordo, {{resultQuest.q4[4]}} Discordo fortemente    
+                        </li>
+                        <li>
+                            <b>5)</b> - {{resultQuest.q5[0]}} Concordo fortemente, {{resultQuest.q5[1]}} Concordo, {{resultQuest.q5[2]}} Indeciso, {{resultQuest.q5[3]}} Discordo, {{resultQuest.q5[4]}} Discordo fortemente    
+                        </li>
+                        <li>
+                            <b>6)</b> - {{resultQuest.q6[0]}} Concordo fortemente, {{resultQuest.q6[1]}} Concordo, {{resultQuest.q6[2]}} Indeciso, {{resultQuest.q6[3]}} Discordo, {{resultQuest.q6[4]}} Discordo fortemente    
+                        </li>
+                        <li>
+                            <b>7)</b> - {{resultQuest.q7[0]}} Concordo fortemente, {{resultQuest.q7[1]}} Concordo, {{resultQuest.q7[2]}} Indeciso, {{resultQuest.q7[3]}} Discordo, {{resultQuest.q7[4]}} Discordo fortemente    
+                        </li>
+                        <li>
+                            <b>8)</b> - {{resultQuest.q8[0]}} Concordo fortemente, {{resultQuest.q8[1]}} Concordo, {{resultQuest.q8[2]}} Indeciso, {{resultQuest.q8[3]}} Discordo, {{resultQuest.q8[4]}} Discordo fortemente    
+                        </li>
+                        <li>
+                            <b>9)</b> - {{resultQuest.q9[0]}} Concordo fortemente, {{resultQuest.q9[1]}} Concordo, {{resultQuest.q9[2]}} Indeciso, {{resultQuest.q9[3]}} Discordo, {{resultQuest.q9[4]}} Discordo fortemente    
+                        </li>
+                        <li>
+                            <b>10)</b> - {{resultQuest.q10[0]}} Concordo fortemente, {{resultQuest.q10[1]}} Concordo, {{resultQuest.q10[2]}} Indeciso, {{resultQuest.q10[3]}} Discordo, {{resultQuest.q10[4]}} Discordo fortemente    
+                        </li>
+                        <li>
+                            <b>11)</b> - {{resultQuest.q11[0]}} Concordo fortemente, {{resultQuest.q11[1]}} Concordo, {{resultQuest.q4[2]}} Indeciso, {{resultQuest.q11[3]}} Discordo, {{resultQuest.q11[4]}} Discordo fortemente    
+                        </li>
+                    </ul> 
+                </div>
+            </div>
+            <div class="row">
+                <div class="collection">
+                    <a v-for="(item, index) in listaRespostas" class="collection-item black-text" v-on:click="abrir(index)">
+                        {{index+1}} - Sala: {{item.idSala}} - Usuario: {{item.usuario}}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" v-if="pagina==1">
+            <br>
+            <a class="waves-effect waves-light btn" v-on:click="inicio">Volta</a>
+
+            <h4><strong>Usuário: </strong>{{respostaAtual.usuario}}, <strong>Sala: </strong>{{respostaAtual.idSala}}, <strong>Participante: </strong> {{respostaAtual.jogador}} </h4>
+            <h6>Resposta do Aluno</h6>
+            <div v-if="respostaAtual.jogador == '1'">
+                <ul>
+                    <li><b>Questão 1: </b>{{respostaAtual.q1}}</li>                    
+                    <li><b>Questão 3: </b>{{respostaAtual.q3}}</li>                    
+                    <li><b>Questão 5: </b>{{respostaAtual.q5}}</li>                    
+                    <li><b>Questão 7: </b>{{respostaAtual.q7}}</li>
+                    <li><b>Questão 8: </b>{{respostaAtual.q8}}</li>
+                    <li><b>Questão 9: </b>{{respostaAtual.q9}}</li>
+                    <li><b>Autorização: </b>{{respostaAtual.estaAutorizado ? 'Sim': 'Não'}}</li>
+                </ul>
+            </div>
+            <div v-if="respostaAtual.jogador == '2'">
+                <ul>                    
+                    <li><b>Questão 2: </b>{{respostaAtual.q2}}</li>                    
+                    <li><b>Questão 4: </b>{{respostaAtual.q4}}</li>                    
+                    <li><b>Questão 6: </b>{{respostaAtual.q6}}</li>
+                    <li><b>Questão 7: </b>{{respostaAtual.q7}}</li>
+                    <li><b>Questão 8: </b>{{respostaAtual.q8}}</li>
+                    <li><b>Questão 9: </b>{{respostaAtual.q9}}</li>
+                    <li><b>Autorização: </b>{{respostaAtual.estaAutorizado ? 'Sim': 'Não'}}</li>
+                </ul>
+            </div>            
+            
+            <h6>Chat</h6>
+            <ul>
+                <li v-for="item in chatAtual">
+                    [{{item.hora}}] <b>{{item.usuario}}:</b> {{item.msg}}
+                </li>
+            </ul>                        
+        </div>
+        
+
+        
     </div>
-    
+
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script type="text/javascript"	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.1/axios.min.js"></script>
 
 <script type="text/javascript">
     M.AutoInit();
     var app = new Vue({
-		el: '#app',
-		data: {
-            professor: "fabiana"
-        }
+        el: '#app',
+        data: {
+            professor: "fabiana",
+            listaRespostas: [],
+            pagina: 0,
+            respostaAtual: {},
+            urlBase: 'https://quimicol.herokuapp.com/'+'api',
+            chatAtual: [],
+            resultQuest: null,
+        },
+        created() {
+            this.listarRespostas();
+            this.getQuest();
+        },
+        mounted() {            
+            
+        },
+        methods: {
+            abrir: function (index){
+                this.respostaAtual = this.listaRespostas[index];
+                this.getChat(this.respostaAtual.idSala)                
+                this.pagina=1;
+            },
+            inicio: function (){
+                this.pagina = 0;
+            },
+            listarRespostas: function (){
+                axios
+                .get(this.urlBase+'/respostas')
+                .then(response => (this.listaRespostas = response.data));
+                //this.respostaAtual = this.listaRespostas[5];
+            },
+            getChat: function (sala){
+                axios
+                .get(this.urlBase+'/chat/idsala/'+sala)
+                .then(response => (this.chatAtual = response.data));
+            },
+            getQuest: function (){
+                axios
+                .get(this.urlBase+'/respostas/questionarios')
+                .then(response => (this.resultQuest = response.data));
+            }
+        },
+
     })
-    
+
 </script>
+
 </html>
