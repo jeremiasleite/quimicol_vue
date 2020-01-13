@@ -22,7 +22,8 @@ const chatSchema = new mongoose.Schema({
   },
   ordem:{
     type: Number
-  }
+  },
+  estado: Number
 });
 
 module.exports = mongoose.model("Chat", chatSchema);
