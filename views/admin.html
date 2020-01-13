@@ -132,6 +132,7 @@
             pagina: 0,
             respostaAtual: {},
             urlBase: 'https://quimicol.herokuapp.com/'+'api',
+            urlBase2: 'http://localhost:3000/api',
             chatAtual: [],
             resultQuest: null,
         },
@@ -153,18 +154,18 @@
             },
             listarRespostas: function (){
                 axios
-                .get(this.urlBase+'/respostas')
+                .get(this.urlBase2+'/respostas')
                 .then(response => (this.listaRespostas = response.data));
                 //this.respostaAtual = this.listaRespostas[5];
             },
             getChat: function (sala){
                 axios
-                .get(this.urlBase+'/chat/idsala/'+sala)
+                .get(this.urlBase2+'/chat/idsala/'+sala)
                 .then(response => (this.chatAtual = response.data));
             },
             getQuest: function (){
                 axios
-                .get(this.urlBase+'/respostas/questionarios')
+                .get(this.urlBase2+'/respostas/questionarios')
                 .then(response => (this.resultQuest = response.data));
             }
         },

@@ -207,13 +207,13 @@ chatController.save(chatLogs, function (dados, error) {
   }
 })*/
 //console.log(chatLogs[0].sala)
-respostaController.getQuestionario(function (dados, error){
+/*respostaController.getQuestionario(function (dados, error){
   if (error) {
     console.log(error)
   } else {
     console.log(dados)
   }
-})
+})*/
 
 
 //module.exports = app;
