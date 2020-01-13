@@ -109,7 +109,7 @@
 						<div class="row">
 							<div class="row">
 								<!--h3 class="header left orange-text">Introdução <small>Alimentos</small></!--h3>-->
-								<h5>Analise todas as estruturas representativas de alcoois e não alcoois</h5>
+								<h5>Analise todas as estruturas representativas de álcoois e não álcoois</h5>
 							</div>
 							<div class="col s6" style="border-style: solid; border-width: 2px; padding: 2px;">
 								<div
@@ -213,7 +213,7 @@
 								<div class="img-select"
 									v-bind:class="{imgSelectTrue : comp.resp && !etp4_verificada, imgAcertou: comp.verificado, imgErrou: !comp.verificado && etp4_verificada && comp.resp}"
 									v-on:click="etp4_selecionarEstrutura(index)">
-									<div v-if="etp4_verificada" style="text-align: center;"> <strong>{{comp.isAlcool ? "Alcool": "Não Alcool"}}</strong></div>
+									<div v-if="etp4_verificada" style="text-align: center;"> <strong>{{comp.isAlcool ? "Álcool": "Não Álcool"}}</strong></div>
 									<div>
 										<img class="img-composto" v-bind:src="comp.url" style="max-width: 100%;">
 										<p style="font-size: 10px; text-align: center;"><strong>{{comp.nome}}</strong>
@@ -245,7 +245,7 @@
 								<div class="img-select"
 									v-bind:class="{imgSelectTrue : comp.resp, imgAcertou: comp.verificado, imgErrou: !comp.verificado && etp5_verificada && comp.resp}"
 									v-on:click="etp5_selecionarEstrutura(index)">
-									<div v-if="etp5_verificada" style="text-align: center;"> <strong>{{comp.isAlcool ? "Alcool": "Não Alcool"}}</strong></div>
+									<div v-if="etp5_verificada" style="text-align: center;"> <strong>{{comp.isAlcool ? "Álcool": "Não Álcool"}}</strong></div>
 									<div>
 										<img class="img-composto" v-bind:src="comp.url" style="max-width: 100%;">
 										<p style="font-size: 10px; text-align: center;"><strong>{{comp.nome}}</strong>
@@ -1700,16 +1700,19 @@
 				this.etp14_foiRespondida = true;
 			},
 			autorizar: function (){
-				console.log(this.estaAutorizado )
+				//console.log(this.estaAutorizado )
 				this.estaAutorizado = true;	
-				console.log(this.estaAutorizado )			
+				//console.log(this.estaAutorizado )			
 				this.estado++;
+				this.mudouEstado();
 			},
 			negar: function (){		
 				this.estado++;
+				this.mudouEstado();
 			},
 			enviar_questionario: function (){
 				this.estado++;
+				this.mudouEstado();
 			},
 			enviarTudo: function () {
 				var todasRespostas = {
