@@ -32,7 +32,7 @@ exports.findAll = function (callback){
 
 exports.findIdSala = function (_idSala, callback){
     //console.log(_idSala)    
-    Chat.find({ sala: _idSala}).sort('estado').exec(function(error, docs){
+    Chat.find({ sala: _idSala}).sort('estado ordem').exec(function(error, docs){
         if(error){
             callback(null, {msg: 'Erro inesperado ao savar!', error: error})
         }else{
