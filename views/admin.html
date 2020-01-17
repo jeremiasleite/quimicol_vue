@@ -19,12 +19,20 @@
         <div class="row" v-if="pagina==0">
 
             <h1>Área do professor</h1>
+            
+            <div class="row">
+                <div class="collection">
+                    <a v-for="(item, index) in listaRespostas" class="collection-item black-text" v-on:click="abrir(index)">
+                       <b>{{index+1}} - Sala:</b> {{item.idSala}} - <b>Jogador:</b> {{item.jogador}} - <b>Nome:</b> {{item.usuario}}
+                    </a>
+                </div>
+            </div>
             <div class="row">
                 <div class="row">
                     <h6>Resultado dos Questionários</h6>
                     <ul>
                         <li>
-                            <b>1)</b> - {{resultQuest.q1[0]}} Concordo fortemente, {{resultQuest.q1[1]}} Concordo, {{resultQuest.q1[2]}} Indeciso, {{resultQuest.q1[3]}} Discordo, {{resultQuest.q1[4]}} Discordo fortemente    
+                           <b>1)</b> - {{resultQuest.q1[0]}} Concordo fortemente, {{resultQuest.q1[1]}} Concordo, {{resultQuest.q1[2]}} Indeciso, {{resultQuest.q1[3]}} Discordo, {{resultQuest.q1[4]}} Discordo fortemente  
                         </li>
                         <li>
                             <b>2)</b> - {{resultQuest.q2[0]}} Concordo fortemente, {{resultQuest.q2[1]}} Concordo, {{resultQuest.q2[2]}} Indeciso, {{resultQuest.q2[3]}} Discordo, {{resultQuest.q2[4]}} Discordo fortemente    
@@ -54,16 +62,9 @@
                             <b>10)</b> - {{resultQuest.q10[0]}} Concordo fortemente, {{resultQuest.q10[1]}} Concordo, {{resultQuest.q10[2]}} Indeciso, {{resultQuest.q10[3]}} Discordo, {{resultQuest.q10[4]}} Discordo fortemente    
                         </li>
                         <li>
-                            <b>11)</b> - {{resultQuest.q11[0]}} Concordo fortemente, {{resultQuest.q11[1]}} Concordo, {{resultQuest.q4[2]}} Indeciso, {{resultQuest.q11[3]}} Discordo, {{resultQuest.q11[4]}} Discordo fortemente    
+                            <b>11)</b> - {{resultQuest.q11[0]}} Concordo fortemente, {{resultQuest.q11[1]}} Concordo, {{resultQuest.q4[2]}} Indeciso, {{resultQuest.q11[3]}} Discordo, {{resultQuest.q11[4]}} Discordo fortemente
                         </li>
                     </ul> 
-                </div>
-            </div>
-            <div class="row">
-                <div class="collection">
-                    <a v-for="(item, index) in listaRespostas" class="collection-item black-text" v-on:click="abrir(index)">
-                       <b>{{index+1}} - Sala:</b> {{item.idSala}} - <b>Jogador:</b> {{item.jogador}} - <b>Nome:</b> {{item.usuario}}
-                    </a>
                 </div>
             </div>
         </div>
@@ -98,9 +99,12 @@
             </div>
             
             <h6>Questionários</h6>
+            <p><b>Legenda:</b> 1 - Concordo Fortemente, 2 - Concordo, 3 - indeciso, 4 - Discordo, 5 - Discordo Fortemente</p>
             <ul>
-                <li><b>Pontos Positivos: </b>{{respostaAtual.questionario[11]}}</li>
-                <li><b>Pontos Negativos: </b>{{respostaAtual.questionario[11]}}</li>
+                <li v-for="(quest, index) in respostaAtual.questionario">
+                    <b>Questionário {{index+1}}{{index==11? ', Pontos Positivos': ''}}{{index==12? ', Pontos Negativos': ''}}: </b>{{quest}}
+                </li>                   
+                
             </ul>
             
             <h6>Chat</h6>
@@ -110,9 +114,6 @@
                 </li>
             </ul>                        
         </div>
-        
-
-        
     </div>
 
 
@@ -134,14 +135,14 @@
             urlBase2: 'https://quimicol.herokuapp.com/'+'api',
             urlBase: 'http://localhost:3000/api',
             chatAtual: [],
-            resultQuest: null,
+            resultQuest: [{q1:[0,0,0,0,0]}, {q2:[0,0,0,0,0]}, {q3:[0,0,0,0,0]}, {q4:[0,0,0,0,0]}, {q5:[0,0,0,0,0]},
+            {q6:[0,0,0,0,0]},{q7:[0,0,0,0,0]}, {q8:[0,0,0,0,0]},{q9:[0,0,0,0,0]},{q10:[0,0,0,0,0]},{q11:[0,0,0,0,0]}],
         },
-        created() {
-            this.listarRespostas();
-            this.getQuest();
+        created() {            
+            this.listarRespostas();            
         },
         mounted() {            
-            
+            this.getQuest();
         },
         methods: {
             abrir: function (index){
@@ -155,18 +156,21 @@
             listarRespostas: function (){
                 axios
                 .get(this.urlBase2+'/respostas')
-                .then(response => (this.listaRespostas = response.data));
+                .then(response => (this.listaRespostas = response.data))
+                .catch(error => console.log(error))
                 //this.respostaAtual = this.listaRespostas[5];
             },
             getChat: function (sala){
                 axios
                 .get(this.urlBase2+'/chat/idsala/'+sala)
-                .then(response => (this.chatAtual = response.data));
+                .then(response => (this.chatAtual = response.data))
+                .catch(error => console.log(error))
             },
             getQuest: function (){
                 axios
                 .get(this.urlBase2+'/respostas/questionarios')
-                .then(response => (this.resultQuest = response.data));
+                .then(response => (this.resultQuest = response.data))
+                .catch(error => console.log(error))
             }
         },
 
