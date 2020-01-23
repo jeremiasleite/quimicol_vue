@@ -12,7 +12,7 @@ var chatController = require('./controllers/chatController')
 
 // Conecta no MongoDB
 mongoose.connect( 
-  "mongodb://jeremias:autocad789@ds031657.mlab.com:31657/daniel_imoveis",
+  process.env.DB_URL,
   { useNewUrlParser: true }
 );
 
